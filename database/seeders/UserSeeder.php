@@ -25,6 +25,26 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345678')
 
             ],
+
+             // super admin
+             [
+                'name' => 'administrator',
+                'user_type' => 'administrator',
+                'status' => 'active',
+                'email' => 'administrator@gmail.com',
+                'password' => Hash::make('12345678')
+
+            ],
+
+             // super admin
+             [
+                'name' => 'user',
+                'user_type' => 'user',
+                'status' => 'active',
+                'email' => 'user@gmail.com',
+                'password' => Hash::make('12345678')
+
+            ],
         ]);
     }
 }
