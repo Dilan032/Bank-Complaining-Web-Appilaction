@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
             ],
 
-             // super admin
+             // administrator
              [
                 'name' => 'administrator',
                 'user_type' => 'administrator',
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
 
             ],
 
-             // super admin
+             // user
              [
                 'name' => 'user',
                 'user_type' => 'user',
