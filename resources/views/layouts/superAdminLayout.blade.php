@@ -14,10 +14,10 @@
 <body>
 
    <div class="row">
-        <div class="col-4">
+        <div class="col-md-2">
             @include('components.superAdmin.sideMenu')
         </div>
-        <div class="col-8">
+        <div class="col-md-10">
             @yield('SuperAdminContent')
         </div>
    </div>
