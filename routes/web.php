@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/error', function () {
+    return view('404');
+})->name('404');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,3 +23,16 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::controller(SuperAdminController::class)->group(function () {
+    Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
+    Route::get('/superAdmin/messages', 'ViewMessages')->name('superAdmin.messages.view');
+    Route::get('/superAdmin/announcements', 'ViewAnnouncements')->name('superAdmin.announcements.view');
+    Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
+    Route::get('/superAdmin/banks', 'ViewBanks')->name('superAdmin.banks.view');
+    Route::get('/superAdmin/logout', 'superAdminLogout')->name('superAdmin.logout');
+});
+
+
+
