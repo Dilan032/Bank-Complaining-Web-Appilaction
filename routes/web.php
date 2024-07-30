@@ -3,6 +3,7 @@
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -40,7 +41,13 @@ Route::controller(SuperAdminController::class)->group(function () {
 Route::controller(BankController::class)->group(function () {
     Route::post('/superAdmin/banks', 'RegisterBank')->name('RegisterBank.save');
     Route::get('/superAdmin/banks', 'showBankDetails')->name('superAdmin.banks.view');
+    Route::get('/superAdmin/users', 'showBankDetailsInUser')->name('superAdmin.users.view');
 
+});
+
+
+Route::controller(UserController::class)->group(function () {
+    Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
 });
 
 

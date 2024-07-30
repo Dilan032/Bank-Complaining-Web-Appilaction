@@ -39,9 +39,15 @@ class BankController extends Controller
     } // end function
 
     public function showBankDetails(){
-        
+
         $banks = DB::table('banks')->get();
         return view('superAdmin.banks',['banks' => $banks]);
+    }
+
+    public function showBankDetailsInUser(){
+        
+        $banks = DB::table('banks')->get();
+        return view('superAdmin.users',['banks' => $banks]);
     }
     
 }
