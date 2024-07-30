@@ -34,7 +34,7 @@ class BankController extends Controller
         $bank->save();
 
         // Redirect with a success message
-        return redirect()->route('superAdmin.banks.view')->with('success', 'Bank record created successfully!');
+        return redirect()->route('superAdmin.banks.view')->with('success', 'Bank Registration successfully!');
 
     } // end function
 
