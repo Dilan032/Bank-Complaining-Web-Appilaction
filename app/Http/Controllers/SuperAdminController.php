@@ -29,6 +29,8 @@ class SuperAdminController extends Controller
     } //end method
 
 
+
+
     public function superAdminLogout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

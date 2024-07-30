@@ -8,15 +8,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-4 mx-auto">
-                @include('components.superAdmin.bankAllDetails')
+                @include('components.superAdmin.banks.bankAllDetails')
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-2 mx-auto">
-                @include('components.superAdmin.registerBanks')
+                @include('components.superAdmin.banks.registerBanks')
             </div>
             <div class="col-md-6 col-sm-10 mx-auto">
-                @include('components.superAdmin.bankList')
+                @include('components.superAdmin.banks.bankList')
             </div>
         </div>
     </div>

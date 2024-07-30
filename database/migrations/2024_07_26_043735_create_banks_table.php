@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('bank_name');
             $table->text('bank_address');
             $table->string('bank_contact_num');
+            $table->string('email');
             $table->enum('status',['active', 'inactive'])->default('active');
             $table->timestamps();
         });

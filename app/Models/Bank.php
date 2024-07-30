@@ -13,6 +13,7 @@ class Bank extends Model
         'bank_name',
         'bank_address',
         'bank_contact_num',
+        'email',
         'status',
     ];
 
