@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class BankController extends Controller
 {
+    // [super admin] for Bank Registration
     public function RegisterBank(Request $request){
         // Define validation rules
         $rules = [
@@ -35,19 +36,20 @@ class BankController extends Controller
 
         // Redirect with a success message
         return redirect()->route('superAdmin.banks.view')->with('success', 'Bank Registration successfully!');
-
     } // end function
 
+    // [super admin] for show bank All details in  bank page
     public function showBankDetails(){
 
         $banks = DB::table('banks')->get();
         return view('superAdmin.banks',['banks' => $banks]);
-    }
+    }// end function
 
+    // [super admin] for show bank All details in  user page
     public function showBankDetailsInUser(){
         
         $banks = DB::table('banks')->get();
         return view('superAdmin.users',['banks' => $banks]);
-    }
+    }// end function
     
 }

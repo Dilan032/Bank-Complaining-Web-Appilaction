@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function RegisterUsers(Request $request){
+    // [super admin] for User Registration 
+    public function RegisterUsers(Request $request){ 
         // Define validation rules
         $rules = [
             'bank_id' => 'required|string|max:255',
@@ -42,5 +43,5 @@ class UserController extends Controller
         // Redirect with a success message
         return redirect()->route('superAdmin.users.view')->with('success', 'User Registration successfully!');
 
-    }
+    }// end function
 }

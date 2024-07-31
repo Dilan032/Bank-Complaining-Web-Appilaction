@@ -30,7 +30,7 @@ class SuperAdminController extends Controller
 
 
 
-
+    // [super admin] for logout
     public function superAdminLogout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
