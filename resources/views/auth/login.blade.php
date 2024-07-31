@@ -62,14 +62,12 @@
         <form action="{{route('login')}}" method="POST" class="mx-auto">
             @csrf
             <!-- Display validation errors -->
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            @if ($errors->any())                
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
             @endif
             <div class="row justify-content-center">
                 <div class="col-md-6 mt-5"> 
