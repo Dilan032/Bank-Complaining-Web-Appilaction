@@ -40,14 +40,13 @@ Route::controller(SuperAdminController::class)->group(function () {
 
 Route::controller(BankController::class)->group(function () {
     Route::post('/superAdmin/banks', 'RegisterBank')->name('RegisterBank.save');
-    Route::get('/superAdmin/banks', 'showBankDetails')->name('superAdmin.banks.view');
-    Route::get('/superAdmin/users', 'showBankDetailsInUser')->name('superAdmin.users.view');
 
 });
 
 
 Route::controller(UserController::class)->group(function () {
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
+    
 });
 
 

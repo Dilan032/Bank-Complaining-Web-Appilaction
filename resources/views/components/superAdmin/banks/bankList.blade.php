@@ -76,14 +76,25 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="badge text-bg-dark p-2"> Administrators : </span> <br>
-                                        amal <br>
-                                        nimal <br>
-                                        
+                                        @if ($users ->isNotEmpty())
+                                            @foreach ($users as $userDetail)
+                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "administrator")
+                                                    {{ $userDetail->name }} <br>
+                                                @endif
+                                            @endforeach
+                                        @endif 
                                     </div>
+
                                     <div class="col">
-                                         <b>2</b> <br>
-                                        077 8844632 <br>
-                                        072 8411789 <br>
+                                        <br>
+
+                                         @if ($users ->isNotEmpty())
+                                         @foreach ($users as $userDetail)
+                                             @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "administrator")
+                                                 {{ $userDetail->user_contact_num }} <br>
+                                             @endif
+                                         @endforeach
+                                     @endif 
                                     </div>
                                 </div>
 
@@ -92,18 +103,24 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="badge text-bg-dark p-2"> users : </span> <br>
-                                        amal <br>
-                                        nimal <br>
-                                        nimal <br>
-                                        nimal <br>
-                                        
+                                        @if ($users ->isNotEmpty())
+                                            @foreach ($users as $userDetail)
+                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
+                                                    {{ $userDetail->name }} <br>
+                                                @endif
+                                            @endforeach
+                                        @endif 
                                     </div>
                                     <div class="col">
-                                        <b>10</b> <br>
-                                        077 8844632 <br>
-                                        072 8411789 <br>
-                                        072 8411789 <br>
-                                        072 8411789 <br>
+                                        <br>
+
+                                        @if ($users ->isNotEmpty())
+                                            @foreach ($users as $userDetail)
+                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
+                                                    {{ $userDetail->user_contact_num }} <br>
+                                                @endif
+                                            @endforeach
+                                        @endif 
                                     </div>
                                 </div>
 

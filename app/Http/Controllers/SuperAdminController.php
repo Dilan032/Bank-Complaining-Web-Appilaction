@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SuperAdminController extends Controller
 {
@@ -21,13 +23,26 @@ class SuperAdminController extends Controller
     } //end method
 
     public function ViewUsers(){
-        return view('superAdmin.users');
+        $users = DB::table('users')->get();
+        $banks = DB::table('banks')->get();
+        $administratorCount = User::whereNotNull('bank_id')
+                            ->where('user_type', 'administrator')
+                            ->count();
+        $userCount = User::whereNotNull('bank_id')
+                            ->where('user_type', 'user')
+                            ->count();
+
+        return view('superAdmin.users', ['users' => $users, 'banks' => $banks,'administratorCount' => $administratorCount, 'userCount' => $userCount]);
     } //end method
 
     public function ViewBanks(){
-        return view('superAdmin.banks');
-    } //end method
+        $users = DB::table('users')->get();
+        $banks = DB::table('banks')->get();
+        $bankCount = User::whereNotNull('id')
+                            ->count();
 
+        return view('superAdmin.banks',['users' => $users, 'banks' => $banks, 'bankCount' => $bankCount]);
+    } //end method
 
 
     // [super admin] for logout

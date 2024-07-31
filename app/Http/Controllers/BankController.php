@@ -11,7 +11,7 @@ class BankController extends Controller
 {
     // [super admin] for Bank Registration
     public function RegisterBank(Request $request){
-        // Define validation rules
+        // validation rules
         $rules = [
             'bank_name' => 'required|string|max:255',
             'bank_address' => 'required|string|max:255',
@@ -38,18 +38,6 @@ class BankController extends Controller
         return redirect()->route('superAdmin.banks.view')->with('success', 'Bank Registration successfully!');
     } // end function
 
-    // [super admin] for show bank All details in  bank page
-    public function showBankDetails(){
 
-        $banks = DB::table('banks')->get();
-        return view('superAdmin.banks',['banks' => $banks]);
-    }// end function
-
-    // [super admin] for show bank All details in  user page
-    public function showBankDetailsInUser(){
-        
-        $banks = DB::table('banks')->get();
-        return view('superAdmin.users',['banks' => $banks]);
-    }// end function
     
 }
