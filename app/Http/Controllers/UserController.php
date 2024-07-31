@@ -13,11 +13,11 @@ class UserController extends Controller
     public function RegisterUsers(Request $request){ 
         // Define validation rules
         $rules = [
-            'bank_id' => 'required|string|max:255',
-            'user_type' => 'required|string|max:255',
+            'bank_id' => 'required|exists:banks,id',
+            'user_type' => 'required|string|in:administrator,user',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'user_contact_num' => 'required|string|max:10',
+            'user_contact_num' => 'required|string|max:12',
             'password' => 'required|string|min:8|max:32|confirmed',
 
             

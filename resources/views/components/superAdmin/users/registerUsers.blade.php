@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-12 col-sm-4">
                 <div class="form-floating mb-3">
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="floatingInput2" placeholder="User Name" required>
+                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="floatingInput2" placeholder="User Name">
                     <label for="floatingInput2">User Name</label>
                 </div>
             </div>
@@ -50,19 +50,19 @@
             </div>
             <div class="col-md-12 col-sm-4">
                 <div class="form-floating mb-3">
-                    <input type="text" name="user_contact_num" value="{{ old('user_contact_num') }}"  class="form-control" id="floatingInput3" placeholder="User Contact Number" required>
+                    <input type="text" name="user_contact_num" value="{{ old('user_contact_num') }}"  class="form-control" id="floatingInput3" placeholder="User Contact Number">
                     <label for="floatingInput3">Contact Number</label>
                 </div>
             </div>
             <div class="col-md-12 col-sm-4">
                 <div class="form-floating mb-3">
-                    <input type="password" name="password" class="form-control" id="floatingInput2" placeholder="password" required>
+                    <input type="password" name="password" class="form-control" id="floatingInput2" placeholder="password" >
                     <label for="floatingInput2">Password</label>
                 </div>
             </div>
             <div class="col-md-12 col-sm-4">
                 <div class="form-floating mb-3">
-                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" id="floatingInput2" placeholder="Confirm password" required>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" id="floatingInput2" placeholder="Confirm password" >
                     <label for="floatingInput2">Confirm Password</label>
                 </div>
             </div>
