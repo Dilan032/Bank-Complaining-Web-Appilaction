@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,23 +26,36 @@ class SuperAdminController extends Controller
     public function ViewUsers(){
         $users = DB::table('users')->get();
         $banks = DB::table('banks')->get();
-        $administratorCount = User::whereNotNull('bank_id')
-                            ->where('user_type', 'administrator')
-                            ->count();
-        $userCount = User::whereNotNull('bank_id')
-                            ->where('user_type', 'user')
-                            ->count();
+        // $administratorCount = User::where('user_type', 'administrator')->count();
+        $activeAdministratorCount = User::where('status', 'active')
+                                    ->where('user_type', 'administrator')
+                                    ->count();
+        $inactiveAdministratorCount = User::where('status', 'inactive')
+                                    ->where('user_type', 'administrator')
+                                    ->count();
+        $activeUserCount = User::where('status', 'active')
+                                    ->where('user_type', 'administrator')
+                                    ->count();
+        $inactiveUserCount = User::where('status', 'inactive')
+                                    ->where('user_type', 'administrator')
+                                    ->count();
 
-        return view('superAdmin.users', ['users' => $users, 'banks' => $banks,'administratorCount' => $administratorCount, 'userCount' => $userCount]);
+        return view('superAdmin.users', 
+        ['users' => $users, 'banks' => $banks,
+        'activeAdministratorCount'=>$activeAdministratorCount, 'inactiveAdministratorCount'=>$inactiveAdministratorCount,
+        'activeUserCount'=>$activeUserCount, 'inactiveUserCount'=>$inactiveUserCount]);
     } //end method
 
     public function ViewBanks(){
         $users = DB::table('users')->get();
         $banks = DB::table('banks')->get();
-        $bankCount = User::whereNotNull('id')
-                            ->count();
+        $bankCount = Bank::count();
+        $activeBankCount = Bank::where('status', 'active')->count();
+        $inactiveBankCount = Bank::where('status', 'inactive')->count();
 
-        return view('superAdmin.banks',['users' => $users, 'banks' => $banks, 'bankCount' => $bankCount]);
+        return view('superAdmin.banks',
+        [ 'users' => $users, 'banks' => $banks, 'bankCount' => $bankCount, 'activeBankCount' => $activeBankCount, 'inactiveBankCount' => $inactiveBankCount ]);
+        
     } //end method
 
 
