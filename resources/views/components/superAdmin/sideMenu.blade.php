@@ -13,8 +13,8 @@
             <hr class="text-white">
             
             <ul class="nav nav-pills flex-column mb-auto p-2">
-                <li class="nav-item mb-2 active">
-                    <a href="{{route('superAdmin.dashbord')}}" class="nav-link text-white active">
+                <li class="nav-item mb-2">
+                    <a href="{{route('superAdmin.dashbord')}}" class="nav-link text-white ">
                         <i class="bi bi-speedometer me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Dashbord</span>
                     </a>
