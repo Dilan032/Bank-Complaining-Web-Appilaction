@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
@@ -7,12 +8,10 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/error', function () {
-    return view('404');
-})->name('404');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,6 +24,14 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/administrator/dashboard',function(){
+    return view('administrator.administratorDashbord');
+});
+Route::get('/user/dashboard',function(){
+    return view('user.userDashbord');
+});
 
 
 Route::controller(SuperAdminController::class)->group(function () {
@@ -46,7 +53,13 @@ Route::controller(BankController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
-    
+    Route::get('/user/logout', 'userLogout')->name('user.logout');
+});
+
+
+Route::controller(AdministratorController::class)->group(function () {
+    Route::get('/administrator/logout', 'administratorLogout')->name('administrator.logout');
+
 });
 
 
