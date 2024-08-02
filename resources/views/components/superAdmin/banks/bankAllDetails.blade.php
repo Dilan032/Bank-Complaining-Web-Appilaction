@@ -1,20 +1,22 @@
-<div class="d-flex justify-content-evenly mt-5 mb-5 text-center px-auto">
-    <div class="p-3 bg-primary bg-opacity-10 border border-primary">
-        All Banks <br> [ {{$bankCount}} ]
+<div class="row mb-5 d-flex justify-content-center"">
+    <div class="col-md-5">
+        <div class="bg-body-secondary border border-3 rounded p-3 m-5 mb-2">
+            <span class="fs-4">Banks</span> <br>
+            All - <span class="badge text-bg-light">{{$bankCount}}</span>  <br>
+            Active  - <span class="badge text-bg-light">{{$activeBankCount}}</span>  <br>
+            Inactive  - <span class="badge text-bg-light">{{$inactiveBankCount}} </span> <br> 
+        </div>
     </div>
-    <div class="p-3 bg-primary bg-opacity-10 border border-primary">
-        Active Banks <br>
-        [ {{$activeBankCount}} ]
-    </div>
-    <div class="p-3 bg-danger bg-opacity-10 border border-danger">
-        Inactive Banks <br>
-        [ {{$inactiveBankCount}} ]
-    </div>
-    <div class="p-3 bg-danger bg-opacity-10 border border-danger">
-        Banks with issues <br> [ - ]
-    </div>
-    <div class="p-3 bg-primary bg-opacity-10 border border-primary">
-        Banks without issues <br> [ - ]
+    <div class="col-md-5">
+        <div class="bg-body-secondary border border-3 rounded p-3 m-5 mb-2">
+            <span class="fs-4">Problem</span> <br>
+            All <span class="badge text-bg-light"> yy </span>
+            <br> 
+            solved <span class="badge text-bg-light"> yy </span>
+             <br> 
+            should be resolved <span class="badge text-bg-light"> yy </span>
+             <br>  
+        </div>
     </div>
 </div>
 
