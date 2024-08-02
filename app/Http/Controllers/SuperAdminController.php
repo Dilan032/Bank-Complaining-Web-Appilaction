@@ -34,10 +34,10 @@ class SuperAdminController extends Controller
                                     ->where('user_type', 'administrator')
                                     ->count();
         $activeUserCount = User::where('status', 'active')
-                                    ->where('user_type', 'administrator')
+                                    ->where('user_type', 'user')
                                     ->count();
         $inactiveUserCount = User::where('status', 'inactive')
-                                    ->where('user_type', 'administrator')
+                                    ->where('user_type', 'user')
                                     ->count();
 
         return view('superAdmin.users', 
