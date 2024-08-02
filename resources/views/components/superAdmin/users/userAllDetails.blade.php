@@ -11,15 +11,15 @@
        [ {{$inactiveAdministratorCount}} ]
     </div>
     <div class="p-3 bg-primary bg-opacity-10 border border-primary">
-        All Users <br> 
+        All Employees <br> 
         [ {{$activeUserCount + $inactiveUserCount}} ]
     </div>
     <div class="p-3 bg-primary bg-opacity-10 border border-primary">
-        Active Users <br> 
+        Active Employees <br> 
         [ {{$activeUserCount}} ]
     </div>
     <div class="p-3 bg-danger bg-opacity-10 border border-danger">
-        Inactive Users <br> 
+        Inactive Employees <br> 
         [ {{$inactiveUserCount}} ]
     </div>
 </div>
