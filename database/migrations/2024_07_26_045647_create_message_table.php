@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('bank_id');
             $table->string('subject');
             $table->text('message');
-            $table->enum('status',['urgent', 'not urgent']);
-            $table->string('time_frame')->nullable();
+            $table->enum('status',['solved', 'not resolved'])->default('not resolved');
             $table->enum('request',['pending', 'accept', 'reject'])->default('pending');
             $table->string('user_responded')->nullable();
             $table->timestamps();
