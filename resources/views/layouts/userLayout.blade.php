@@ -11,7 +11,7 @@
 
     <title>User</title>
 </head>
-<body>
+<body class="bg-light text-dark">
     {{-- navBar --}}
     <section class="mb-5">
         @include('components.user.navBar')

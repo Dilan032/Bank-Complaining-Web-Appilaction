@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\MesageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
@@ -33,6 +34,10 @@ Route::get('/user/dashboard',function(){
     return view('user.userDashbord');
 });
 
+Route::controller(MesageController::class)->group(function (){
+
+});
+
 
 Route::controller(SuperAdminController::class)->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
@@ -61,6 +66,4 @@ Route::controller(AdministratorController::class)->group(function () {
     Route::get('/administrator/logout', 'administratorLogout')->name('administrator.logout');
 
 });
-
-
 
