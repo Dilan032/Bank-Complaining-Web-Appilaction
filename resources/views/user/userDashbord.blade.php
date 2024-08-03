@@ -9,7 +9,7 @@
         @include('components.user.emailForm')
         <hr class="my-5">
 
-        <div class="row">
+        <div class="row mb-5">
                 <h3 class="mb-4 text-center">Previous messages</h3>
                 @include('components.user.previousMessages')
         </div>

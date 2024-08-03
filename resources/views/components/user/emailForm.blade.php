@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8">
             <section  class="bg-white text-dark  rounded p-3">
-            <h3 class="mb-3 text-center">Send the message</h3>
+            <h3 class="mb-3 text-center">Put the problem here to sent</h3>
 
             <form action="" method="post">
                 <div class="form-floating mb-3">

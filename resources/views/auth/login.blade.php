@@ -55,22 +55,23 @@
     <title>login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container">
+<body class="bg-light-subtle">
+    <div class="container border">
         <h2 class="text-center mt-5">Login Form</h2>
 
         <form action="{{route('login')}}" method="POST" class="mx-auto">
             @csrf
-            <!-- Display validation errors -->
-            @if ($errors->any())                
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
             <div class="row justify-content-center">
-                <div class="col-md-6 mt-5"> 
+                <div class="col-md-6 mt-5">
+                    <!-- Display validation errors -->
+                    @if ($errors->any())                
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif 
+
                     <div class="form-floating mb-3">
                         <input type="text" name="login" class="form-control" id="floatingInput" placeholder="user name / name@example.com">
                         <label for="floatingInput">User Name / Email</label>
