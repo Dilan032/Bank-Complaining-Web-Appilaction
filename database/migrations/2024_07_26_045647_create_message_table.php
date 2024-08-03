@@ -18,6 +18,11 @@ return new class extends Migration
             $table->text('message');
             $table->enum('status',['solved', 'not resolved'])->default('not resolved');
             $table->enum('request',['pending', 'accept', 'reject'])->default('pending');
+            $table->string('img_1')->nullable();
+            $table->string('img_2')->nullable();
+            $table->string('img_3')->nullable();
+            $table->string('img_4')->nullable();
+            $table->string('img_5')->nullable();
             $table->string('user_responded')->nullable();
             $table->timestamps();
 
