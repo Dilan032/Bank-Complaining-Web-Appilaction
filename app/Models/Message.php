@@ -15,6 +15,11 @@ class Message extends Model
         'status',
         'time_frame',
         'request',
+        'img_1',
+        'img_2',
+        'img_3',
+        'img_4',
+        'img_5',
         'user_responded',
         'bank_id',    //Foreign key
     ];
