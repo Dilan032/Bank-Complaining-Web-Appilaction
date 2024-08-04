@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\mailController;
 use App\Http\Controllers\MesageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
@@ -50,6 +51,11 @@ Route::controller(SuperAdminController::class)->group(function () {
 
 Route::controller(BankController::class)->group(function () {
     Route::post('/superAdmin/banks', 'RegisterBank')->name('RegisterBank.save');
+
+});
+
+Route::controller(mailController::class)->group(function () {
+    Route::get('/sendEmail', 'sendEmail')->name('sendEmail');
 
 });
 
