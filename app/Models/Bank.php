@@ -22,7 +22,5 @@ class Bank extends Model
         return $this->hasMany(User::class);
     }
 
-    public function message(){
-        return $this->hasMany(Message::class);
-    }
+    
 }

@@ -30,13 +30,11 @@ require __DIR__.'/auth.php';
 Route::get('/administrator/dashboard',function(){
     return view('administrator.administratorDashbord');
 });
-Route::get('/user/dashboard',function(){
-    return view('user.userDashbord');
-});
+// Route::get('/user/dashboard',function(){
+//     return view('user.userDashbord');
+// });
 
-Route::controller(MesageController::class)->group(function (){
 
-});
 
 
 Route::controller(SuperAdminController::class)->group(function () {
@@ -55,10 +53,16 @@ Route::controller(BankController::class)->group(function () {
 
 });
 
+Route::controller(MesageController::class)->group(function (){
+    Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
+});
+
 
 Route::controller(UserController::class)->group(function () {
+    Route::get('/user/userDashbord', 'index')->name('user.index');
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::get('/user/logout', 'userLogout')->name('user.logout');
+    
 });
 
 

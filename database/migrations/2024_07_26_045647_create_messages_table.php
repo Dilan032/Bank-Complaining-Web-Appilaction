@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('message', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bank_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('subject');
             $table->text('message');
             $table->enum('status',['solved', 'not resolved'])->default('not resolved');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('user_responded')->nullable();
             $table->timestamps();
 
-            $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

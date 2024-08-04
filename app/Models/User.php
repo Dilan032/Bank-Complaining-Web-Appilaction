@@ -30,6 +30,10 @@ class User extends Authenticatable
         return $this->belongsTo(Bank::class);
     }
 
+    public function message(){
+        return $this->hasMany(Message::class);
+    }
+
 
 
     /**

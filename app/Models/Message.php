@@ -21,11 +21,11 @@ class Message extends Model
         'img_4',
         'img_5',
         'user_responded',
-        'bank_id',    //Foreign key
+        'user_id',    //Foreign key
     ];
 
-    public function bankMassage()
+    public function userMassage()
     {
-        return $this->belongsTo(Bank::class);
+        return $this->belongsTo(User::class);
     }
 }

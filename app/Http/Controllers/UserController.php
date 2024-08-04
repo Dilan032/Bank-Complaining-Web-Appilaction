@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function index(){
+        return view('user.userDashbord');
+    }
+    
     // [super admin] for User Registration 
     public function RegisterUsers(Request $request){ 
         // Define validation rules
