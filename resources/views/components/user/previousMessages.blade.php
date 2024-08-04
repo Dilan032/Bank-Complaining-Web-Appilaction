@@ -27,7 +27,7 @@
 </div>
 
 {{-- start message content --}}
-<div class="p-3 mb-3 bg-white text-dark">
+<div class="p-3 mb-3 bg-white text-dark messageBG rounded">
     <div class="text-center">
         <div class="row">
             <div class="col-12 col-sm-auto col-md-1">
@@ -57,7 +57,7 @@
         </div>
     </div>
 </div>
-<div class="p-3 mb-2 bg-white text-dark">
+<div class="p-3 mb-2 bg-white text-dark messageBG rounded">
     <div class="text-center">
         <div class="row">
             <div class="col-12 col-sm-auto col-md-1">
