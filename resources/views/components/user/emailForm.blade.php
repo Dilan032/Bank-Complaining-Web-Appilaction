@@ -18,6 +18,9 @@
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @foreach ($bank as $bankDetail )
+                    <input type="hidden" name="bank_id" value="{{$bankDetail->id}}">
+                @endforeach
                 <div class="form-floating mb-3">
                     <input type="text" name="subject" value="{{old('subject')}}" class="form-control" id="floatingInput" placeholder="Subject">
                     <label for="floatingInput">Subject</label>

@@ -14,7 +14,15 @@ class UserController extends Controller
 {
 
     public function index(){
-        return view('user.userDashbord');
+        $userId = Auth::id();
+        $previousMessages = DB::table('messages')
+                            ->where('user_id', $userId)
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
+        $bank = DB::table('banks')
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
+        return view('user.userDashbord',['previousMessages'=> $previousMessages , 'bank'=>$bank]);
     }
     
     // [super admin] for User Registration 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class MesageController extends Controller
@@ -34,6 +35,7 @@ class MesageController extends Controller
 
         $NewMessage = new Message;
         $NewMessage->user_id = $userId;
+        $NewMessage->bank_id = $request->input('bank_id');
         $NewMessage->subject = $request->input('subject');
         $NewMessage->message = $request->input('message');
 
@@ -53,4 +55,16 @@ class MesageController extends Controller
         return redirect()->route('message.save')->with('success','Message Send to the Bank Administrator');
 
     }
+
+    // public function showMessage() {
+
+    //     $userId = Auth::id();
+    //     $previousMessages = DB::table('messages')
+    //                         ->where('user_id', $userId)
+    //                         ->orderBy('created_at', 'DESC')
+    //                         ->get();
+    
+    //     return view('user.userDashboard', ['previousMessages' => $previousMessages,]);
+    // }
+    
 }

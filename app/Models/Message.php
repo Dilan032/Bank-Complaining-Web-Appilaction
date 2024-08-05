@@ -10,6 +10,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'subject',
         'message',
         'status',
@@ -22,9 +23,10 @@ class Message extends Model
         'img_5',
         'user_responded',
         'user_id',    //Foreign key
+        'bank_id',    //Foreign key
     ];
 
-    public function userMassage()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
