@@ -1,6 +1,8 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-    <h1>message</h1>
+
+    <span class="fs-1">message</span>
+    <hr class="me-3">
 
 @endsection

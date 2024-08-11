@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
     {{-- link superAdmin css --}}
-    <link rel="stylesheet" href="{{ asset('css/superAdmin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/administrator.css') }}">
 
     <title>administrator</title>
 </head>

@@ -57,7 +57,7 @@ class UserController extends Controller
         $newUser->save();
 
         // Redirect with a success message
-        return redirect()->route('superAdmin.users.view')->with('success', 'User Registration successfully!');
+        return redirect()->back()->with('success', 'User Registration successfully!');
     }
 
 

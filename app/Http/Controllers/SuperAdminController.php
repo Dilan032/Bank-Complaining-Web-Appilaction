@@ -23,7 +23,9 @@ class SuperAdminController extends Controller
         return view('superAdmin.announcements');
     } //end method
 
+    //$banks variable used for while user registration form generate bank name list
     public function ViewUsers(){
+        
         $users = DB::table('users')->get();
         $banks = DB::table('banks')->get();
         // $administratorCount = User::where('user_type', 'administrator')->count();

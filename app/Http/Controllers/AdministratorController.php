@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdministratorController extends Controller
 {
@@ -18,7 +19,11 @@ class AdministratorController extends Controller
         return view('administrator.Announcements');
     } 
     public function users(){
-        return view('administrator.users');
+        //this $bank variable used for user registration model, for get bank list
+        $banks = DB::table('banks')->get();
+        $users = DB::table('users')->get();
+
+        return view('administrator.users', ['banks' => $banks, 'users'=> $users ]);
     } 
     
     // [administrator ] for logout
