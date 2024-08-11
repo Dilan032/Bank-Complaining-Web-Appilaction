@@ -26,8 +26,15 @@ class Message extends Model
         'bank_id',    //Foreign key
     ];
 
-    public function user()
-    {
+
+
+    public function user() {
         return $this->belongsTo(User::class);
     }
+    //for get ban details
+    // public function bank() {
+    //     return $this->belongsTo(Bank::class);
+    // }
+    
+
 }

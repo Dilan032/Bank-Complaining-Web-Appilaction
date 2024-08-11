@@ -44,7 +44,7 @@ class SuperAdminController extends Controller
         ['users' => $users, 'banks' => $banks,
         'activeAdministratorCount'=>$activeAdministratorCount, 'inactiveAdministratorCount'=>$inactiveAdministratorCount,
         'activeUserCount'=>$activeUserCount, 'inactiveUserCount'=>$inactiveUserCount]);
-    } //end method
+    }
 
     public function ViewBanks(){
         $users = DB::table('users')->get();
@@ -54,9 +54,8 @@ class SuperAdminController extends Controller
         $inactiveBankCount = Bank::where('status', 'inactive')->count();
 
         return view('superAdmin.banks',
-        [ 'users' => $users, 'banks' => $banks, 'bankCount' => $bankCount, 'activeBankCount' => $activeBankCount, 'inactiveBankCount' => $inactiveBankCount ]);
-        
-    } //end method
+        [ 'users' => $users, 'banks' => $banks, 'bankCount' => $bankCount, 'activeBankCount' => $activeBankCount, 'inactiveBankCount' => $inactiveBankCount ]);  
+    }
 
 
     // [super admin] for logout
@@ -69,6 +68,6 @@ class SuperAdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('login');
-    }//end method
+    }
 
 }

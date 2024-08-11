@@ -14,11 +14,11 @@
     <div class="row">
         <div class="col-md-8">
             <section  class="bg-white text-dark rounded p-3 messageBG">
-            <h3 class="mb-3 text-center">Put the problem here to sent</h3>
+            <h3 class="mb-3 text-center fw-normal">Put the problem here to sent</h3>
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                @foreach ($bank as $bankDetail )
+                @foreach ($bankList as $bankDetail )
                     <input type="hidden" name="bank_id" value="{{$bankDetail->id}}">
                 @endforeach
                 <div class="form-floating mb-3">
@@ -26,15 +26,16 @@
                     <label for="floatingInput">Subject</label>
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control" name="message" value="{{old('message')}}" placeholder="Message" id="floatingTextarea2" style="height: 200px"></textarea>
+                    <textarea class="form-control" name="message" value="{{old('message')}}" placeholder="Message" id="floatingTextarea2" style="height: 250px"></textarea>
                     <label for="floatingTextarea2">Message</label>
                 </div>
-            </div>
+        </div>
+
+
             <div class="col-md-4">
-            <br>
-            <br>
+                <br> <br> <br>
                 <div class="text-center mb-3 mt-4">
-                    <h3>Upload Images</h3>
+                    <h3 class="fw-normal">Upload Images</h3>
                     <span class="font-monospace"><small>(Upload pictures where there are problems)</small></span>
                 </div>
 

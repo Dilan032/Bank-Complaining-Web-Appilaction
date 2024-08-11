@@ -17,10 +17,10 @@ class Bank extends Model
         'status',
     ];
 
-    //call user model and get data (relationship one to many)
-    public function users(){
-        return $this->hasMany(User::class);
-    }
-
+        // Inverse One-to-One relationship with User
+        // public function user()
+        // {
+        //     return $this->belongsTo(User::class);
+        // }
     
 }

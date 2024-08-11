@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +16,7 @@ class MesageController extends Controller
         //define validation rules
         $rules = [
             'subject'=> 'Required|String|max:255',
-            'message'=> 'Required|String|max:255',
+            'message'=> 'Required|String',
             'img_1'=> 'nullable|image|max:4096',
             'img_2'=> 'nullable|image|max:4096',
             'img_3'=> 'nullable|image|max:4096',
@@ -44,7 +46,7 @@ class MesageController extends Controller
         foreach ($imageFields as $field) {
             if ($request->hasFile($field)) {
                 $imageName = uniqid() .'_'. $field.'.'.$request->$field->extension();
-                $request->$field->move(public_path('images.MessageWithProblem'), $imageName);
+                $request->$field->move(public_path('images/MessageWithProblem'), $imageName);
                 $NewMessage->$field = $imageName;
             }
         }
@@ -53,18 +55,24 @@ class MesageController extends Controller
         $NewMessage->save();
 
         return redirect()->route('message.save')->with('success','Message Send to the Bank Administrator');
-
     }
 
-    // public function showMessage() {
+    public function showOneMessage($mid){
+        $userid = Auth::id();
+        $oneMessage = DB::table('messages')
+                ->where('id', $mid)
+                ->orderBy('created_at', 'DESC')
+                ->first();
+        $messagesTableDataUser =Message::with('user')
+                ->where('id', $mid)
+                ->first();
 
-    //     $userId = Auth::id();
-    //     $previousMessages = DB::table('messages')
-    //                         ->where('user_id', $userId)
-    //                         ->orderBy('created_at', 'DESC')
-    //                         ->get();
+
+               
+        return view('user.oneMessage', compact('oneMessage','messagesTableDataUser'));
+    }
     
-    //     return view('user.userDashboard', ['previousMessages' => $previousMessages,]);
-    // }
+
+
     
 }

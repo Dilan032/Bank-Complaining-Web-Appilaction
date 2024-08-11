@@ -22,26 +22,31 @@ class UserSeeder extends Seeder
                 'user_type' => 'super admin',
                 'status' => 'active',
                 'email' => 'super.admin@gmail.com',
+                'user_contact_num' => '0718896345',
                 'password' => Hash::make('12345678')
 
             ],
 
              // administrator
              [
+                'bank_id' => '1',
                 'name' => 'administrator',
                 'user_type' => 'administrator',
                 'status' => 'active',
                 'email' => 'administrator@gmail.com',
+                'user_contact_num' => '0779985634',
                 'password' => Hash::make('12345678')
 
             ],
 
              // user
              [
-                'name' => 'user',
+                'bank_id' => '1',
+                'name' => 'dilan',
                 'user_type' => 'user',
                 'status' => 'active',
-                'email' => 'user@gmail.com',
+                'email' => 'dilan08@gmail.com',
+                'user_contact_num' => '0726548931',
                 'password' => Hash::make('12345678')
 
             ],

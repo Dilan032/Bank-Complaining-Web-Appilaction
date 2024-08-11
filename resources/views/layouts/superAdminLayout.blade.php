@@ -9,9 +9,12 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
+    {{-- link superAdmin css --}}
+    <link rel="stylesheet" href="{{ asset('css/superAdmin.css') }}">
+
     <title>Document</title>
 </head>
-<body>
+<body class="bg-light text-dark">
 
    <div class="row">
         <div class="col-md-2">

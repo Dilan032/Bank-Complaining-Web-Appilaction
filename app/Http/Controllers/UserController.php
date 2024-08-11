@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,29 +16,27 @@ class UserController extends Controller
 {
 
     public function index(){
-        $userId = Auth::id();
-        $previousMessages = DB::table('messages')
-                            ->where('user_id', $userId)
+        $userid = Auth::id();
+        $bankList = DB::table('banks')
                             ->orderBy('created_at', 'DESC')
                             ->get();
-        $bank = DB::table('banks')
+        $messages =Message::with('user')
+                            ->where('user_id', $userid)
                             ->orderBy('created_at', 'DESC')
                             ->get();
-        return view('user.userDashbord',['previousMessages'=> $previousMessages , 'bank'=>$bank]);
+        return view('user.userDashbord', compact('bankList', 'messages', 'userid'));
     }
+
     
     // [super admin] for User Registration 
     public function RegisterUsers(Request $request){ 
-        // Define validation rules
         $rules = [
             'bank_id' => 'required|exists:banks,id',
             'user_type' => 'required|string|in:administrator,user',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'user_contact_num' => 'required|string|max:12',
-            'password' => 'required|string|min:8|max:32|confirmed',
-
-            
+            'password' => 'required|string|min:8|max:32|confirmed',        
         ];
 
         // Create validator instance and validate
@@ -58,8 +58,8 @@ class UserController extends Controller
 
         // Redirect with a success message
         return redirect()->route('superAdmin.users.view')->with('success', 'User Registration successfully!');
+    }
 
-    }// end function
 
     // [User ] for logout
     public function userLogout(Request $request): RedirectResponse

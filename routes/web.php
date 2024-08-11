@@ -37,7 +37,6 @@ Route::get('/administrator/dashboard',function(){
 
 
 
-
 Route::controller(SuperAdminController::class)->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
     Route::get('/superAdmin/messages', 'ViewMessages')->name('superAdmin.messages.view');
@@ -61,7 +60,9 @@ Route::controller(mailController::class)->group(function () {
 
 Route::controller(MesageController::class)->group(function (){
     Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
-});
+    Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessage.show');
+    
+})->middleware('auth');
 
 
 Route::controller(UserController::class)->group(function () {
@@ -69,11 +70,11 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::get('/user/logout', 'userLogout')->name('user.logout');
     
-});
+})->middleware('auth');
 
 
 Route::controller(AdministratorController::class)->group(function () {
     Route::get('/administrator/logout', 'administratorLogout')->name('administrator.logout');
 
-});
+})->middleware('auth');
 

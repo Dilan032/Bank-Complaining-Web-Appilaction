@@ -54,15 +54,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+        .shadoLoginBG{
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
 </head>
 <body class="bg-light-subtle">
-    <div class="container border">
-        <h2 class="text-center mt-5">Login Form</h2>
+    <div class="container">
 
-        <form action="{{route('login')}}" method="POST" class="mx-auto">
-            @csrf
-            <div class="row justify-content-center">
-                <div class="col-md-6 mt-5">
+        <h2 class="text-center mt-5">Bank Complaning Web Application</h2>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5">
+                <div class="border p-4 bg-white text-dark rounded shadoLoginBG">
+                    <h2 class="text-center mb-4 fw-medium">Login Form</h2>
                     <!-- Display validation errors -->
                     @if ($errors->any())                
                         @foreach ($errors->all() as $error)
@@ -71,21 +79,24 @@
                             </div>
                         @endforeach
                     @endif 
-
-                    <div class="form-floating mb-3">
-                        <input type="text" name="login" class="form-control" id="floatingInput" placeholder="user name / name@example.com">
-                        <label for="floatingInput">User Name / Email</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
+                    <form action="{{route('login')}}" method="POST" class="mx-auto">
+                        @csrf
+                        <div class="form-floating mb-3">
+                            <input type="text" name="login" class="form-control" id="floatingInput" placeholder="user name / name@example.com">
+                            <label for="floatingInput">User Name / Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
+        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

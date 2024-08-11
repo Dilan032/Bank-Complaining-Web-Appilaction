@@ -26,14 +26,6 @@ class User extends Authenticatable
         'bank_id',    //Foreign key
     ];
 
-    public function bank(){
-        return $this->belongsTo(Bank::class);
-    }
-
-    public function messages(){
-        return $this->hasMany(Message::class);
-    }
-
 
 
     /**
