@@ -14,25 +14,25 @@
             
             <ul class="nav nav-pills flex-column mb-auto p-2">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white ">
+                    <a href="{{ route('administrator.index') }}" class="nav-link text-white ">
                         <i class="bi bi-speedometer me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Dashbord</span>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="" class="nav-link text-white">
+                    <a href="{{ route('administrator.messages') }}" class="nav-link text-white">
                         <i class="bi bi-chat-left-dots me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Messages</span>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="" class="nav-link text-white">
+                    <a href="{{ route('administrator.announcements') }}" class="nav-link text-white">
                         <i class="bi bi-megaphone me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Announcements</span>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="" class="nav-link text-white">
+                    <a href="{{ route('administrator.users') }}" class="nav-link text-white">
                         <i class="bi bi-person-circle me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Users</span>
                     </a>

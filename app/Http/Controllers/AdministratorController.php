@@ -8,7 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class AdministratorController extends Controller
 {
-     // [administrator ] for logout
+    public function index(){
+        return view('administrator.administratorDashbord');
+    } 
+    public function messages(){
+        return view('administrator.message');
+    } 
+    public function announcements(){
+        return view('administrator.Announcements');
+    } 
+    public function users(){
+        return view('administrator.users');
+    } 
+    
+    // [administrator ] for logout
      public function administratorLogout(Request $request): RedirectResponse
      {
          Auth::guard('web')->logout();
