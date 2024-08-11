@@ -1,4 +1,4 @@
-<div class="text-center mt-4">
+<div class="text-center mt-4 ms-4">
     <span class="fs-2 ms-5">Bank List</span>
 </div>
 
@@ -34,74 +34,133 @@
                         <div class="accordion-body ">
                             <div class="massage-box-main border border-2 px-4 py-2">
                                 <div class="row">
-                                    <div class="col fw-bold">
-                                        Bank id : <br>
-                                        Bank registration done : <br>
-                                        Bank Name : <br>
-                                        Address : <br>
-                                        Email : <br>
-                                        Contact Number : <br>
-                                    </div>
                                     <div class="col">
-                                        <b>{{ $bank->id }}</b> <br>
-                                        {{ \Carbon\Carbon::parse($bank->created_at)->format('d M,Y , h:i A') }} <br>
-                                        {{ $bank->bank_name }} <br>
-                                        {{ $bank->bank_address }} <br>
-                                        {{ $bank->email }} <br>
-                                        {{ $bank->bank_contact_num }} <br>
+                                        <span class="badge text-bg-dark p-2"> Bank Details : </span> <br>
+                                        <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="table-secondary">
+                                              <tr>
+                                                <th scope="col">Bank id</th>
+                                                <th scope="col">Bank registration done</th>
+                                                <th scope="col">Bank Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Contact Number</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="table-group-divider">
+                                                <td scope="col">{{ $bank->id }}</td>
+                                                <td scope="col">
+                                                    {{ \Carbon\Carbon::parse($bank->created_at)->format('h:i A') }} <br>
+                                                    {{ \Carbon\Carbon::parse($bank->created_at)->format('Y M d') }}
+                                                </td>
+                                                <td scope="col">{{ $bank->bank_name }}</td>
+                                                <td scope="col">{{ $bank->bank_address }}</td>
+                                                <td scope="col">{{ $bank->email }}</td>
+                                                <td scope="col">{{ $bank->bank_contact_num }}</td>
+                                            </tbody>
+                                        </table>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <hr>
+                                
 
                                 <div class="row">
                                     <div class="col">
                                         <span class="badge text-bg-dark p-2"> Administrators : </span> <br>
-                                        @if ($users ->isNotEmpty())
-                                            @foreach ($users as $userDetail)
-                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "administrator")
-                                                    {{ $userDetail->name }} <br>
-                                                @endif
-                                            @endforeach
-                                        @endif 
-                                    </div>
-
-                                    <div class="col">
-                                        <br>
-
-                                         @if ($users ->isNotEmpty())
-                                         @foreach ($users as $userDetail)
-                                             @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "administrator")
-                                                 {{ $userDetail->user_contact_num }} <br>
-                                             @endif
-                                         @endforeach
-                                     @endif 
+                                        <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="table-secondary">
+                                              <tr>
+                                                <th scope="col">U id</th>
+                                                <th scope="col" style="width: 30%">Administrators</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col" class="text-center">status</th>
+                                                <th scope="col"></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="table-group-divider">
+                                            @if ($users ->isNotEmpty())
+                                                @foreach ($users as $userDetail)
+                                                    @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "administrator")
+                                                        <tr>
+                                                            <th scope="row">{{ $userDetail->id }}</th>
+                                                            <td style="width: 30%">{{ $userDetail->name }}</td>
+                                                            <td>{{ $userDetail->user_contact_num }}</td>
+                                                            <td class="text-center">
+                                                                @if ($userDetail->status == "active")
+                                                                <span class="badge text-bg-success fs-6">{{ $userDetail->status }}</span>
+                                                                @else
+                                                                    <span class="badge text-bg-secondary fs-6">{{ $userDetail->status }}</span>
+                                                                @endif  
+                                                            </td>
+                                                            <th class="text-center" style="width: 20%">
+                                                                <button type="button" class="btn btn-outline-primary btn-sm m-1">
+                                                                    Manage
+                                                                </button>
+                                                                
+                                                                <button type="button" class="btn btn-outline-danger btn-sm m-1">
+                                                                    Remove
+                                                                </button>
+                                                            </th>
+                                                        </tr>  
+                                                    @endif
+                                                @endforeach
+                                            @endif   
+                                            </tbody>
+                                        </table>  
+                                        </div>
                                     </div>
                                 </div>
 
-                                <hr>
+                                
 
                                 <div class="row">
                                     <div class="col">
                                         <span class="badge text-bg-dark p-2"> users : </span> <br>
-                                        @if ($users ->isNotEmpty())
-                                            @foreach ($users as $userDetail)
-                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
-                                                    {{ $userDetail->name }} <br>
-                                                @endif
-                                            @endforeach
-                                        @endif 
-                                    </div>
-                                    <div class="col">
-                                        <br>
-
-                                        @if ($users ->isNotEmpty())
-                                            @foreach ($users as $userDetail)
-                                                @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
-                                                    {{ $userDetail->user_contact_num }} <br>
-                                                @endif
-                                            @endforeach
-                                        @endif 
+                                        <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="table-secondary">
+                                              <tr>
+                                                <th scope="col">U id</th>
+                                                <th scope="col" style="width: 30%">Users</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col" class="text-center">status</th>
+                                                <th scope="col"></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="table-group-divider">
+                                            @if ($users ->isNotEmpty())
+                                                @foreach ($users as $userDetail)
+                                                    @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
+                                                        <tr>
+                                                            <th scope="col">{{ $userDetail->id }}</th>
+                                                            <th scope="col" style="width: 30%">{{ $userDetail->name }}</th>
+                                                            <th scope="col">{{ $userDetail->user_contact_num }}</th>
+                                                            <td class="text-center">
+                                                                @if ($userDetail->status == "active")
+                                                                <span class="badge text-bg-success fs-6">{{ $userDetail->status }}</span>
+                                                                @else
+                                                                    <span class="badge text-bg-secondary fs-6">{{ $userDetail->status }}</span>
+                                                                @endif  
+                                                            </td>
+                                                            <th class="text-center" style="width: 20%">
+                                                                <button type="button" class="btn btn-outline-primary btn-sm m-1">
+                                                                    Manage
+                                                                </button>
+                                                                
+                                                                <button type="button" class="btn btn-outline-danger btn-sm m-1">
+                                                                    Remove
+                                                                </button>
+                                                            </th>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                            @endif 
+                                            </tbody>
+                                        </table>
+                                        </div>
                                     </div>
                                 </div>
 
