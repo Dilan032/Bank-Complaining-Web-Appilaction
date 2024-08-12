@@ -27,6 +27,11 @@ class UserController extends Controller
         return view('user.userDashbord', compact('bankList', 'messages', 'userid'));
     }
 
+    public function oneUserDetails($id){
+        $user =User::find($id);
+        return view('administrator.userEdit', compact('user'));
+    }
+
     
     // [super admin] for User Registration 
     public function RegisterUsers(Request $request){ 
@@ -72,5 +77,11 @@ class UserController extends Controller
 
         return redirect('/login');
     }//end method
+
+    public function deleteUser($id){
+        $user =User::find($id);
+            $user->delete();
+            return redirect()->back()->with('success', 'User deleted successfully.');
+    }
 
 }

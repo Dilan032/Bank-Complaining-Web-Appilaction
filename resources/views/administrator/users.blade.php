@@ -45,14 +45,21 @@
                                                 <span class="badge text-bg-secondary fs-6">{{ $userDetails->status }}</span>
                                             @endif  
                                         </th>
-                                        <th colspan="2">
-                                            <button type="button" class="btn btn-outline-primary btn-sm">
-                                                Manage
-                                            </button>
+                                        <th>
                                             
-                                            <button type="button" class="btn btn-outline-danger btn-sm">
-                                                Remove
-                                            </button>
+                                            
+                                            <form action="{{ route('user.delete', $userDetails->id ) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm my-1">
+                                                    Manage
+                                                </a>
+
+                                                <button type="submit" class="btn btn-outline-danger btn-sm my-1" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                    Remove
+                                                </button>
+                                            </form>
                                         </th>
                                       </tr>
                                 @endif
@@ -98,14 +105,19 @@
                                                 <span class="badge text-bg-secondary fs-6">{{ $userDetails->status }}</span>
                                             @endif  
                                         </th>
-                                        <th colspan="2">
-                                            <button type="button" class="btn btn-outline-primary btn-sm m-1">
-                                                Manage
-                                            </button>
-                                            
-                                            <button type="button" class="btn btn-outline-danger btn-sm m-1">
-                                                Remove
-                                            </button>
+                                        <th>
+                                            <form action="{{ route('user.delete', $userDetails->id ) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm my-1">
+                                                    Manage
+                                                </a>
+                                                
+                                                <button type="submit" class="btn btn-outline-danger btn-sm my-1" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                    Remove
+                                                </button>
+                                            </form>
                                         </th>
                                       </tr>
                                 @endif

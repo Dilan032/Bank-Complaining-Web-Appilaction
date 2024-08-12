@@ -67,6 +67,8 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/user/userDashbord', 'index')->name('user.index');
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
+    Route::delete('/user/delete/{id}', 'deleteUser')->name('user.delete');
+    Route::get('/user/edit/{id}', 'oneUserDetails')->name('user.details'); 
     Route::get('/user/logout', 'userLogout')->name('user.logout');
     
 })->middleware('auth');
