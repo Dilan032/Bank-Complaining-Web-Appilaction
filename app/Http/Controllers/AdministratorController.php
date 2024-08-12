@@ -19,9 +19,13 @@ class AdministratorController extends Controller
         return view('administrator.Announcements');
     } 
     public function users(){
+        $userBankId = Auth::user()->bank_id;
         //this $bank variable used for user registration model, for get bank list
-        $banks = DB::table('banks')->get();
-        $users = DB::table('users')->get();
+        $banks = DB::table('banks')
+                ->where('id', $userBankId)
+                ->get();
+        $users = DB::table('users')
+                ->get();
 
         return view('administrator.users', ['banks' => $banks, 'users'=> $users ]);
     } 

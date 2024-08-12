@@ -17,10 +17,7 @@ class Bank extends Model
         'status',
     ];
 
-        // Inverse One-to-One relationship with User
-        // public function user()
-        // {
-        //     return $this->belongsTo(User::class);
-        // }
+
+
     
 }
