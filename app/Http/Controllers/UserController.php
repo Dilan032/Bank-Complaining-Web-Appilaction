@@ -28,12 +28,18 @@ class UserController extends Controller
     }
 
     //show seleted user data 
-    public function oneUserDetails($id){
+    public function oneUserDetailsForAdministrator($id){
         $user =User::find($id);
         return view('administrator.userEdit', compact('user'));
     }
 
-     //user update Function for administrator
+    //show seleted user data 
+    public function oneUserDetailsForSuperAdmin($id){
+        $user =User::find($id);
+        return view('superAdmin.editUser', compact('user'));
+    }
+
+     //user update Function for administrator 
      public function UsersUpdate(Request $request , $uid){ 
         $user = User::findOrFail($uid);
         

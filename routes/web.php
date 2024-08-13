@@ -42,6 +42,7 @@ Route::controller(SuperAdminController::class)->group(function () {
     Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
     Route::get('/superAdmin/banks', 'ViewBanks')->name('superAdmin.banks.view');
     
+    
     Route::get('/superAdmin/logout', 'superAdminLogout')->name('superAdmin.logout');
 });
 
@@ -69,8 +70,12 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
     //for administrator
     Route::delete('/user/delete/{id}', 'deleteUser')->name('user.delete');
-    Route::get('/user/details/{id}', 'oneUserDetails')->name('user.details');
+    Route::get('/user/details/{id}', 'oneUserDetailsForAdministrator')->name('user.details');
     Route::put('/user/details/update/{id}', 'UsersUpdate')->name('user.details.update'); 
+    //for super admin
+    Route::get('/superAdmin/user/details/{id}', 'oneUserDetailsForSuperAdmin')->name('superAdmin.user.details'); 
+
+    
     //for user
     Route::get('/user/logout', 'userLogout')->name('user.logout');
     

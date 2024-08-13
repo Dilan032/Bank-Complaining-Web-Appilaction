@@ -96,13 +96,17 @@
                                                                 @endif  
                                                             </td>
                                                             <th class="text-center" style="width: 20%">
-                                                                <button type="button" class="btn btn-outline-primary btn-sm m-1">
-                                                                    Manage
-                                                                </button>
-                                                                
-                                                                <button type="button" class="btn btn-outline-danger btn-sm m-1">
-                                                                    Remove
-                                                                </button>
+                                                                <form action="{{ route('user.delete', $userDetail->id ) }}" method="post">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <a href="{{ route('superAdmin.user.details',$userDetail->id) }}" type="button" class="btn btn-outline-primary btn-sm my-1">
+                                                                        Manage
+                                                                    </a>
+                                                                    
+                                                                    <button type="button" class="btn btn-outline-danger btn-sm m-1" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                                        Remove
+                                                                    </button>
+                                                                </form>
                                                             </th>
                                                         </tr>  
                                                     @endif
@@ -149,7 +153,7 @@
                                                                 <form action="{{ route('user.delete', $userDetail->id ) }}" method="post">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <a href="" type="button" class="btn btn-outline-primary btn-sm m-1">
+                                                                    <a href="{{ route('superAdmin.user.details',$userDetail->id) }}" type="button" class="btn btn-outline-primary btn-sm m-1">
                                                                         Manage
                                                                     </a>
                                                                     
