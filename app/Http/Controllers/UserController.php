@@ -27,9 +27,40 @@ class UserController extends Controller
         return view('user.userDashbord', compact('bankList', 'messages', 'userid'));
     }
 
+    //show seleted user data 
     public function oneUserDetails($id){
         $user =User::find($id);
         return view('administrator.userEdit', compact('user'));
+    }
+
+     //user update Function for administrator
+     public function UsersUpdate(Request $request , $uid){ 
+        $user = User::findOrFail($uid);
+        
+        $rules = [
+            'user_type' => 'required|string|in:administrator,user',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'user_contact_num' => 'required|string|max:12',       
+        ];
+
+        // Create validator instance and validate
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user->user_type = $request->input('user_type');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->status = $request->input('status');
+        $user->user_contact_num = $request->input('user_contact_num');
+        $user->update();
+
+        // Redirect with a success message
+        return redirect()->back()->with('success', 'User Update successfully!');
     }
 
     

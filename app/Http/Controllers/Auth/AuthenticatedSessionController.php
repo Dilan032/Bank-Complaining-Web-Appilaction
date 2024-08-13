@@ -31,10 +31,34 @@ class AuthenticatedSessionController extends Controller
         $url = '';
         if ($request->user()->user_type === 'super admin'){
             $url = 'superAdmin/dashbord';
+            
         }elseif($request->user()->user_type === 'administrator'){
-            $url = 'administrator/dashboard';
+
+            if($request->user()->status === 'active'){
+                $url = 'administrator/dashboard';
+            }else{
+                Auth::guard('web')->logout();
+
+                $request->session()->invalidate();
+
+                $request->session()->regenerateToken();
+
+                $url ='/user/inactive';
+            }
+            
         }elseif($request->user()->user_type === 'user'){
-            $url = '/user/userDashbord';
+            
+            if($request->user()->status === 'active'){
+                $url = '/user/userDashbord';
+            }else{
+                Auth::guard('web')->logout();
+
+                $request->session()->invalidate();
+
+                $request->session()->regenerateToken();
+                
+                $url ='/user/inactive';
+            }
         }
         
 

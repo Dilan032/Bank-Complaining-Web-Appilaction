@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
 {
@@ -18,6 +21,8 @@ class AdministratorController extends Controller
     public function announcements(){
         return view('administrator.Announcements');
     } 
+
+
     public function users(){
         $userBankId = Auth::user()->bank_id;
         //this $bank variable used for user registration model, for get bank list
@@ -29,6 +34,9 @@ class AdministratorController extends Controller
 
         return view('administrator.users', ['banks' => $banks, 'users'=> $users ]);
     } 
+
+
+   
     
     // [administrator ] for logout
      public function administratorLogout(Request $request): RedirectResponse
