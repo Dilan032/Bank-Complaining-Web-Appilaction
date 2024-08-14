@@ -46,7 +46,7 @@
             <div class="col-12 col-sm-auto col-md-1">
                 <!-- Button trigger modal -->
                 <div class="d-grid gap-2">
-                    <a href="{{route('oneMessage.show', $msg->id)}}" class="btn btn-primary" type="button">View</a>
+                    <a href="{{route('oneMessageForUser.show', $msg->id)}}" class="btn btn-primary" type="button">View</a>
                 </div>
             </div>
         </div>

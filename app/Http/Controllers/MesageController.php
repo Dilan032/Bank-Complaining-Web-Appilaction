@@ -66,8 +66,6 @@ class MesageController extends Controller
         $messagesTableDataUser =Message::with('user')
                 ->where('id', $mid)
                 ->first();
-
-
                
         return view('user.oneMessage', compact('oneMessage','messagesTableDataUser'));
     }

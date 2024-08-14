@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,9 +16,30 @@ class AdministratorController extends Controller
     public function index(){
         return view('administrator.administratorDashbord');
     } 
+
     public function messages(){
-        return view('administrator.message');
+        
+        $userBankId = Auth::user()->bank_id;
+        $messages = DB::table('messages')
+                ->where('bank_id', $userBankId)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+        return view('administrator.message', ['messages' => $messages ]);
     } 
+
+    public function showOneMessage($mid){
+        $userid = Auth::id();
+        $oneMessage = DB::table('messages')
+                ->where('id', $mid)
+                ->first();
+        $messagesTableDataUser =Message::with('user')
+                ->where('id', $mid)
+                ->first();
+               
+        return view('administrator.messageOne', compact('oneMessage','messagesTableDataUser'));
+    }
+
     public function announcements(){
         return view('administrator.Announcements');
     } 

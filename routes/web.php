@@ -59,7 +59,9 @@ Route::controller(mailController::class)->group(function () {
 
 Route::controller(MesageController::class)->group(function (){
     Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
-    Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessage.show');
+    Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessageForUser.show');
+    // Route::get('/administrator/user/Message', 'onebankAllMessage')->name('oneMessage.show');
+    // Route::get('/user/Message/{mid}', 'onebankAllMessage')->name('oneMessage.show');
     
 })->middleware('auth');
 
@@ -85,6 +87,7 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(AdministratorController::class)->group(function () {
     Route::get('/administrator/dashboard', 'index')->name('administrator.index');
     Route::get('/administrator/messages', 'messages')->name('administrator.messages');
+    Route::get('/administrator/Message/{mid}', 'showOneMessage')->name('oneMessageForAdministrator.show');
     Route::get('/administrator/announcements', 'announcements')->name('administrator.announcements');
     Route::get('/administrator/users', 'users')->name('administrator.users');
     Route::get('/administrator/logout', 'administratorLogout')->name('administrator.logout');
