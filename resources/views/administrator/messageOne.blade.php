@@ -3,7 +3,6 @@
 
 <div class="d-flex justify-content-between">
     <span class="fs-1">{{$messagesTableDataUser->user->name}}'s message</span>
-    <div>
         {{-- @if ( $oneMessage->request == 'pending')
             <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
             <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
@@ -11,17 +10,37 @@
             <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
         @elseif ( $oneMessage->request == 'reject')
             <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
-        @endif --}}
-        @if ( $oneMessage->request == 'pending')
-            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
-            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
-        @else
-            <p class="mt-3 me-4">The request has been responded to</p>
-        @endif
-        
-    </div>
+        @endif --}}    
 </div>
+
 <hr class="me-3">
+
+        @if ( $oneMessage->request == 'pending')
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-5">
+            <form action="{{ route('administrator.conform.message', $oneMessage->id ) }}" method="post">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="request" value="accept">
+                <button class="btn btn-success me-4 me-md-2" type="submit" onclick="return confirm('Do you want to forward this user s message to Nanosoft Solutions Company?');">Conform Message</button>
+            </form>
+
+            <form action="{{ route('administrator.reject.message', $oneMessage->id ) }}" method="post">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="request" value="reject">
+                <button class="btn btn-danger me-4" type="submit" onclick="return confirm('Do you want to ignore this user s message?');">Reject Message</button> 
+            </form>
+          </div>
+        @else
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
+            @if ($oneMessage->request == 'accept')
+                <p class="text-white bg-dark fs-6 me-4 px-5 py-1">This user's message was sent to Nanosoft Solutions Company</p>
+            @else
+                <p class="text-white bg-dark fs-6 me-4 px-5 py-1">This user's message has been ignored</p>
+            @endif
+            
+        </div>
+        @endif
       
 <section class="container">
     <div class="table-responsive">

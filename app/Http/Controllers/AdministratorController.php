@@ -40,9 +40,42 @@ class AdministratorController extends Controller
         return view('administrator.messageOne', compact('oneMessage','messagesTableDataUser'));
     }
 
-    public function ConformMessage(){
-        //developing
+    public function ConformMessage(Request $request, $mid){
+        $message=Message::findOrFail($mid);
+
+        $rules = [ 'request' => 'required|string|in:accept,pending,reject', ];
+
+        // Create validator instance and validate
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $message->request = $request->input('request');
+        $message->update();
+
+        return redirect()->back()->with('success', 'User message send to the Nanosoft Solutions Company'); 
     }
+
+    public function RejectMessage(Request $request, $mid){
+        $message=Message::findOrFail($mid);
+
+        $rules = [ 'request' => 'required|string|in:accept,pending,reject', ];
+
+        // Create validator instance and validate
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $message->request = $request->input('request');
+        $message->update();
+
+        return redirect()->back()->with('success', 'User message rejected'); 
+    }
+
 
     public function announcements(){
         return view('administrator.Announcements');

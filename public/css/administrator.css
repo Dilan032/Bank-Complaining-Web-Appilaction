@@ -15,3 +15,6 @@
     transition: padding 0.3s ease; 
     padding: 0.5px;
 }
+.btnShado{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
