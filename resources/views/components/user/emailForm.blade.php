@@ -18,9 +18,9 @@
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                @foreach ($bankList as $bankDetail )
-                    <input type="hidden" name="bank_id" value="{{$bankDetail->id}}">
-                @endforeach
+                
+                <input type="hidden" name="bank_id" value="{{$user = Auth::user()->bank_id;}}">
+
                 <div class="form-floating mb-3">
                     <input type="text" name="subject" value="{{old('subject')}}" class="form-control" id="floatingInput" placeholder="Subject">
                     <label for="floatingInput">Subject</label>

@@ -40,6 +40,10 @@ class AdministratorController extends Controller
         return view('administrator.messageOne', compact('oneMessage','messagesTableDataUser'));
     }
 
+    public function ConformMessage(){
+        //developing
+    }
+
     public function announcements(){
         return view('administrator.Announcements');
     } 

@@ -33,10 +33,9 @@ return [
     */
 
     //Defalt one 120 mean minits
-    // 'lifetime' => env('SESSION_LIFETIME', 120), 
+    'lifetime' => env('SESSION_LIFETIME', 120), 
 
-    //developer change one
-    'lifetime' => env('SESSION_LIFETIME', null), 
+
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 

@@ -1,7 +1,26 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-<span class="fs-1">{{$messagesTableDataUser->user->name}}'s message</span>
+<div class="d-flex justify-content-between">
+    <span class="fs-1">{{$messagesTableDataUser->user->name}}'s message</span>
+    <div>
+        {{-- @if ( $oneMessage->request == 'pending')
+            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
+            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
+        @elseif ( $oneMessage->request == 'accept')
+            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
+        @elseif ( $oneMessage->request == 'reject')
+            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
+        @endif --}}
+        @if ( $oneMessage->request == 'pending')
+            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
+            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
+        @else
+            <p class="mt-3 me-4">The request has been responded to</p>
+        @endif
+        
+    </div>
+</div>
 <hr class="me-3">
       
 <section class="container">
@@ -19,8 +38,20 @@
             <tbody class="table-group-divider">
               <tr>
                 <th colspan="4" class="bg-secondary-subtle">
-                  status  <span class="badge text-bg-warning">{{$oneMessage->status}}</span> ||
-                  request  <span class="badge text-bg-warning">{{$oneMessage->request}}</span>
+                    @if ( $oneMessage->status == 'not resolved')
+                        status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> ||
+                    @else
+                        status  <span class="badge text-bg-success py-2">{{$oneMessage->status}}</span> ||
+                    @endif
+                  
+                    @if ($oneMessage->request == 'pending')
+                        request  <span class="badge text-bg-warning py-2">{{$oneMessage->request}}</span>
+                    @elseif ( $oneMessage->request == 'accept')
+                        request  <span class="badge text-bg-success py-2">{{$oneMessage->request}}</span>
+                    @elseif ( $oneMessage->request == 'reject')
+                        request  <span class="badge text-bg-danger py-2">{{$oneMessage->request}}</span>
+                    @endif
+                  
                 </th>
               </tr>
               <tr>
@@ -31,7 +62,7 @@
     
           <div class="text-end me-2 fw-bold">
             <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-               Created_time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+               time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
           </div>
     
       </div>
@@ -42,7 +73,7 @@
           <div class="container mt-4 mb-5">
             <p class="fw-bold">Pictures of the problem areas :</p>
             <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis problemImageMainBG rounded">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center mx-auto">
                 <div class="col-md-2 py-2">
                     <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
                 </div>
