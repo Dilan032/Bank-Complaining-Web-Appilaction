@@ -2,8 +2,8 @@
 @section('userContent')
 
 
-<div class="p-3 mb-5 bg-black text-white text-center">
-  <span class="fs-3">Message sent by {{$messagesTableDataUser->user->name}}  {{$messagesTableDataUser->bank}}</span>
+<div class="p-1 mb-5 bg-black text-white text-center">
+  <span class="fs-5">Message sent by {{$messagesTableDataUser->user->name}}</span>
 </div>
 
 
@@ -33,7 +33,7 @@
 
       <div class="text-end me-2 fw-bold">
         <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-           Created_time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+           time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
       </div>
 
   </div>
