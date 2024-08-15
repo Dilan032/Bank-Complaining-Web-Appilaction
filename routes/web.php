@@ -87,6 +87,8 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(AdministratorController::class)->group(function () {
     Route::get('/administrator/dashboard', 'index')->name('administrator.index');
     Route::get('/administrator/messages', 'messages')->name('administrator.messages');
+    Route::post('/administrator/messages/save', 'SaveMessageAdminisrator')->name('administrator.messages.save');
+
     Route::get('/administrator/Message/{mid}', 'showOneMessage')->name('oneMessageForAdministrator.show');
     Route::put('/administrator/Message/conform/{mid}', 'ConformMessage')->name('administrator.conform.message');
     Route::put('/administrator/Message/reject/{mid}', 'RejectMessage')->name('administrator.reject.message');

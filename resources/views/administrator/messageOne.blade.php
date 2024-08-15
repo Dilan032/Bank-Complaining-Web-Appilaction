@@ -2,7 +2,11 @@
 @section('administratorContent')
 
 <div class="d-flex justify-content-between">
-    <span class="fs-1">{{$messagesTableDataUser->user->name}}'s message</span>
+    <p class="fs-3">
+        <span class="badge text-bg-dark">{{$messagesTableDataUser->user->user_type}}</span> 
+        {{$messagesTableDataUser->user->name}}'s message
+    </p>
+
         {{-- @if ( $oneMessage->request == 'pending')
             <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
             <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
@@ -14,6 +18,21 @@
 </div>
 
 <hr class="me-3">
+
+
+        <!-- Display validation errors -->
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
 
         @if ( $oneMessage->request == 'pending')
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-5">
@@ -32,6 +51,7 @@
             </form>
           </div>
         @else
+        
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
             @if ($oneMessage->request == 'accept')
                 <p class="text-white bg-dark fs-6 me-4 px-5 py-1">This user's message was sent to Nanosoft Solutions Company</p>
@@ -79,12 +99,11 @@
             </tbody>
           </table>
     
-          <div class="text-end me-2 fw-bold">
-            <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-               time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
-          </div>
-    
-      </div>
+            <div class="text-end me-2 fw-bold">
+                <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
+                time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+            </div>
+    </div>
     
           
     
@@ -92,23 +111,23 @@
           <div class="container mt-4 mb-5">
             <p class="fw-bold">Pictures of the problem areas :</p>
             <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis problemImageMainBG rounded">
-            <div class="row d-flex justify-content-center mx-auto">
-                <div class="col-md-2 py-2">
-                    <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
+                <div class="row d-flex justify-content-center mx-auto">
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
+                    </div>
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal2">
+                    </div>
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal3">
+                    </div>
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal4">
+                    </div>
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal5">
+                    </div>
                 </div>
-                <div class="col-md-2 py-2">
-                    <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal2">
-                </div>
-                <div class="col-md-2 py-2">
-                    <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal3">
-                </div>
-                <div class="col-md-2 py-2">
-                    <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal4">
-                </div>
-                <div class="col-md-2 py-2">
-                    <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal5">
-                </div>
-            </div>
             </div>
         </div>
     

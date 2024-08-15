@@ -76,6 +76,52 @@ class AdministratorController extends Controller
         return redirect()->back()->with('success', 'User message rejected'); 
     }
 
+    public function SaveMessageAdminisrator(Request $request){
+        //define validation rules
+        $rules = [
+            'subject'=> 'Required|String|max:255',
+            'message'=> 'Required|String',
+            'img_1'=> 'nullable|image|max:4096',
+            'img_2'=> 'nullable|image|max:4096',
+            'img_3'=> 'nullable|image|max:4096',
+            'img_4'=> 'nullable|image|max:4096',
+            'img_5'=> 'nullable|image|max:4096',
+        ];
+
+        //check rules
+        $validator = Validator::make($request->all(),$rules);
+
+        //if rules fails
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Get the authenticated user ID
+        $userId = Auth::id();
+
+        $NewMessage = new Message;
+        $NewMessage->user_id = $userId;
+        $NewMessage->bank_id = $request->input('bank_id');
+        $NewMessage->subject = $request->input('subject');
+        $NewMessage->request = $request->input('request');
+        $NewMessage->message = $request->input('message');
+
+        // Handle the image file uploads
+        $imageFields = ['img_1', 'img_2', 'img_3', 'img_4', 'img_5'];
+        foreach ($imageFields as $field) {
+            if ($request->hasFile($field)) {
+                $imageName = uniqid() .'_'. $field.'.'.$request->$field->extension();
+                $request->$field->move(public_path('images/MessageWithProblem'), $imageName);
+                $NewMessage->$field = $imageName;
+            }
+        }
+
+        // Save the message to the database
+        $NewMessage->save();
+
+        return redirect()->route('administrator.messages')->with('success','Message Send to the Nanosoft Solutions Comapany');
+    }
+
 
     public function announcements(){
         return view('administrator.Announcements');
