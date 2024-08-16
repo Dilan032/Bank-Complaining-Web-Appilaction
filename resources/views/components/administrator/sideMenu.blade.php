@@ -6,8 +6,8 @@
                     <i class="bi bi-list fs-2 me-2 ms-2"></i>
                     <span class="fs-3 d-none d-sm-inline">Administrator</span>
                     <br>
-                    <span class="fs-6 ms-5 d-none d-sm-inline">👨‍💼{{ $userName }}</span> <br>
-                    <span class="fs-6 ms-5 d-none d-sm-inline">🏢{{ $bank->bank_name }}</span>
+                    {{-- <span class="fs-6 ms-5 d-none d-sm-inline">👨‍💼{{ $userName }}</span> <br>
+                    <span class="fs-6 ms-5 d-none d-sm-inline">🏢{{ $bank->bank_name }}</span> --}}
                 </a>
             </div>
 
