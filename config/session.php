@@ -33,7 +33,7 @@ return [
     */
 
     //Defalt one 120 mean minits
-    'lifetime' => env('SESSION_LIFETIME', 512640), 
+    'lifetime' => env('SESSION_LIFETIME', 120), 
 
 
 

@@ -3,29 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bank;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SuperAdminController extends Controller
 {
     public function superadminDashbord(){
         return view('superAdmin.superAdminDashbord');
-    } //end method
+    } 
 
     public function ViewMessages(){
-        return view('superAdmin.messages');
-    } //end method
+        $messagesAndBank = Message::with('bank')
+                    ->where('request' , 'accept')
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+
+        return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank]);
+    } 
+
+    public function ViewOneMessages($id){
+        $oneMessage = Message::findorFail($id);
+
+        return view('superAdmin.messageOne',['oneMessage'=> $oneMessage]);
+    } 
+
+    public function ProblemResolvedOrNot(Request $request, $id){
+        $message=Message::findOrFail($id);
+
+        $rules = [ 'status' => 'required|string' ];
+
+        // Create validator instance and validate
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $message->status = $request->input('status');
+        $message->update();
+
+        return redirect()->back()->with('success', 'Message status updated');
+    }
 
     public function ViewAnnouncements(){
         return view('superAdmin.announcements');
-    } //end method
+    } 
 
     //$banks variable used for while user registration form generate bank name list
-    public function ViewUsers(){
-        
+    public function ViewUsers(){    
         $users = DB::table('users')->get();
         $banks = DB::table('banks')->get();
         // $administratorCount = User::where('user_type', 'administrator')->count();

@@ -38,6 +38,9 @@ Route::get('/user/inactive',function(){
 Route::controller(SuperAdminController::class)->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
     Route::get('/superAdmin/messages', 'ViewMessages')->name('superAdmin.messages.view');
+    Route::get('/superAdmin/messages/{id}', 'ViewOneMessages')->name('superAdmin.one.messages.view');
+    Route::put('/superAdmin/messages/ProblemResolvedOrNot/{id}', 'ProblemResolvedOrNot')->name('superAdmin.problem.resolved.or.not');
+
     Route::get('/superAdmin/announcements', 'ViewAnnouncements')->name('superAdmin.announcements.view');
     Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
     Route::get('/superAdmin/banks', 'ViewBanks')->name('superAdmin.banks.view');
