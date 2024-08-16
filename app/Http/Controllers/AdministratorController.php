@@ -14,7 +14,82 @@ use Illuminate\Support\Facades\Validator;
 class AdministratorController extends Controller
 {
     public function index(){
-        return view('administrator.administratorDashbord');
+        $bankId = Auth::user()->bank_id;
+        $userName = Auth::user()->name;
+
+        $bank = DB::table('banks')
+                ->where('id', $bankId)
+                ->first();
+
+        $NumAdministrators = DB::table('users')
+                        ->where('bank_id', $bankId)
+                        ->where('user_type', 'administrator')
+                        ->count();
+
+        $NumActiveAdministrators = DB::table('users')
+                        ->where('bank_id', $bankId)
+                        ->where('user_type', 'administrator')
+                        ->where('status', 'active')
+                        ->count(); 
+        $NumInactiveAdministrators = DB::table('users')
+                        ->where('bank_id', $bankId)
+                        ->where('user_type', 'administrator')
+                        ->where('status', 'inactive')
+                        ->count();
+
+        // count bank users
+        $NumUsers = DB::table('users')
+                ->where('bank_id', $bankId)
+                ->where('user_type', 'user')
+                ->count();
+
+        $NumActiveUsers = DB::table('users')
+                ->where('bank_id', $bankId)
+                ->where('user_type', 'user')
+                ->where('status', 'active')
+                ->count();
+        $NumInactiveUsers = DB::table('users')
+                ->where('bank_id', $bankId)
+                ->where('user_type', 'user')
+                ->where('status', 'inactive')
+                ->count();
+
+        //get message table details
+        $NumMessages = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->count();
+
+        $NumPendingMsg = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->where('request', 'pending')
+                        ->count();
+        $NumAcceptMsg = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->where('request', 'accept')
+                        ->count();
+        $NumRejectMsg = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->where('request', 'reject')
+                        ->count();
+
+        // message status count
+        $NumSolvedMsg = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->where('status', 'solved')
+                        ->count();
+        $NumNotSolvedMsg = DB::table('messages')
+                        ->where('bank_id', $bankId)
+                        ->where('status', 'not resolved')
+                        ->where('request', 'accept')
+                        ->count();
+
+        return view('administrator.administratorDashbord', 
+
+        ['bank' => $bank, 'userName' => $userName, 'NumAdministrators' => $NumAdministrators,
+        'NumUsers' => $NumUsers, 'NumActiveUsers' => $NumActiveUsers, 'NumInactiveUsers' => $NumInactiveUsers,
+        'NumActiveAdministrators' => $NumActiveAdministrators, 'NumInactiveAdministrators' => $NumInactiveAdministrators,
+        'NumMessages' => $NumMessages, 'NumPendingMsg' => $NumPendingMsg, 'NumAcceptMsg' => $NumAcceptMsg, 'NumRejectMsg' => $NumRejectMsg,
+        'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg]);
     } 
 
     public function messages(){
