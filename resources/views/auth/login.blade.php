@@ -60,7 +60,6 @@
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
         }
  
-
  /* for Particles Effect */
         .particles-js-canvas-el {
             width: 100%;
@@ -70,6 +69,7 @@
             top: 0;
             left:0;
         }
+
         </style>
         
 </head>
@@ -77,7 +77,10 @@
 <body class="bg-light-subtle">
     <div class="container" >
 <div id="particles-js">
-        <h2 class="text-center mt-5">Bank Complaning Web Application</h2>
+
+        <img class="p-2" src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
+        
+        <h2 class="text-center mt-1">Bank Complaning Web Application</h2>
 
         <div class="row justify-content-center">
             <div class="col-md-6 mt-5">
