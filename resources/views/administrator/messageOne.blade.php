@@ -35,7 +35,7 @@
 
 
         @if ( $oneMessage->request == 'pending')
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-5">
+        <div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-5">
             <form action="{{ route('administrator.conform.message', $oneMessage->id ) }}" method="post">
                 @csrf
                 @method('PUT')
