@@ -30,7 +30,7 @@
 
     <div class="row px-4 justify-content-center mb-5">
         <div class="col-md-6 bg-white text-dark userBgShado p-4">
-            {{-- @if($user) --}}
+            @if($user)
             <form action="{{ route('user.details.update', $user->id) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -65,9 +65,9 @@
                         <button class="btn btn-primary me-md-2" type="submit">Update</button>
                   </div>
             </form>
-        {{-- @else
+        @else
             <p>User details could not be found.</p>
-        @endif --}}
+        @endif
     </div>
 
     </div>

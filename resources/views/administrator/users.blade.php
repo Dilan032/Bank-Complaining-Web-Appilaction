@@ -23,7 +23,7 @@
                     <th scope="col" style="width: 25%">Name</th>
                     <th scope="col" style="width: 30%">Email</th>
                     <th scope="col">C. Number</th>
-                    <th scope="col">Status</th>
+                    <th scope="col" class="text-center">Status</th>
                     <th scope="col"></th>
                   </tr>
               </thead>
@@ -38,7 +38,7 @@
                                         <th scope="col" style="width: 25%">{{ $userDetails->name }}</th>
                                         <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
                                         <th scope="col">{{ $userDetails->user_contact_num }}</th>
-                                        <th scope="col">
+                                        <th scope="col" class="text-center">
                                             @if ($bankDetail->status == "active")
                                                 <span class="badge text-bg-success fs-6">{{ $userDetails->status }}</span>
                                             @else
@@ -83,7 +83,7 @@
                     <th scope="col" style="width: 25%">Name</th>
                     <th scope="col" style="width: 30%">Email</th>
                     <th scope="col">C. Number</th>
-                    <th scope="col">Status</th>
+                    <th scope="col" class="text-center">Status</th>
                     <th scope="col"></th>
                   </tr>
               </thead>
@@ -98,7 +98,7 @@
                                         <th scope="col" style="width: 25%">{{ $userDetails->name }}</th>
                                         <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
                                         <th scope="col">{{ $userDetails->user_contact_num }}</th>
-                                        <th scope="col">
+                                        <th scope="col" class="text-center">
                                             @if ($bankDetail->status == "active")
                                                 <span class="badge text-bg-success fs-6">{{ $userDetails->status }}</span>
                                             @else
