@@ -63,9 +63,9 @@
         {{-- new row --}}
         <div class="p-3 mb-2 mt-4 bg-danger-subtle text-danger-emphasis border-bottom border-black border-5 rounded btnShado">
             <p class="fs-4">Messages <span class="badge text-bg-light px-5 problemImageMainBG">8</span></p>
-            <div class="d-flex grid gap-5">
+            <div class="d-flex flex-column flex-sm-row gap-3">
                 
-                <div class="p-1 w-50 g-col-4 bg-white text-dark rounded btnShado rounded">
+                <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
                     <b>Administrator Request</b> 
                     <div class="d-flex justify-content-between px-4 mt-2">
                         ⏳Pending
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                <div class="p-1 w-50 g-col-4 bg-white text-dark rounded btnShado rounded">
+                <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
                     <b>Nanosoft Solutions (Pvt)Ltd Status</b> 
                     <div class="d-flex justify-content-between px-4 mt-2">
                         ✔solved
