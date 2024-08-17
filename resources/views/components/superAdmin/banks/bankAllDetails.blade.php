@@ -1,23 +1,27 @@
-<div class="row mb-5 d-flex justify-content-center"">
-    <div class="col-md-5 col-sm-2">
-        <div class="bg-light-subtle text-light-emphasis border border-3 rounded p-3 mx-5 mb-2 shado">
-            <span class="fs-4">Banks</span> <br>
-            All - <span class="badge text-bg-light fs-6">{{$bankCount}}</span>  <br>
-            Active  - <span class="badge text-bg-light fs-6">{{$activeBankCount}}</span>  <br>
-            Inactive  - <span class="badge text-bg-light fs-6">{{$inactiveBankCount}} </span> <br> 
+
+    <div class="row mt-3 mb-2 d-flex justify-content-center">
+        <div class="col-md-5">
+            <div class="p-2 bg-info-subtle border-bottom border-black border-5 rounded shado">
+               
+                <div class="text-center">
+                    <p><i class="bi bi-bank2 fs-2"></i></p>
+                    <p class="fs-4">All Banks <span class="badge text-bg-light px-5 problemImageMainBG">{{$bankCount}}</span></p>
+                </div>
+
+                <div class="p-3 bg-white text-dark  rounded">
+                    <div class="d-flex justify-content-between px-4 mt-2">
+                        🏛 Active
+                        <span class="badge text-bg-primary px-5">{{$activeBankCount}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between px-4 mt-2">
+                        🏗 Inactive
+                        <span class="badge text-bg-secondary px-5">{{$inactiveBankCount}}</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    <div class="col-md-5 col-sm-2">
-        <div class="bg-light-subtle text-light-emphasis border border-3 rounded p-3 mx-5 mb-2 shado">
-            <span class="fs-4">Problem</span> <br>
-            All <span class="badge text-bg-light fs-6"> yy </span>
-            <br> 
-            solved <span class="badge text-bg-light fs-6"> yy </span>
-             <br> 
-            should be resolved <span class="badge text-bg-light fs-6"> yy </span>
-             <br>  
-        </div>
-    </div>
-</div>
+
 
 

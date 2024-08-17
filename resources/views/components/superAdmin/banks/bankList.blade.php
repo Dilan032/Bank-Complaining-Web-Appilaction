@@ -1,5 +1,5 @@
-<div class="text-center mt-4 ms-4">
-    <span class="fs-2 ms-5">Bank Details</span>
+<div class="fs-2 text-center mt-4">
+    <p>Bank Details</p>
 </div>
 
 
@@ -17,7 +17,7 @@
             @foreach ($banks as $key => $bank)
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-heading{{ $key }}">
-                        <button class="accordion-button collapsed d-flex justify-content-between align-items-center bg-primary-subtle text-primary-emphasis rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $key }}" aria-expanded="false" aria-controls="flush-collapse{{ $key }}">
+                        <button class="accordion-button collapsed d-flex justify-content-between align-items-center border-bottom border-dark rounded shado" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $key }}" aria-expanded="false" aria-controls="flush-collapse{{ $key }}">
                             <div class="w-100 d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="badge text-bg-dark">{{ $bank->id }}</span>
@@ -32,16 +32,16 @@
                     </h2>
                     <div id="flush-collapse{{ $key }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $key }}" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body ">
-                            <div class="massage-box-main border border-2 px-4 py-2">
+                            <div class="bg-white text-dark border-2 px-4 py-2">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2"> Bank Details : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-4"> Bank Details : </span> <br>
                                         <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead class="table-secondary">
+                                        <table class="table table-hover">
+                                            <thead class="table-primary">
                                               <tr>
                                                 <th scope="col">Bank id</th>
-                                                <th scope="col">Bank registration done</th>
+                                                <th scope="col" class="text-center">registration done</th>
                                                 <th scope="col">Bank Name</th>
                                                 <th scope="col">Address</th>
                                                 <th scope="col">Email</th>
@@ -50,7 +50,7 @@
                                             </thead>
                                             <tbody class="table-group-divider">
                                                 <td scope="col">{{ $bank->id }}</td>
-                                                <td scope="col">
+                                                <td scope="col" class="text-center">
                                                     {{ \Carbon\Carbon::parse($bank->created_at)->format('h:i A') }} <br>
                                                     {{ \Carbon\Carbon::parse($bank->created_at)->format('Y M d') }}
                                                 </td>
@@ -68,10 +68,10 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2"> Administrators : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-4"> Administrators : </span> <br>
                                         <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead class="table-secondary">
+                                        <table class="table table-hover">
+                                            <thead class="table-primary">
                                               <tr>
                                                 <th scope="col">U id</th>
                                                 <th scope="col" style="width: 30%">Administrators</th>
@@ -90,9 +90,9 @@
                                                             <td>{{ $userDetail->user_contact_num }}</td>
                                                             <td class="text-center">
                                                                 @if ($userDetail->status == "active")
-                                                                <span class="badge text-bg-success fs-6">{{ $userDetail->status }}</span>
+                                                                <span class="badge text-bg-success py-1 px-3 m-2">{{ $userDetail->status }}</span>
                                                                 @else
-                                                                    <span class="badge text-bg-secondary fs-6">{{ $userDetail->status }}</span>
+                                                                    <span class="badge text-bg-secondary py-1 px-2 m-2">{{ $userDetail->status }}</span>
                                                                 @endif  
                                                             </td>
                                                             <th class="text-center" style="width: 20%">
@@ -122,10 +122,10 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2"> users : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-5"> users : </span> <br>
                                         <div class="table-responsive">
-                                        <table class="table table-bordered table-hover">
-                                            <thead class="table-secondary">
+                                        <table class="table table-hover">
+                                            <thead class="table-primary">
                                               <tr>
                                                 <th scope="col">U id</th>
                                                 <th scope="col" style="width: 30%">Users</th>
@@ -144,9 +144,9 @@
                                                             <th scope="col">{{ $userDetail->user_contact_num }}</th>
                                                             <td class="text-center">
                                                                 @if ($userDetail->status == "active")
-                                                                <span class="badge text-bg-success fs-6">{{ $userDetail->status }}</span>
+                                                                <span class="badge text-bg-success py-1 px-3 m-2">{{ $userDetail->status }}</span>
                                                                 @else
-                                                                    <span class="badge text-bg-secondary fs-6">{{ $userDetail->status }}</span>
+                                                                    <span class="badge text-bg-secondary py-1 px-2 m-2">{{ $userDetail->status }}</span>
                                                                 @endif  
                                                             </td>
                                                             <th class="text-center" style="width: 20%">
@@ -176,7 +176,10 @@
                         </div>
                         <br>
                     </div>
-                </div> <br>
+                </div> 
+
+                <br>
+
             @endforeach
         @endif
     </div>
