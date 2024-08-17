@@ -13,13 +13,19 @@
 
     <div class="row">
         <div class="col-md-8">
-            <section  class="bg-white text-dark rounded p-3 messageBG">
+            <section  class="bg-white text-dark border-bottom border-black rounded border-4 p-3 messageBG">
             <h3 class="mb-3 text-center fw-normal">Put the problem here to sent</h3>
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 
-                <input type="hidden" name="bank_id" value="{{$user = Auth::user()->bank_id;}}">
+                @if(Auth::check())
+                    <input type="hidden" name="bank_id" value="{{$user = Auth::user()->bank_id;}}">
+                @else
+                    <script>window.location = "/";</script>
+                @endif
+
+                
 
                 <div class="form-floating mb-3">
                     <input type="text" name="subject" value="{{old('subject')}}" class="form-control" id="floatingInput" placeholder="Subject">
@@ -43,7 +49,7 @@
                     <section>
                         <div class="bg-white  rounded p-2 imgBg">
                             <label for="file_1" class="ionHover">
-                                <i class="bi bi-upload fs-1"></i>
+                                <i class="bi bi-image-fill fs-1"></i>
                             </label>
                             <input type="file" class="d-none" name="img_1" id="file_1">
                         </div>
@@ -59,7 +65,7 @@
                     <section>
                         <div class="bg-white  rounded p-2 imgBg">
                             <label for="file_2" class="ionHover">
-                                <i class="bi bi-upload fs-1"></i>
+                                <i class="bi bi-image-fill fs-1"></i>
                             </label>
                             <input type="file" class="d-none" name="img_2" id="file_2">
                         </div>
@@ -75,7 +81,7 @@
                     <section>
                         <div class="bg-white  rounded p-2 imgBg">
                             <label for="file_3" class="ionHover">
-                                <i class="bi bi-upload fs-1"></i>
+                                <i class="bi bi-image-fill fs-1"></i>
                             </label>
                             <input type="file" class="d-none" name="img_3" id="file_3">
                         </div>
@@ -91,7 +97,7 @@
                     <section>
                         <div class="bg-white  rounded p-2 imgBg">
                             <label for="file_4" class="ionHover">
-                                <i class="bi bi-upload fs-1"></i>
+                                <i class="bi bi-image-fill fs-1"></i>
                             </label>
                             <input type="file" class="d-none" name="img_4" id="file_4">
                         </div>
@@ -107,7 +113,7 @@
                     <section>
                         <div class="bg-white  rounded p-2 imgBg">
                             <label for="file_5" class="ionHover">
-                                <i class="bi bi-upload fs-1"></i>
+                                <i class="bi bi-image-fill fs-1"></i>
                             </label>
                             <input type="file" class="d-none" name="img_5" id="file_5">
                         </div>

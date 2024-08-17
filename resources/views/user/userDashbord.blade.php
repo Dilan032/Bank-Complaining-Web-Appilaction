@@ -2,7 +2,13 @@
 @section('userContent')
 
         <section class="text-center mb-5">
-                <span class="fs-1">Hello <b>{{$user = Auth::user()->name;}}</b>,</span> <br>
+                @if(Auth::check())
+                        <span class="fs-1">Hello <b>{{ Auth::user()->name }}</b>,</span>
+                @else
+                        <script>window.location = "/";</script>
+                @endif
+
+                {{-- <span class="fs-1">Hello <b>{{$user = Auth::user()->name;}}</b>,</span> <br> --}}
                 <span class="font-monospace fs-5">Welcome to Bank complaining Web Application</span>
         </section>
 
