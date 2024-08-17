@@ -20,7 +20,7 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-10">
-            <section  class="bg-white text-dark rounded p-3 messageBG">
+            <section  class="bg-primary-subtle text-dark rounded p-3 messageBG">
             <h3 class="mb-3 text-center fw-normal">Write a message to send to bank employees <br> <small class="font-monospace">(via Email) </small></h3>
                 <form action="" method="post" enctype="multipart/form-data">
                     @csrf

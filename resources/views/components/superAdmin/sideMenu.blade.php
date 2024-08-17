@@ -6,7 +6,6 @@
                     <i class="bi bi-list fs-2 me-2 ms-2"></i>
                     <span class="fs-3 d-none d-sm-inline">SuperAdmin</span>
                     <br>
-                    <span class="fs-6 ms-5 d-none d-sm-inline">Admin | </span>
                 </a>
             </div>
 
