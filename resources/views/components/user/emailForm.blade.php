@@ -27,11 +27,11 @@
 
                 
 
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-3 messageBG">
                     <input type="text" name="subject" value="{{old('subject')}}" class="form-control" id="floatingInput" placeholder="Subject">
                     <label for="floatingInput">Subject</label>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating messageBG">
                     <textarea class="form-control" name="message" value="{{old('message')}}" placeholder="Message" id="floatingTextarea2" style="height: 250px"></textarea>
                     <label for="floatingTextarea2">Message</label>
                 </div>
