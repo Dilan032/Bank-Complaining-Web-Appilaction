@@ -8,10 +8,10 @@
                 <span class="">Subject</span>
             </div>
             <div class="col-12 col-sm-auto col-md-1">
-                <span class="">Status</span>
+                <span class="">Request</span>
             </div>
             <div class="col-12 col-sm-auto col-md-1">
-                <span class="">request</span>
+                <span class="">Status</span>
             </div>
             <div class="col-12 col-sm-auto col-md-2">
                 <span class="">date</span>
@@ -25,7 +25,7 @@
 
 @foreach ( $messages as $msg)
 {{-- start message content --}}
-<div class="p-3 mb-3 bg-white text-dark messageBG rounded">
+<div class="p-3 mb-3 bg-dark-subtle text-black messageBG rounded">
     <div class="text-center">
         <div class="row">
             <div class="col-12 col-sm-auto col-md-1">
@@ -35,10 +35,20 @@
                     <span class="">{{ $msg->subject }}</span>  
             </div>
             <div class="col-12 col-sm-auto col-md-1">
-                <span class="badge text-bg-warning p-1">{{ $msg->status }}</span>      
+                @if ($msg->request == "accept")
+                    <span class="badge text-bg-success p-1 px-3">{{ $msg->request }}</span>
+                @elseif ($msg->request == "reject")
+                    <span class="badge text-bg-danger p-1 px-3">{{ $msg->request }}</span>
+                @else
+                    <span class="badge text-bg-warning p-1 px-2">{{ $msg->request }}</span>
+                @endif               
             </div>
             <div class="col-12 col-sm-auto col-md-1">
-                <span class="badge text-bg-info p-1">{{ $msg->request }}</span>               
+                @if ( $msg->status == "solved")
+                    <span class="badge text-bg-success p-1 px-4">{{ $msg->status }}</span> 
+                @else
+                    <span class="badge text-bg-warning p-1 px-2">{{ $msg->status }}</span> 
+                @endif     
             </div>
             <div class="col-12 col-sm-auto col-md-2">
                 <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($msg->created_at)->format('d M Y') }}</small></span>

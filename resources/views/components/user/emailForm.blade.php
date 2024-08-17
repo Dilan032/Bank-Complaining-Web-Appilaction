@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <section  class="bg-white text-dark border-bottom border-black rounded border-4 p-3 messageBG">
+            <section  class="p-3 bg-dark-subtle text-black border-bottom border-dark border-5 rounded messageBG">
             <h3 class="mb-3 text-center fw-normal">Put the problem here to sent</h3>
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">

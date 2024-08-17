@@ -1,14 +1,13 @@
 @extends('layouts.userLayout')
 @section('userContent')
 
-        <section class="text-center mb-5">
+        <section class="text-center mb-5" id="particles-js">
                 @if(Auth::check())
-                        <span class="fs-1">Hello <b>{{ Auth::user()->name }}</b>,</span>
+                        <span class="fs-1">Hello <b>{{ Auth::user()->name }}</b>,</span> <br>
                 @else
                         <script>window.location = "/";</script>
                 @endif
 
-                {{-- <span class="fs-1">Hello <b>{{$user = Auth::user()->name;}}</b>,</span> <br> --}}
                 <span class="font-monospace fs-5">Welcome to Bank complaining Web Application</span>
         </section>
 

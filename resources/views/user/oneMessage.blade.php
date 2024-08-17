@@ -2,10 +2,11 @@
 @section('userContent')
 
 
-<div class="p-1 mb-5 bg-black text-white text-center">
-  <span class="fs-5">Message sent by {{$messagesTableDataUser->user->name}}</span>
+<div class="p-2 mb-5 bg-black text-white">
+  <span class="fs-5 ms-2">{{$messagesTableDataUser->user->name}}'s message </span>
 </div>
 
+<div id="particles-js"></div>
 
 <div class="table-responsive">
     <table class="table table-borderless rounded messageBG">
@@ -20,9 +21,24 @@
         </thead>
         <tbody class="table-group-divider">
           <tr>
-            <th colspan="4" class="bg-secondary-subtle">
-              status  <span class="badge text-bg-warning">{{$oneMessage->status}}</span> ||
-              request  <span class="badge text-bg-warning">{{$oneMessage->request}}</span>
+            <th colspan="4" class="bg-dark-subtle text-black">
+              status  
+
+                @if ( $oneMessage->status == "solved")
+                    <span class="badge text-bg-success p-1 px-4">{{ $oneMessage->status }}</span> 
+                @else
+                    <span class="badge text-bg-warning p-1 px-2">{{ $oneMessage->status }}</span> 
+                @endif 
+             
+            || request 
+
+                @if ($oneMessage->request == "accept")
+                    <span class="badge text-bg-success p-1 px-3">{{ $oneMessage->request }}</span>
+                @elseif ($oneMessage->request == "reject")
+                    <span class="badge text-bg-danger p-1 px-3">{{ $oneMessage->request }}</span>
+                @else
+                    <span class="badge text-bg-warning p-1 px-2">{{ $oneMessage->request }}</span>
+                @endif 
             </th>
           </tr>
           <tr>
@@ -43,7 +59,7 @@
       <!-- Thumbnail Images -->
       <div class="container mt-4 mb-5">
         <p class="fw-bold">Pictures of the problem areas :</p>
-        <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis problemImageMainBG rounded">
+        <div class="p-3 mb-2 bg-dark-subtle text-black problemImageMainBG rounded">
         <div class="row d-flex justify-content-center">
             <div class="col-md-2 py-2">
                 <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
@@ -70,7 +86,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
               <div class="modal-body">
-                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="Full Image 1" class="img-fluid">
+                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-fluid">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -83,7 +99,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
               <div class="modal-body">
-                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="Full Image 2" class="img-fluid">
+                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="empty" class="img-fluid">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -96,7 +112,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
               <div class="modal-body">
-                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="Full Image 3" class="img-fluid">
+                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="empty" class="img-fluid">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -109,7 +125,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
               <div class="modal-body">
-                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="Full Image 4" class="img-fluid">
+                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="empty" class="img-fluid">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -122,7 +138,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
               <div class="modal-body">
-                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="Full Image 5" class="img-fluid">
+                  <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="empty" class="img-fluid">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
