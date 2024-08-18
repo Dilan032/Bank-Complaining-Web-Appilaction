@@ -39,10 +39,10 @@
                                         <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
                                         <th scope="col">{{ $userDetails->user_contact_num }}</th>
                                         <th scope="col" class="text-center">
-                                            @if ($bankDetail->status == "active")
-                                                <span class="badge text-bg-success fs-6">{{ $userDetails->status }}</span>
+                                            @if ($userDetails->status == "active")
+                                                <span class="badge text-bg-success px-4 mt-2">{{ $userDetails->status }}</span>
                                             @else
-                                                <span class="badge text-bg-secondary fs-6">{{ $userDetails->status }}</span>
+                                                <span class="badge text-bg-secondary px-3 mt-2">{{ $userDetails->status }}</span>
                                             @endif  
                                         </th>
                                         <th>
@@ -99,10 +99,10 @@
                                         <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
                                         <th scope="col">{{ $userDetails->user_contact_num }}</th>
                                         <th scope="col" class="text-center">
-                                            @if ($bankDetail->status == "active")
-                                                <span class="badge text-bg-success fs-6">{{ $userDetails->status }}</span>
+                                            @if ($userDetails->status == "active")
+                                                <span class="badge text-bg-success px-4 mt-2">{{ $userDetails->status }}</span>
                                             @else
-                                                <span class="badge text-bg-secondary fs-6">{{ $userDetails->status }}</span>
+                                                <span class="badge text-bg-secondary px-3 mt-2">{{ $userDetails->status }}</span>
                                             @endif  
                                         </th>
                                         <th>

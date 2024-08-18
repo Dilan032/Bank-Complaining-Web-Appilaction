@@ -56,7 +56,7 @@
                 </div>
 
                 <label for="status" class="form-label fw-bold">status</label>
-                <select name="status" class="form-select mb-3 fw-bold" aria-label="Default select example">
+                <select name="status" class="form-select mb-3 fw-bold bg-primary bg-opacity-25" aria-label="Default select example">
                     <option value="active" {{ old('status', $user->status) == 'active' ? 'selected' : '' }}>active</option>
                     <option value="inactive" {{ old('status', $user->status) == 'inactive' ? 'selected' : '' }}>inactive</option>  
                 </select>

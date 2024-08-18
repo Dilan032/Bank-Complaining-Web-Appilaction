@@ -14,82 +14,87 @@ use Illuminate\Support\Facades\Validator;
 class AdministratorController extends Controller
 {
     public function index(){
-        $bankId = Auth::user()->bank_id;
-        $userName = Auth::user()->name;
+        if (Auth::check()) {
+            $bankId = Auth::user()->bank_id;
+            $userName = Auth::user()->name;
 
-        $bank = DB::table('banks')
-                ->where('id', $bankId)
-                ->first();
+            $bank = DB::table('banks')
+                    ->where('id', $bankId)
+                    ->first();
 
-        $NumAdministrators = DB::table('users')
-                        ->where('bank_id', $bankId)
-                        ->where('user_type', 'administrator')
-                        ->count();
+            $NumAdministrators = DB::table('users')
+                            ->where('bank_id', $bankId)
+                            ->where('user_type', 'administrator')
+                            ->count();
 
-        $NumActiveAdministrators = DB::table('users')
-                        ->where('bank_id', $bankId)
-                        ->where('user_type', 'administrator')
-                        ->where('status', 'active')
-                        ->count(); 
-        $NumInactiveAdministrators = DB::table('users')
-                        ->where('bank_id', $bankId)
-                        ->where('user_type', 'administrator')
-                        ->where('status', 'inactive')
-                        ->count();
+            $NumActiveAdministrators = DB::table('users')
+                            ->where('bank_id', $bankId)
+                            ->where('user_type', 'administrator')
+                            ->where('status', 'active')
+                            ->count(); 
+            $NumInactiveAdministrators = DB::table('users')
+                            ->where('bank_id', $bankId)
+                            ->where('user_type', 'administrator')
+                            ->where('status', 'inactive')
+                            ->count();
 
-        // count bank users
-        $NumUsers = DB::table('users')
-                ->where('bank_id', $bankId)
-                ->where('user_type', 'user')
-                ->count();
+            // count bank users
+            $NumUsers = DB::table('users')
+                    ->where('bank_id', $bankId)
+                    ->where('user_type', 'user')
+                    ->count();
 
-        $NumActiveUsers = DB::table('users')
-                ->where('bank_id', $bankId)
-                ->where('user_type', 'user')
-                ->where('status', 'active')
-                ->count();
-        $NumInactiveUsers = DB::table('users')
-                ->where('bank_id', $bankId)
-                ->where('user_type', 'user')
-                ->where('status', 'inactive')
-                ->count();
+            $NumActiveUsers = DB::table('users')
+                    ->where('bank_id', $bankId)
+                    ->where('user_type', 'user')
+                    ->where('status', 'active')
+                    ->count();
+            $NumInactiveUsers = DB::table('users')
+                    ->where('bank_id', $bankId)
+                    ->where('user_type', 'user')
+                    ->where('status', 'inactive')
+                    ->count();
 
-        //get message table details
-        $NumMessages = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->count();
+            //get message table details
+            $NumMessages = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->count();
 
-        $NumPendingMsg = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->where('request', 'pending')
-                        ->count();
-        $NumAcceptMsg = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->where('request', 'accept')
-                        ->count();
-        $NumRejectMsg = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->where('request', 'reject')
-                        ->count();
+            $NumPendingMsg = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('request', 'pending')
+                            ->count();
+            $NumAcceptMsg = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('request', 'accept')
+                            ->count();
+            $NumRejectMsg = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('request', 'reject')
+                            ->count();
 
-        // message status count
-        $NumSolvedMsg = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->where('status', 'solved')
-                        ->count();
-        $NumNotSolvedMsg = DB::table('messages')
-                        ->where('bank_id', $bankId)
-                        ->where('status', 'not resolved')
-                        ->where('request', 'accept')
-                        ->count();
+            // message status count
+            $NumSolvedMsg = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('status', 'solved')
+                            ->count();
+            $NumNotSolvedMsg = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('status', 'not resolved')
+                            ->where('request', 'accept')
+                            ->count();
 
-        return view('administrator.administratorDashbord', 
+            return view('administrator.administratorDashbord', 
 
-        ['bank' => $bank, 'userName' => $userName, 'NumAdministrators' => $NumAdministrators,
-        'NumUsers' => $NumUsers, 'NumActiveUsers' => $NumActiveUsers, 'NumInactiveUsers' => $NumInactiveUsers,
-        'NumActiveAdministrators' => $NumActiveAdministrators, 'NumInactiveAdministrators' => $NumInactiveAdministrators,
-        'NumMessages' => $NumMessages, 'NumPendingMsg' => $NumPendingMsg, 'NumAcceptMsg' => $NumAcceptMsg, 'NumRejectMsg' => $NumRejectMsg,
-        'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg]);
+            ['bank' => $bank, 'userName' => $userName, 'NumAdministrators' => $NumAdministrators,
+            'NumUsers' => $NumUsers, 'NumActiveUsers' => $NumActiveUsers, 'NumInactiveUsers' => $NumInactiveUsers,
+            'NumActiveAdministrators' => $NumActiveAdministrators, 'NumInactiveAdministrators' => $NumInactiveAdministrators,
+            'NumMessages' => $NumMessages, 'NumPendingMsg' => $NumPendingMsg, 'NumAcceptMsg' => $NumAcceptMsg, 'NumRejectMsg' => $NumRejectMsg,
+            'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg]);
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
     } 
 
     public function messages(){
@@ -204,15 +209,20 @@ class AdministratorController extends Controller
 
 
     public function users(){
-        $userBankId = Auth::user()->bank_id;
-        //this $bank variable used for user registration model, for get bank list
-        $banks = DB::table('banks')
-                ->where('id', $userBankId)
-                ->get();
-        $users = DB::table('users')
-                ->get();
+        if (Auth::check()) {
+            $userBankId = Auth::user()->bank_id;
+            //this $bank variable used for user registration model, for get bank list
+            $banks = DB::table('banks')
+                    ->where('id', $userBankId)
+                    ->get();
+            $users = DB::table('users')
+                    ->get();
 
-        return view('administrator.users', ['banks' => $banks, 'users'=> $users ]);
+            return view('administrator.users', ['banks' => $banks, 'users'=> $users ]);
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
     } 
 
 

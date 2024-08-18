@@ -16,15 +16,20 @@ class UserController extends Controller
 {
 
     public function index(){
-        $userid = Auth::id();
-        $bankList = DB::table('banks')
-                            ->orderBy('created_at', 'DESC')
-                            ->get();
-        $messages =Message::with('user')
-                            ->where('user_id', $userid)
-                            ->orderBy('created_at', 'DESC')
-                            ->get();
-        return view('user.userDashbord', compact('bankList', 'messages', 'userid'));
+        if (Auth::check()) {
+            $userid = Auth::id();
+            $bankList = DB::table('banks')
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
+            $messages =Message::with('user')
+                                ->where('user_id', $userid)
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
+            return view('user.userDashbord', compact('bankList', 'messages', 'userid'));
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
     }
 
     //show seleted user data 

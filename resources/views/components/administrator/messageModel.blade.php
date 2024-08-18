@@ -16,11 +16,11 @@
                         <input type="hidden" name="bank_id" value="{{$user = Auth::user()->bank_id;}}">
                         <input type="hidden" name="request" value="accept">
 
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-3 userBgShado">
                             <input type="text" name="subject" value="{{old('subject')}}" class="form-control" id="floatingInput" placeholder="Subject">
                             <label for="floatingInput">Subject</label>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating userBgShado">
                             <textarea class="form-control" name="message" value="{{old('message')}}" placeholder="Message" id="floatingTextarea2" style="height: 250px"></textarea>
                             <label for="floatingTextarea2">Message</label>
                         </div>
@@ -43,7 +43,7 @@
                         <section>
                             <div class="bg-white  rounded p-2 imgBg">
                                 <label for="file_1" class="ionHover">
-                                    <i class="bi bi-upload fs-1"></i>
+                                    <i class="bi bi-image-fill fs-1"></i>
                                 </label>
                                 <input type="file" class="d-none" name="img_1" id="file_1">
                             </div>
@@ -59,7 +59,7 @@
                         <section>
                             <div class="bg-white  rounded p-2 imgBg">
                                 <label for="file_2" class="ionHover">
-                                    <i class="bi bi-upload fs-1"></i>
+                                    <i class="bi bi-image-fill fs-1"></i>
                                 </label>
                                 <input type="file" class="d-none" name="img_2" id="file_2">
                             </div>
@@ -75,7 +75,7 @@
                         <section>
                             <div class="bg-white  rounded p-2 imgBg">
                                 <label for="file_3" class="ionHover">
-                                    <i class="bi bi-upload fs-1"></i>
+                                    <i class="bi bi-image-fill fs-1"></i>
                                 </label>
                                 <input type="file" class="d-none" name="img_3" id="file_3">
                             </div>
@@ -91,7 +91,7 @@
                         <section>
                             <div class="bg-white  rounded p-2 imgBg">
                                 <label for="file_4" class="ionHover">
-                                    <i class="bi bi-upload fs-1"></i>
+                                    <i class="bi bi-image-fill fs-1"></i>
                                 </label>
                                 <input type="file" class="d-none" name="img_4" id="file_4">
                             </div>
@@ -107,7 +107,7 @@
                         <section>
                             <div class="bg-white  rounded p-2 imgBg">
                                 <label for="file_5" class="ionHover">
-                                    <i class="bi bi-upload fs-1"></i>
+                                    <i class="bi bi-image-fill fs-1"></i>
                                 </label>
                                 <input type="file" class="d-none" name="img_5" id="file_5">
                             </div>

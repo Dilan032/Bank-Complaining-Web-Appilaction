@@ -54,9 +54,9 @@
         
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
             @if ($oneMessage->request == 'accept')
-                <p class="text-white bg-dark fs-6 me-4 px-5 py-1">This user's message was sent to Nanosoft Solutions Company</p>
+                <p class="p-2 bg-success text-white border border-info border-start-0 rounded-start">This user's message was sent to Nanosoft Solutions (Pvt)Ltd</p>
             @else
-                <p class="text-white bg-dark fs-6 me-4 px-5 py-1">This user's message has been ignored</p>
+                <p class="p-2 bg-danger text-white border border-info border-start-0 rounded-start">This user's message has been ignored</p>
             @endif
             
         </div>
