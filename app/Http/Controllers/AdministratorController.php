@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\mail_for_problem;
+use App\Models\Bank;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -9,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
@@ -122,34 +125,44 @@ class AdministratorController extends Controller
 
     public function ConformMessage(Request $request, $mid){
         $message=Message::findOrFail($mid);
-
-        $rules = [ 'request' => 'required|string|in:accept,pending,reject', ];
-
-        // Create validator instance and validate
-        $validator = Validator::make($request->all(), $rules);
-
-        // Check if validation fails
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
         $message->request = $request->input('request');
         $message->update();
 
-        return redirect()->back()->with('success', 'User message send to the Nanosoft Solutions Company'); 
+        //get message data from message table
+        $subject = $message->subject;
+        $messageDetails = $message->message;
+
+        if (Auth::check()) {
+            //get authenticate user details
+            $userBankId=Auth::user()->bank_id;
+            $administratorName=Auth::user()->name;
+            $administratorEmail=Auth::user()->email;
+            $administratorContactNumber=Auth::user()->user_contact_num;
+        } else {
+            return redirect()->route('login');
+        }
+
+        //get bank details
+        $bankDetails=DB::table('banks')
+                    ->where('id', $userBankId)
+                    ->first();
+        //get bank name, Address from bank table
+        $bankName=$bankDetails->bank_name;
+        $bankAddress=$bankDetails->bank_address;
+        $bankContactNumber=$bankDetails->bank_contact_num;
+
+        //get Super Admin Email Adress
+        $superAdminEmail=DB::table('users')
+                        ->where('user_type', 'super admin')
+                        ->value('email');
+            
+        Mail::to($superAdminEmail)->send(new mail_for_problem($subject, $messageDetails, $administratorName, $administratorEmail, $administratorContactNumber, $bankName, $bankAddress, $bankContactNumber));
+
+        return redirect()->back()->with('success', 'User message send to the Nanosoft Solutions (Pvt)Ltd'); 
     }
 
     public function RejectMessage(Request $request, $mid){
         $message=Message::findOrFail($mid);
-
-        $rules = [ 'request' => 'required|string|in:accept,pending,reject', ];
-
-        // Create validator instance and validate
-        $validator = Validator::make($request->all(), $rules);
-
-        // Check if validation fails
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
         $message->request = $request->input('request');
         $message->update();
 

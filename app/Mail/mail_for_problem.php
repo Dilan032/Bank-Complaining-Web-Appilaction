@@ -8,21 +8,40 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class mail_for_problem extends Mailable
 {
     use Queueable, SerializesModels;
      // in mail controller variable
-     public $message;
      public $subject;
+     public $messageDetails;
+
+     public $administratorName;
+     public $administratorEmail;
+     public $administratorContactNumber;
+
+     public $bankName;
+     public $bankAddress;
+     public $bankContactNumber;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($message, $subject)
+    public function __construct($subject, $messageDetails,
+                                $administratorName, $administratorEmail, $administratorContactNumber, 
+                                $bankName, $bankAddress, $bankContactNumber)
     {
-        $this->message= $message;
-       $this->subject= $subject;
+        $this->subject= $subject;
+        $this->messageDetails= $messageDetails;
+
+        $this->administratorName= $administratorName;
+        $this->administratorEmail= $administratorEmail;
+        $this->administratorContactNumber= $administratorContactNumber;
+
+        $this->bankName= $bankName;
+        $this->bankAddress= $bankAddress;
+        $this->bankContactNumber= $bankContactNumber;
     }
 
     /**
@@ -31,6 +50,7 @@ class mail_for_problem extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address($this->administratorEmail, $this->administratorName),
             subject: $this->subject,
         );
     }
@@ -52,6 +72,6 @@ class mail_for_problem extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [ ];
     }
 }
