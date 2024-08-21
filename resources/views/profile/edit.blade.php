@@ -36,13 +36,11 @@
 <div id="particles-js"></div>
 
 @if ($errors->updatePassword->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->updatePassword->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    @foreach ($errors->updatePassword->all() as $error)
+        <div class="alert alert-danger">
+            {{ $error }} 
+        </div>
+    @endforeach
 @endif
 
 @if (session('status'))

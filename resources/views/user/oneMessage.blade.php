@@ -12,8 +12,8 @@
     <table class="table table-borderless rounded messageBG">
         <thead>
           <tr>
-            <th colspan="4" class="fs-2">
-                <span class="fw-normal">Subject:</span> 
+            <th colspan="4" class="fs-4 fs-sm-2">
+                {{-- <span class="fw-normal">Subject:</span>  --}}
                 {{-- <span class="badge text-bg-secondary">Urgent</span>  --}}
                 {{$oneMessage->subject}}
             </th>
