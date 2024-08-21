@@ -62,6 +62,16 @@ class mail_for_problem extends Mailable
     {
         return new Content(
             view: 'mail.mailForProblem',
+            with: [
+                'subject' => $this->subject,
+                'messageDetails' => $this->messageDetails,
+                'administratorName' => $this->administratorName,
+                'administratorEmail' => $this->administratorEmail,
+                'administratorContactNumber' => $this->administratorContactNumber,
+                'bankName' => $this->bankName,
+                'bankAddress' => $this->bankAddress,
+                'bankContactNumber' => $this->bankContactNumber,
+            ],
         );
     }
 

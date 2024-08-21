@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\userWellcomeMessage;
 use App\Models\Bank;
 use App\Models\Message;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -75,13 +77,13 @@ class UserController extends Controller
     }
 
     
-    // [super admin] for User Registration 
+    // for User Registration 
     public function RegisterUsers(Request $request){ 
         $rules = [
             'bank_id' => 'required|exists:banks,id',
             'user_type' => 'required|string|in:administrator,user',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'user_contact_num' => 'required|string|max:12',
             'password' => 'required|string|min:8|max:32|confirmed',        
         ];
@@ -93,6 +95,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
 
         $newUser = new User;
         $newUser->bank_id = $request->input('bank_id');
@@ -102,6 +105,23 @@ class UserController extends Controller
         $newUser->user_contact_num = $request->input('user_contact_num');
         $newUser->password = Hash::make($request->input('password'));
         $newUser->save();
+
+        //for sent the new register user
+        $plainPassword = $request->input('password');
+
+        //get user register pertion details
+        if (Auth::check()) {
+            //get authenticate admin details
+            $RegisterAdminName=Auth::user()->name;
+            $RegisterUserType=Auth::user()->user_type;
+            $RegisterAadminEmail=Auth::user()->email;
+            $RegisterAdminContactNumber=Auth::user()->user_contact_num;
+        } else {
+            return redirect()->route('login');
+        }
+
+        Mail::to($newUser->email)->send(new userWellcomeMessage($newUser->user_type, $newUser->name, $newUser->email, $newUser->user_contact_num, $plainPassword,
+                $RegisterAdminName, $RegisterUserType, $RegisterAadminEmail, $RegisterAdminContactNumber));
 
         // Redirect with a success message
         return redirect()->back()->with('success', 'User Registration successfully!');
