@@ -19,7 +19,16 @@
           </li>
         </ul>
         <div class="d-flex flex-row-reverse">
-          <a href="{{route('user.logout')}}" class="btn btn-light me-1" type="button">Logout</a>
+          <div class="dropdown">
+            <a class="dropdown-toggle px-5 text-white"  data-bs-toggle="dropdown" aria-expanded="false">
+              Dilan
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-center">
+              <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a href="{{route('user.logout')}}" class="active">Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

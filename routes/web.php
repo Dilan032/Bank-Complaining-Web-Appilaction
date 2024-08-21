@@ -71,6 +71,7 @@ Route::controller(MesageController::class)->group(function (){
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/user/userDashbord', 'index')->name('user.index');
+    // Route::get('/profile/changePassword', 'changePassword')->name('user.changePassword');
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
     //for administrator
