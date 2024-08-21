@@ -21,7 +21,7 @@
         </thead>
         <tbody class="table-group-divider">
           <tr>
-            <th colspan="4" class="bg-dark-subtle text-black">
+            <th colspan="4" class="bg-primary-subtle text-black">
               status  
 
                 @if ( $oneMessage->status == "solved")
@@ -59,7 +59,7 @@
       <!-- Thumbnail Images -->
       <div class="container mt-4 mb-5">
         <p class="fw-bold">Pictures of the problem areas :</p>
-        <div class="p-3 mb-2 bg-dark-subtle text-black problemImageMainBG rounded">
+        <div class="p-3 mb-2 bg-primary-subtle text-black problemImageMainBG rounded">
         <div class="row d-flex justify-content-center">
             <div class="col-md-2 py-2">
                 <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">

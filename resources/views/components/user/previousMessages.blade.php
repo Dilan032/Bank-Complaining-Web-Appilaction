@@ -25,7 +25,7 @@
 
 @foreach ( $messages as $msg)
 {{-- start message content --}}
-<div class="p-3 mb-3 bg-dark-subtle text-black messageBG rounded">
+<div class="p-3 mb-3 bg-primary-subtle text-black messageBG rounded">
     <div class="text-center">
         <div class="row">
             <div class="col-12 col-sm-auto col-md-1">
