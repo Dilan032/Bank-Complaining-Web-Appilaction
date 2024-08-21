@@ -23,6 +23,7 @@
     </div>
 </div>
 
+@if (empty($messages))
 @foreach ( $messages as $msg)
 {{-- start message content --}}
 <div class="p-3 mb-3 bg-primary-subtle text-black messageBG rounded">
@@ -63,3 +64,7 @@
     </div>
 </div>
 @endforeach
+
+@else
+ <p class="text-center">You have not sent any messages yet.</p>
+@endif

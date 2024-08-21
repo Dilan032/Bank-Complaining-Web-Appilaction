@@ -20,8 +20,12 @@
         </ul>
         <div class="d-flex flex-row-reverse">
           <div class="dropdown">
-            <a class="dropdown-toggle px-5 text-white"  data-bs-toggle="dropdown" aria-expanded="false">
-              Dilan
+            <a class=" px-5 text-white"  data-bs-toggle="dropdown" aria-expanded="false">
+              @if(Auth::check())
+                  <span><b>{{ Auth::user()->name }} 🔽</b></span> <br>
+              @else
+                  <script>window.location = "/";</script>
+              @endif
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-center">
               <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Change Password</a></li>
