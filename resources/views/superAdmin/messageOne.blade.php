@@ -11,21 +11,30 @@
 <hr class="me-3">
 
 
-        <!-- Display validation errors -->
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">{{ $error }}</div>
-            @endforeach
-        @endif
+    <!-- Display validation errors -->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{ $error }}",
+                });
+            </script>
+        @endforeach
+    @endif
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+    @if (session('success'))
+        <script>
+            Swal.fire({
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 3000
+            });
+        </script>
+    @endif
 
-
-        {{-- @if ( $oneMessage->status == 'not resolved') --}}
         <div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-4">
             <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
                 @csrf
@@ -41,21 +50,7 @@
                 <button class="btn btn-warning me-4" type="submit" onclick="return confirm('Problem Not Resolved');">Problem Not Resolved</button> 
             </form>
         </div>
-        {{-- @else --}}
-        
-        {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
-            @if ($oneMessage->status == 'resolved')
-            <div class="p-3 bg-primary bg-opacity-10 border border-primary border rounded">
-                This bank issue has been resolved
-              </div>
-            @else
-            <div class="p-3 bg-danger bg-opacity-10 border border-danger border rounded">
-                This bank issue is not resolved
-              </div>
-            @endif
-            
-        </div> --}}
-        {{-- @endif --}}
+
       
 <section class="container">
     <div class="table-responsive">

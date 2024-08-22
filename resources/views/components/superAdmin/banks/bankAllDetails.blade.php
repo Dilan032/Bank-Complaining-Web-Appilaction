@@ -1,7 +1,7 @@
 
     <div class="row mt-3 mb-2 d-flex justify-content-center">
         <div class="col-md-5">
-            <div class="p-2 bg-info-subtle border-bottom border-black border-5 rounded shado">
+            <div class="p-2 bg-primary-subtle border-bottom border-black border-5 rounded shado">
                
                 <div class="text-center">
                     <p><i class="bi bi-bank2 fs-2"></i></p>

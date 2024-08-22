@@ -35,7 +35,7 @@
                             <div class="bg-white text-dark border-2 px-4 py-2">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-4"> Bank Details : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-4"> Bank Details </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
@@ -68,12 +68,12 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-4"> Administrators : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-4"> Administrators </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
                                               <tr>
-                                                <th scope="col">U id</th>
+                                                <th scope="col">id</th>
                                                 <th scope="col" style="width: 30%">Administrators</th>
                                                 <th scope="col">Contact Number</th>
                                                 <th scope="col" class="text-center">status</th>
@@ -122,12 +122,12 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-5"> users : </span> <br>
+                                        <span class="badge text-bg-dark p-2 px-5"> users </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
                                               <tr>
-                                                <th scope="col">U id</th>
+                                                <th scope="col">id</th>
                                                 <th scope="col" style="width: 30%">Users</th>
                                                 <th scope="col">Contact Number</th>
                                                 <th scope="col" class="text-center">status</th>

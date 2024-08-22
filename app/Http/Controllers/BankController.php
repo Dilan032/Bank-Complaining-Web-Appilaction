@@ -13,10 +13,10 @@ class BankController extends Controller
     public function RegisterBank(Request $request){
         // validation rules
         $rules = [
-            'bank_name' => 'required|string|max:255',
-            'bank_address' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
             'bank_contact_num' => 'required|string|max:10',
+            'email' => 'required|string|email|max:255',
+            'bank_address' => 'required|string|max:255',
+            'bank_name' => 'required|string|max:255',
         ];
 
         // Create validator instance and validate

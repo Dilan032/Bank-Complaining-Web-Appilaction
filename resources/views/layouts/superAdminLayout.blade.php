@@ -14,6 +14,9 @@
     {{-- link user css --}}
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
+    {{-- for sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Document</title>
 </head>
 <body class="bg-light text-dark">

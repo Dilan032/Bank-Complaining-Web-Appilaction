@@ -105,7 +105,7 @@
                 <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fs-5 fw-bold">Nanosoft Solutions <small>(Pvt) Ltd</small></p>
 
-                <div class="overflow-y-scroll" style="height: 420px;">
+                <div class="overflow-y-scroll" style="height: 415px;">
                     
                 <p>
                     අප සමගම පරිගණක මෘදුකාංග නිර්මාණය කිරීමෙහිලා විශේෂිත වූ ආයතනයකි. 
