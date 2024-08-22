@@ -12,8 +12,6 @@
         <div class="p-1 border-bottom border-black border-5 rounded">
             <p class="fs-4"><b>Bank details</b></p>
             <div class="fs-5">
-                {{-- <span class="badge text-bg-light px-5 problemImageMainBG">Bank id : {{ $bank->id }}</span>
-                <br>   --}}
                 <span class="badge text-bg-light p-2 px-5  border border-primary">{{ $bank->bank_name }}</span>
                 <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->bank_address }}</span>
                 <br> 
