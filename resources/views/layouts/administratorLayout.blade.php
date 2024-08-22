@@ -15,6 +15,9 @@
     {{-- link user css This file link for get the administrator send message form--}}
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
+    {{-- for sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>administrator</title>
 </head>
 <body class="bg-light text-dark">

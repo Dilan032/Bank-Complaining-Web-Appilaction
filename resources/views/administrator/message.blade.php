@@ -11,7 +11,7 @@
 <hr class="me-3">
 
     <!-- Display validation errors -->
-    @if ($errors->any())
+    {{-- @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="alert alert-danger">{{ $error }}</div>
         @endforeach
@@ -21,7 +21,31 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endif
+    @endif --}}
+
+        <!-- Display validation errors -->
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <script>
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "{{ $error }}",
+                    });
+                </script>
+            @endforeach
+        @endif
+
+        @if (session('success'))
+        <script>
+            Swal.fire({
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 3000
+            });
+        </script>
+        @endif
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-4">
     <button class="btn btn-primary mt-3 btnShado" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Write a message to Nanosoft Solution Company</button>

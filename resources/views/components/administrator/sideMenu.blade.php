@@ -26,12 +26,12 @@
                         <span class="d-none d-sm-inline">Messages</span>
                     </a>
                 </li>
-                <li class="nav-item mb-2">
+                {{-- <li class="nav-item mb-2">
                     <a href="{{ route('administrator.announcements') }}" class="nav-link text-white">
                         <i class="bi bi-megaphone me-2 ms-2"></i>
                         <span class="d-none d-sm-inline">Announcements</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item mb-2">
                     <a href="{{ route('administrator.users') }}" class="nav-link text-white">
                         <i class="bi bi-person-circle me-2 ms-2"></i>

@@ -87,13 +87,17 @@ class AdministratorController extends Controller
                             ->where('request', 'accept')
                             ->count();
 
+            $superAdminDetails = DB::table('users')
+                    ->where('user_type', 'super admin')
+                    ->get();
+
             return view('administrator.administratorDashbord', 
 
             ['bank' => $bank, 'userName' => $userName, 'NumAdministrators' => $NumAdministrators,
             'NumUsers' => $NumUsers, 'NumActiveUsers' => $NumActiveUsers, 'NumInactiveUsers' => $NumInactiveUsers,
             'NumActiveAdministrators' => $NumActiveAdministrators, 'NumInactiveAdministrators' => $NumInactiveAdministrators,
             'NumMessages' => $NumMessages, 'NumPendingMsg' => $NumPendingMsg, 'NumAcceptMsg' => $NumAcceptMsg, 'NumRejectMsg' => $NumRejectMsg,
-            'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg]);
+            'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg, 'superAdminDetails'=> $superAdminDetails]);
         } else {
             // Redirect to the login page or show an error
             return redirect()->route('login');
@@ -220,6 +224,37 @@ class AdministratorController extends Controller
 
         // Save the message to the database
         $NewMessage->save();
+
+        //get athenticate user data to send the email
+        if (Auth::check()) {
+            //get authenticate user details
+            $userBankId=Auth::user()->bank_id;
+            $administratorName=Auth::user()->name;
+            $administratorEmail=Auth::user()->email;
+            $administratorContactNumber=Auth::user()->user_contact_num;
+        } else {
+            return redirect()->route('login');
+        }
+
+        //get bank details
+        $bankDetails=DB::table('banks')
+                    ->where('id', $userBankId)
+                    ->first();
+        //get bank name, Address from bank table
+        $bankName=$bankDetails->bank_name;
+        $bankAddress=$bankDetails->bank_address;
+        $bankContactNumber=$bankDetails->bank_contact_num;
+
+        //get Super Admin Email Adress
+        $superAdminEmail=DB::table('users')
+                        ->where('user_type', 'super admin')
+                        ->value('email');
+        
+        //get email data for send email
+        $subject = $NewMessage->subject;
+        $messageDetails = $NewMessage->subject;
+
+        Mail::to($superAdminEmail)->send(new mail_for_problem($subject, $messageDetails, $administratorName, $administratorEmail, $administratorContactNumber, $bankName, $bankAddress, $bankContactNumber));
 
         return redirect()->route('administrator.messages')->with('success','Message Send to the Nanosoft Solutions Comapany');
     }

@@ -81,11 +81,11 @@ class UserController extends Controller
     public function RegisterUsers(Request $request){ 
         $rules = [
             'bank_id' => 'required|exists:banks,id',
+            'password' => 'required|string|min:8|max:32|confirmed',
+            'user_contact_num' => 'required|string|max:12',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'user_type' => 'required|string|in:administrator,user',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'user_contact_num' => 'required|string|max:12',
-            'password' => 'required|string|min:8|max:32|confirmed',        
         ];
 
         // Create validator instance and validate

@@ -64,7 +64,7 @@
 
         {{-- new row --}}
         <div class="p-3 mb-2 mt-4 bg-danger-subtle text-danger-emphasis border-bottom border-black border-5 rounded btnShado">
-            <p class="fs-4">Messages <span class="badge text-bg-light px-5 problemImageMainBG">8</span></p>
+            <p class="fs-4">Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{ $NumMessages }}</span></p>
             <div class="d-flex flex-column flex-sm-row gap-3">
                 
                 <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
@@ -127,18 +127,25 @@
 
                 <hr>
 
+<p class="text-center bg-primary-subtle p-1 fw-bold">Contact Details</p>
 <pre>
-<b>Contact Detais:</b>
-    077 8866324
-    077 8866324
-    nanosoftsolution@gmai.com
+<b>Tp</b>
+@foreach ($superAdminDetails as $superAdmin )
+{{ $superAdmin->user_contact_num }}
+@endforeach
+</pre>
+<pre>
+<b>Email</b>
+@foreach ($superAdminDetails as $superAdmin )
+{{ $superAdmin->email }}
+@endforeach
 </pre>
 
 <pre>
 <b>Address:</b>
-    No.227/A,
-    Gettuwana Road,
-    Kurunegala.
+No.227/A,
+Gettuwana Road,
+Kurunegala.
 </pre>
 
 
