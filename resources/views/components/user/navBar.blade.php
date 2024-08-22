@@ -18,9 +18,9 @@
             <a class="nav-link" href="{{ route('user.index') }}">Previous messages</a>
           </li>
         </ul>
-        <div class="d-flex flex-row-reverse">
-          <div class="dropdown">
-            <a class=" px-5 text-white"  data-bs-toggle="dropdown" aria-expanded="false">
+        {{-- <div class="d-flex flex-row-reverse text-center "> --}}
+          <div class="dropdown text-start">
+            <a class="px-5 py-1 text-white border"  data-bs-toggle="dropdown" aria-expanded="false">
               @if(Auth::check())
                   <span><b>{{ Auth::user()->name }} 🔽</b></span> <br>
               @else
@@ -33,7 +33,7 @@
               <li><a href="{{route('user.logout')}}" class="active">Logout</a></li>
             </ul>
           </div>
-        </div>
+        {{-- </div> --}}
       </div>
     </div>
   </nav>
