@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
 
-      <img class="p-2 rounded-circle bg-white me-2" style="width: 80px;" src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
+      <img class="p-2 rounded-circle bg-white me-2" style="width: 70px;" src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
       
-      <a class="navbar-brand fs-3" href="#">NanoSoft Solution</a>
+      <a class="navbar-brand fs-3" href="#"><span class="fs-1">N</span>anoSoft Solutions</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="bi bi-list fs-1"></i>

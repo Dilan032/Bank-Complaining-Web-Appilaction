@@ -5,16 +5,7 @@
     <p class="fs-3">
         <span class="badge text-bg-dark">{{$messagesTableDataUser->user->user_type}}</span> 
         {{$messagesTableDataUser->user->name}}'s message
-    </p>
-
-        {{-- @if ( $oneMessage->request == 'pending')
-            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
-            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
-        @elseif ( $oneMessage->request == 'accept')
-            <button class="btn btn-danger mt-3 me-4" type="button">Reject Message</button>
-        @elseif ( $oneMessage->request == 'reject')
-            <button class="btn btn-success mt-3 me-4" type="button">Conform Message</button>
-        @endif --}}    
+    </p>  
 </div>
 
 <hr class="me-3">
@@ -76,7 +67,7 @@
             </thead>
             <tbody class="table-group-divider">
               <tr>
-                <th colspan="4" class="bg-secondary-subtle">
+                <th colspan="4" class="bg-primary-subtle">
                     @if ( $oneMessage->status == 'not resolved')
                         status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> ||
                     @else
@@ -110,7 +101,7 @@
           <!-- Thumbnail Images -->
           <div class="container mt-4 mb-5">
             <p class="fw-bold">Pictures of the problem areas :</p>
-            <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis problemImageMainBG rounded">
+            <div class="p-3 mb-2 bg-primary-subtle text-dark problemImageMainBG rounded">
                 <div class="row d-flex justify-content-center mx-auto">
                     <div class="col-md-2 py-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">

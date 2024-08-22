@@ -12,13 +12,13 @@
         <div class="p-1 border-bottom border-black border-5 rounded">
             <p class="fs-4"><b>Bank details</b></p>
             <div class="fs-5">
-                <span class="badge text-bg-light px-5 problemImageMainBG">Bank id : {{ $bank->id }}</span>
-                <br>  
-                <span class="badge text-bg-light p-2 px-5 problemImageMainBG">{{ $bank->bank_name }}</span>
-                <span class="badge text-bg-light p-2 px-5 problemImageMainBG">{{ $bank->bank_address }}</span>
+                {{-- <span class="badge text-bg-light px-5 problemImageMainBG">Bank id : {{ $bank->id }}</span>
+                <br>   --}}
+                <span class="badge text-bg-light p-2 px-5  border border-primary">{{ $bank->bank_name }}</span>
+                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->bank_address }}</span>
                 <br> 
-                <span class="badge text-bg-light p-2 px-5 problemImageMainBG">{{ $bank->email }}</span>
-                <span class="badge text-bg-light p-2 px-5 problemImageMainBG">{{ $bank->bank_contact_num }}</span>
+                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->email }}</span>
+                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->bank_contact_num }}</span>
                 <br>
             </div>
         </div>
@@ -101,31 +101,8 @@
     {{-- first col end --}}
     </div>
 
-
-    {{-- Good design --}}
-    {{-- <div class="col-md-4">
-        <div class="p-3 mb-2 bg-success-subtle text-success-emphasis border-bottom border-black border-5 rounded btnShado">
-            <p class="fs-4">Messages 8</p>
-            <div class="p-3 mb-2 bg-white text-dark  rounded btnShado">
-                Status
-                <ul>
-                    <li>Resole</li>
-                    <li>not Resole</li>
-                </ul>
-            </div>
-            <div class="p-3 mb-3 bg-white text-dark  rounded btnShado">
-                Request 
-                <ul>
-                    <li>Pending</li>
-                    <li>Accept</li>
-                    <li>Rejected</li>
-                </ul>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="col-md-4">
-        <div class="p-1 rounded problemImageMainBG btnShado">
+        <div class="p-1 border border-primary rounded problemImageMainBG btnShado">
             <div class="p-3 mb-2 bg-white text-dark rounded btnShado">
                 <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fs-5 fw-bold">Nanosoft Solutions <small>(Pvt) Ltd</small></p>

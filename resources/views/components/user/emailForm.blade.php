@@ -1,14 +1,25 @@
     <!-- Display validation errors -->
     @if ($errors->any())
         @foreach ($errors->all() as $error)
-            <div class="alert alert-danger">{{ $error }}</div>
+            <script>
+                Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{ $error }}",
+                });
+            </script>
         @endforeach
     @endif
 
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <script>
+        Swal.fire({
+        icon: "success",
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 3000
+        });
+    </script>
     @endif
 
     <div class="row">

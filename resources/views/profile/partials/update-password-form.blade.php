@@ -34,19 +34,6 @@
 
         <div class="flex items-center gap-4">
             <button class="btn btn-primary mb-3" type="submit">Save</button>
-
-            @if (session('status') === 'password-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                ></p>
-                <div class="alert alert-success mt-3">
-                    <p>password updated successfully</p>
-                </div>
-            @endif
         </div>
     </form>
 </section>

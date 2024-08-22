@@ -40,20 +40,20 @@
     <div class="p-2 mb-3 bg-black text-white">
         <div class="text-center d-none d-sm-inline">
             <div class="row">
-                <div class="col-12 col-sm-auto col-md-1">
-                    <span class="">m-id</span>
-                </div>
-                <div class="col-12 col-sm-auto col-md-6">
-                    <span class="">Subject</span>
-                </div>
-                <div class="col-12 col-sm-auto col-md-1">
-                    <span class="">Status</span>
+                {{-- <div class="col-12 col-sm-auto col-md-1">
+                    <span class="">id</span>
+                </div> --}}
+                <div class="col-12 col-sm-auto col-md-2">
+                    <span class="">date</span>
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
                     <span class="">request</span>
                 </div>
+                <div class="col-12 col-sm-auto col-md-6">
+                    <span class="">Subject</span>
+                </div>
                 <div class="col-12 col-sm-auto col-md-2">
-                    <span class="">date</span>
+                    <span class="">Status</span>
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
                     <span class="">Action</span>
@@ -68,18 +68,11 @@
     <div class="p-3 mb-3 bg-white text-dark messageBG rounded">
         <div class="text-center">
             <div class="row">
-                <div class="col-12 col-sm-auto col-md-1">
+                {{-- <div class="col-12 col-sm-auto col-md-1">
                     <span class="d-inline d-sm-none">M-id </span>{{ $oneMessage->id }}                  
-                </div>
-                <div class="col-12 col-sm-auto col-md-6">
-                        <span class="">{{ $oneMessage->subject }}</span>  
-                </div>
-                <div class="col-12 col-sm-auto col-md-1">
-                    @if ($oneMessage->status == 'solved')
-                        <span class="badge text-bg-success py-1 px-4">{{ $oneMessage->status }}</span>
-                    @else
-                        <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
-                    @endif      
+                </div> --}}
+                <div class="col-12 col-sm-auto col-md-2">
+                    <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y') }}</small></span>
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
                     @if ( $oneMessage->request == 'accept')
@@ -90,13 +83,20 @@
                         <span class="badge text-bg-warning py-1">{{ $oneMessage->request }}</span>
                     @endif
                 </div>
+                <div class="col-12 col-sm-auto col-md-6">
+                    <span class="">{{ $oneMessage->subject }}</span>  
+                </div>
                 <div class="col-12 col-sm-auto col-md-2">
-                    <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y') }}</small></span>
+                    @if ($oneMessage->status == 'solved')
+                        <span class="badge text-bg-success py-1 px-4">{{ $oneMessage->status }}</span>
+                    @else
+                        <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
+                    @endif      
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
                     <!-- Button trigger modal -->
                     <div class="d-grid gap-2 btnShado">
-                        <a href="{{route('oneMessageForAdministrator.show', $oneMessage->id)}}" class="btn btn-primary" type="button">View</a>
+                        <a href="{{route('oneMessageForAdministrator.show', $oneMessage->id)}}" class="btn btn-primary btn-sm" type="button">View</a>
                     </div>
                 </div>
             </div>

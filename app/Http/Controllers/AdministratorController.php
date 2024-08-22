@@ -101,26 +101,35 @@ class AdministratorController extends Controller
     } 
 
     public function messages(){
-        
-        $userBankId = Auth::user()->bank_id;
-        $messages = DB::table('messages')
-                ->where('bank_id', $userBankId)
-                ->orderBy('created_at', 'DESC')
-                ->get();
+        if (Auth::check()) {
+            $userBankId = Auth::user()->bank_id;
+            $messages = DB::table('messages')
+                    ->where('bank_id', $userBankId)
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
 
-        return view('administrator.message', ['messages' => $messages ]);
+            return view('administrator.message', ['messages' => $messages ]);
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
     } 
 
     public function showOneMessage($mid){
-        $userid = Auth::id();
-        $oneMessage = DB::table('messages')
-                ->where('id', $mid)
-                ->first();
-        $messagesTableDataUser =Message::with('user')
-                ->where('id', $mid)
-                ->first();
-               
-        return view('administrator.messageOne', compact('oneMessage','messagesTableDataUser'));
+        if (Auth::check()) {
+            $userid = Auth::id();
+            $oneMessage = DB::table('messages')
+                    ->where('id', $mid)
+                    ->first();
+            $messagesTableDataUser =Message::with('user')
+                    ->where('id', $mid)
+                    ->first();
+                
+            return view('administrator.messageOne', compact('oneMessage','messagesTableDataUser'));
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
     }
 
     public function ConformMessage(Request $request, $mid){

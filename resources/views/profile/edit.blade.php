@@ -35,19 +35,29 @@
 
 <div id="particles-js"></div>
 
-@if ($errors->updatePassword->any())
-    @foreach ($errors->updatePassword->all() as $error)
-        <div class="alert alert-danger">
-            {{ $error }} 
-        </div>
-    @endforeach
-@endif
+    <!-- Display validation errors -->
+    @if ($errors->updatePassword->any())
+        @foreach ($errors->updatePassword->all() as $error)
+                <script>
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "{{ $error }}",
+                    });
+                </script>
+        @endforeach
+    @endif
 
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
+    @if (session('status'))
+    <script>
+        Swal.fire({
+        icon: "success",
+        title: "{{ session('status') }}",
+        showConfirmButton: false,
+        timer: 3000
+        });
+    </script>
+    @endif
 
 <div class="row d-flex justify-content-center">
     <div class="col-md-8 bg-primary-subtle messageBG rounded py-4 px-4">
