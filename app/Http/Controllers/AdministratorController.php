@@ -167,7 +167,8 @@ class AdministratorController extends Controller
         //get Super Admin Email Adress
         $superAdminEmail=DB::table('users')
                         ->where('user_type', 'super admin')
-                        ->value('email');
+                        ->pluck('email')
+                        ->toArray();
             
         Mail::to($superAdminEmail)->send(new mail_for_problem($subject, $messageDetails, $administratorName, $administratorEmail, $administratorContactNumber, $bankName, $bankAddress, $bankContactNumber));
 
@@ -248,11 +249,12 @@ class AdministratorController extends Controller
         //get Super Admin Email Adress
         $superAdminEmail=DB::table('users')
                         ->where('user_type', 'super admin')
-                        ->value('email');
+                        ->pluck('email')
+                        ->toArray();
         
         //get email data for send email
         $subject = $NewMessage->subject;
-        $messageDetails = $NewMessage->subject;
+        $messageDetails = $NewMessage->message;
 
         Mail::to($superAdminEmail)->send(new mail_for_problem($subject, $messageDetails, $administratorName, $administratorEmail, $administratorContactNumber, $bankName, $bankAddress, $bankContactNumber));
 
