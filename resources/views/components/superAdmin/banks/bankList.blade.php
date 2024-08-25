@@ -6,8 +6,8 @@
 <div class="px-2 mt-3 mb-4">
     <div class="p-2 mb-2 bg-black text-white rounded">
         <div class="d-flex justify-content-between">
-            <div>ID | Bank Name</div>
-            <div>Address</div>
+            <div>ID | Bank Name | Address</div>
+            {{-- <div></div> --}}
             <div>View</div>
         </div>
     </div>
@@ -21,21 +21,22 @@
                             <div class="w-100 d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="badge text-bg-dark">{{ $bank->id }}</span>
-                                    <span class="fw-bold ms-2">{{ $bank->bank_name }}</span>
+                                    <span class="fw-bold ms-2">{{ $bank->bank_name }},</span>
+                                    <span class="ms-2"><small>{{ $bank->bank_address }}</small></span>
                                 </div> 
-                                <div>
-                                    {{ $bank->bank_address }}
-                                </div>
+                                {{-- <div>
+                                   
+                                </div> --}}
                                 <div></div>
                             </div>
                         </button>                       
                     </h2>
                     <div id="flush-collapse{{ $key }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $key }}" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body ">
-                            <div class="bg-white text-dark border-2 px-4 py-2">
+                            <div class="bg-light text-dark border-2 px-4 py-2 problemImageMainBG">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-4"> Bank Details </span> <br>
+                                        <span class="badge text-bg-dark"> Bank Details </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
@@ -68,7 +69,7 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-4"> Administrators </span> <br>
+                                        <span class="badge text-bg-dark"> Administrators </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
@@ -122,7 +123,7 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-dark p-2 px-5"> users </span> <br>
+                                        <span class="badge text-bg-dark"> users </span> <br>
                                         <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-primary">
@@ -139,9 +140,9 @@
                                                 @foreach ($users as $userDetail)
                                                     @if ( $userDetail->bank_id == $bank->id && $userDetail->user_type == "user")
                                                         <tr>
-                                                            <th scope="col">{{ $userDetail->id }}</th>
-                                                            <th scope="col" style="width: 30%">{{ $userDetail->name }}</th>
-                                                            <th scope="col">{{ $userDetail->user_contact_num }}</th>
+                                                            <td scope="col">{{ $userDetail->id }}</td>
+                                                            <td scope="col" style="width: 30%">{{ $userDetail->name }}</td>
+                                                            <td scope="col">{{ $userDetail->user_contact_num }}</td>
                                                             <td class="text-center">
                                                                 @if ($userDetail->status == "active")
                                                                 <span class="badge text-bg-success py-1 px-3 m-2">{{ $userDetail->status }}</span>
@@ -149,7 +150,7 @@
                                                                     <span class="badge text-bg-secondary py-1 px-2 m-2">{{ $userDetail->status }}</span>
                                                                 @endif  
                                                             </td>
-                                                            <th class="text-center" style="width: 20%">
+                                                            <td class="text-center" style="width: 20%">
                                                                 <form action="{{ route('user.delete', $userDetail->id ) }}" method="post">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -161,7 +162,7 @@
                                                                         Remove
                                                                     </button>
                                                                 </form>
-                                                            </th>
+                                                            </td>
                                                         </tr>
                                                     @endif
                                                 @endforeach

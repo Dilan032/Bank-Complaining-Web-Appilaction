@@ -32,10 +32,43 @@
     @endif
 
 
-<section class="container mt-5">
+
+    <div class="row mt-3 mb-4 d-flex justify-content-center">
+        <div class="col-md-5">
+            <div class="p-2 bg-primary-subtle border-bottom border-black border-5 rounded shado">
+               
+                <div class="text-center">
+                    <p><i class="bi bi-envelope-check fs-1"></i></p>
+                    <p class="fs-4">All Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{$solvedMessageCount + $noSolvedMessageCount}}</span></p>
+                </div>
+
+                <div class="p-3 bg-white text-dark  rounded">
+                    <div class="d-flex justify-content-between px-4 mt-2">
+                        ✔ Solved Message
+                        <span class="badge text-bg-success px-5">{{$solvedMessageCount}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between px-4 mt-2">
+                        ❌ Not Solved Message
+                        <span class="badge text-bg-warning px-5">{{$noSolvedMessageCount}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+<section class="container ">
     <div class="p-2 mb-3 bg-black text-white">
         <div class="text-center d-none d-sm-inline">
             <div class="row">
+                <div class="col-12 col-sm-auto col-md-2">
+                    <span class="">date</span>
+                </div>
+                <div class="col-12 col-sm-auto col-md-1">
+                    <span class="">Status</span>
+                </div>
                 <div class="col-12 col-sm-auto col-md-2">
                     <span class="">Bank Name</span>
                 </div>
@@ -44,12 +77,6 @@
                 </div>
                 <div class="col-12 col-sm-auto col-md-3">
                     <span class="">Subject</span>
-                </div>
-                <div class="col-12 col-sm-auto col-md-1">
-                    <span class="">Status</span>
-                </div>
-                <div class="col-12 col-sm-auto col-md-2">
-                    <span class="">date</span>
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
                     <span class="">Action</span>
@@ -66,9 +93,19 @@
     @if (!empty($messagesAndBank))
     @foreach ($messagesAndBank as $oneMessage)
     {{-- start message content --}}
-    <div class="p-3 mb-3 bg-white text-dark messageBG rounded">
+    <div class="p-3 mb-3 bg-primary-subtle text-dark messageBG rounded">
         <div class="text-center">
             <div class="row">
+                <div class="col-12 col-sm-auto col-md-2">
+                    <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('Y M d') }}</small></span>
+                </div>
+                <div class="col-12 col-sm-auto col-md-1">
+                    @if ($oneMessage->status == 'solved')
+                        <span class="badge text-bg-success px-4 py-1">{{ $oneMessage->status }}</span>
+                    @else
+                        <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
+                    @endif      
+                </div>
                 <div class="col-12 col-sm-auto col-md-2">
                     <span class=""></span>{{ $oneMessage->bank->bank_name }}                  
                 </div>
@@ -79,19 +116,9 @@
                         <span class="">{{ $oneMessage->subject }}</span>  
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
-                    @if ($oneMessage->status == 'solved')
-                        <span class="badge text-bg-success px-4 py-1">{{ $oneMessage->status }}</span>
-                    @else
-                        <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
-                    @endif      
-                </div>
-                <div class="col-12 col-sm-auto col-md-2">
-                    <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('Y M d') }}</small></span>
-                </div>
-                <div class="col-12 col-sm-auto col-md-1">
                     <!-- Button trigger modal -->
                     <div class="d-grid gap-2 btnShado">
-                        <a href="{{route('superAdmin.one.messages.view', $oneMessage->id)}}" class="btn btn-primary" type="button">View</a>
+                        <a href="{{route('superAdmin.one.messages.view', $oneMessage->id)}}" class="btn btn-primary btn-sm" type="button">View</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
             <div class="p-2 bg-primary-subtle border-bottom border-black border-5 rounded shado">
                
                 <div class="text-center">
-                    <p><i class="bi bi-bank2 fs-2"></i></p>
+                    <p><i class="bi bi-bank2 fs-1"></i></p>
                     <p class="fs-4">All Banks <span class="badge text-bg-light px-5 problemImageMainBG">{{$bankCount}}</span></p>
                 </div>
 

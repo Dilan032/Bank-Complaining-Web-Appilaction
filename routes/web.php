@@ -76,6 +76,9 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
     //for administrator
     Route::delete('/user/delete/{id}', 'deleteUser')->name('user.delete');
+
+    Route::delete('/superAdmin/users/{id}', 'deleteUserForAdmin')->name('user.delete.for.admin');
+
     Route::get('/user/details/{id}', 'oneUserDetailsForAdministrator')->name('user.details');
     Route::put('/user/details/update/{id}', 'UsersUpdate')->name('user.details.update'); 
     //for super admin

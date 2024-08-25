@@ -2,9 +2,12 @@
 @section('SuperAdminContent')
 
 <div class="d-flex justify-content-between mt-3">
-    <p class="fs-3">
-        <span class="badge text-bg-dark">{{$oneMessage->user->user_type}}</span> 
-        {{$oneMessage->user->name}}'s message of {{$oneMessage->bank->bank_name}}
+    <p class="fs-3 fw-bold">
+        {{$oneMessage->bank->bank_name}} Message
+        {{-- <span class="badge text-bg-dark">{{$oneMessage->user->user_type}}</span> 
+        {{$oneMessage->user->name}}'s message of 
+        <span class="bg-dark-subtle p-1 px-2">{{$oneMessage->bank->bank_name}}</span> |
+        <small class="bg-dark-subtle p-1 px-2">{{$oneMessage->bank->bank_address}}</small> --}}
     </p>  
 </div>
 
@@ -40,14 +43,14 @@
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="status" value="solved">
-                <button class="btn btn-success me-4 me-md-2" type="submit" onclick="return confirm('Problem Resolved');">Problem Resolved</button>
+                <button class="btn btn-success me-2 me-md-2 btn-sm" type="submit" onclick="return confirm('A text message will also be sent to the bank');">Problem Resolved</button>
             </form>
 
             <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="status" value="not resolved">
-                <button class="btn btn-warning me-4" type="submit" onclick="return confirm('Problem Not Resolved');">Problem Not Resolved</button> 
+                <button class="btn btn-warning me-4 btn-sm" type="submit" onclick="return confirm('Problem Not Resolved');">Problem Not Resolved</button> 
             </form>
         </div>
 
@@ -57,8 +60,8 @@
         <table class="table table-borderless rounded messageBG">
             <thead>
               <tr>
-                <th colspan="4" class="fs-2">
-                    <span class="fw-normal">Subject:</span> 
+                <th colspan="4" class="fs-4">
+                    {{-- <span class="fw-normal">Subject:</span>  --}}
                     {{-- <span class="badge text-bg-secondary">Urgent</span>  --}}
                     {{$oneMessage->subject}}
                 </th>
@@ -66,7 +69,7 @@
             </thead>
             <tbody class="table-group-divider">
               <tr>
-                <th colspan="4" class="bg-secondary-subtle">
+                <th colspan="4" class="bg-primary-subtle">
                     @if ( $oneMessage->status == 'not resolved')
                         status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> ||
                     @else
@@ -100,7 +103,7 @@
           <!-- Thumbnail Images -->
           <div class="container mt-4 mb-5">
             <p class="fw-bold">Pictures of the problem areas :</p>
-            <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis problemImageMainBG rounded">
+            <div class="p-3 mb-2 bg-primary-subtle text-secondary-emphasis problemImageMainBG rounded">
                 <div class="row d-flex justify-content-center mx-auto">
                     <div class="col-md-2 py-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
@@ -188,5 +191,44 @@
           </div>
       </div>
 </section>
+
+<hr>
+
+{{-- bank Details --}}
+<div class="container">
+    <div class="row mb-5 mt-5 px-3 d-flex justify-content-evenly">
+        <div class="col-md-5">
+            <h4>Bank Details</h4>
+            <p>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Bank Name : <b>{{$oneMessage->bank->bank_name}}</b>
+                </div>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Bank Address : <b>{{$oneMessage->bank->bank_address}}</b>
+                </div>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Bank Contact Number : <b>{{$oneMessage->bank->bank_contact_num}}</b>
+                </div>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Bank Email : <b>{{$oneMessage->bank->email}}</b>
+                </div>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <h4 class="mt-5 mt-md-0">Message Sender Details</h4>
+            <p>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Name : <b>{{$oneMessage->user->name}}</b>
+                </div>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Contact Number : <b> {{$oneMessage->user->user_contact_num}}</b>
+                </div>
+                <div class="p-1 mb-1 bg-white text-dark rounded shado">
+                    Email : <b>{{$oneMessage->user->email}}</b>
+                </div>
+            </p>
+        </div>
+    </div>
+</div>
 
 @endsection

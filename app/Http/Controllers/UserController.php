@@ -42,8 +42,26 @@ class UserController extends Controller
 
     //show seleted user data 
     public function oneUserDetailsForSuperAdmin($id){
+        $userBankId = DB::table('users')
+                    ->where('id', $id)
+                    ->value('bank_id');
+
+        $bankID = DB::table('banks')
+                    ->where('id', $userBankId)->first();
+                
+
+        $adminDetails = DB::table('users')
+                    ->where('bank_id', $userBankId)
+                    ->where('user_type', 'administrator')
+                    ->get();
+
+        $userDetails = DB::table('users')
+                    ->where('bank_id', $userBankId)
+                    ->where('user_type', 'user')
+                    ->get();
+
         $user =User::find($id);
-        return view('superAdmin.editUser', compact('user'));
+        return view('superAdmin.editUser', compact('user', 'adminDetails', 'userDetails'));
     }
 
      //user update Function for administrator 
@@ -141,6 +159,12 @@ class UserController extends Controller
     }//end method
 
     public function deleteUser($id){
+        $user =User::find($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    }
+
+    public function deleteUserForAdmin($id){
         $user =User::find($id);
         $user->delete();
         return redirect()->back()->with('success', 'User deleted successfully.');

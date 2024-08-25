@@ -14,16 +14,66 @@ use Illuminate\Support\Facades\Validator;
 class SuperAdminController extends Controller
 {
     public function superadminDashbord(){
-        return view('superAdmin.superAdminDashbord');
+        $NumMsg = DB::table('messages')
+                            ->count();
+        $NumMsgSolved = DB::table('messages')
+                            ->where('status', 'solved')
+                            ->count();
+        $NumMsgNotSolved = DB::table('messages')
+                            ->where('status', 'not resolved')
+                            ->count();
+
+        $NumBanks = DB::table('banks')
+                            ->count();
+
+        $Numusers = DB::table('users')
+                            ->where('user_type', 'administrator')
+                            ->orWhere('user_type', 'user')
+                            ->count();
+        $NumAdministrators = DB::table('users')
+                            ->where('user_type', 'administrator')
+                            ->count();
+        $NumActiveAdministrators = DB::table('users')
+                            ->where('user_type', 'administrator')
+                            ->where('status', 'active')
+                            ->count();
+        $NumUsers = DB::table('users')
+                            ->where('user_type', 'user')
+                            ->count();
+        $NumActiveUsers = DB::table('users')
+                            ->where('user_type', 'user')
+                            ->where('status', 'active')
+                            ->count();
+
+        $superAdmin = DB::table('users')
+                        ->where('user_type', 'super admin')
+                        ->get();
+
+
+        return view('superAdmin.superAdminDashbord',
+        ['NumMsg' => $NumMsg, 'NumMsgSolved' => $NumMsgSolved, 'NumMsgNotSolved' => $NumMsgNotSolved,
+        'NumBanks' => $NumBanks, 'Numusers'=> $Numusers, 'NumAdministrators' => $NumAdministrators,
+        'NumUsers' => $NumUsers, 'NumActiveAdministrators'=> $NumActiveAdministrators, 'NumActiveUsers'=>$NumActiveUsers,
+        'superAdmin' => $superAdmin]);
     } 
 
     public function ViewMessages(){
+        
+        $solvedMessageCount = Message::where('request', 'accept')
+                            ->where('status', 'solved')
+                            ->count();
+                                    
+        $noSolvedMessageCount = Message::where('status', 'not resolved')
+                            ->where('request', 'accept')
+                            ->count();
+                                    
+
         $messagesAndBank = Message::with('bank')
                     ->where('request' , 'accept')
                     ->orderBy('created_at', 'DESC')
                     ->get();
 
-        return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank]);
+        return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank, 'noSolvedMessageCount'=> $noSolvedMessageCount, 'solvedMessageCount'=> $solvedMessageCount ]);
     } 
 
     public function ViewOneMessages($id){

@@ -2,7 +2,7 @@
     
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            <div class="p-1 bg-primary-subtle text-primary-emphasis border-bottom border-black border-3 rounded">
+            <div class="p-1 bg-primary-subtle text-primary-emphasis border-bottom border-black border-1 rounded">
                 <p class="fs-4 text-center">
                     All Bank Employess 
                     <span class="badge text-bg-light px-5 problemImageMainBG">{{$activeAdministratorCount + $inactiveAdministratorCount + $activeUserCount + $inactiveUserCount}}</span>
@@ -12,7 +12,7 @@
     </div>
     
 
-    <div class="row mt-3 mb-2 d-flex justify-content-center">
+    <div class="row mt-2 mb-2 d-flex justify-content-center">
         <div class="col-md-4">
             <div class="p-2 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded shado">
                 

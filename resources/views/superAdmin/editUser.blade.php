@@ -1,16 +1,20 @@
 @extends('layouts.superAdminLayout')
 @section('SuperAdminContent')
 
-    <span class="fs-1">Edit User</span> <br>
+    <span class="fs-1">Edit Users</span> <br>
     <div class="d-flex justify-content-start">
-        <div class="badge text-bg-dark p-2 px-4"> {{ $user->user_type }} {{ $user->name }} </div>
-        <div class="mx-1">
-            @if ($user->status == "active")
-                <span class="badge text-bg-success fs-6 px-4">{{ $user->status }}</span>
-            @else
-                <span class="badge text-bg-secondary fs-6 px-4">{{ $user->status }}</span>
-            @endif 
-        </div>
+        @if($user)
+            <div class="badge text-bg-dark fs-6 px-4"> {{ $user->user_type }} {{ $user->name }} </div>
+            <div class="mx-1">
+                @if ($user->status == "active")
+                    <span class="badge text-bg-success fs-6 px-4">{{ $user->status }}</span>
+                @else
+                    <span class="badge text-bg-secondary fs-6 px-4">{{ $user->status }}</span>
+                @endif 
+            </div>
+        @else
+            <p>👨‍💼</p>
+        @endif
     </div>
 
     <hr class="me-3">
@@ -39,9 +43,9 @@
     </script>
     @endif
 
-    <div class="row px-4 justify-content-center mb-5">
-        <div class="col-md-6 bg-white text-dark userBgShado p-4">
-            {{-- @if($user) --}}
+    <div class="row px-4 justify-content-around mb-5">
+        <div class="col-md-6 bg-primary-subtle text-dark rounded p-4 messageBG">
+            @if($user)
             <form action="{{ route('user.details.update', $user->id) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -67,21 +71,67 @@
                 </div>
 
                 <label for="status" class="form-label fw-bold">status</label>
-                <select name="status" class="form-select mb-3 fw-bold bg-primary bg-opacity-25" aria-label="Default select example">
+                <select name="status" class="form-select mb-3 fw-bold bg-success bg-opacity-50" aria-label="Default select example">
                     <option value="active" {{ old('status', $user->status) == 'active' ? 'selected' : '' }}>active</option>
                     <option value="inactive" {{ old('status', $user->status) == 'inactive' ? 'selected' : '' }}>inactive</option>  
                 </select>
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="submit">Update</button>
-                  </div>
+            <div class="d-flex justify-content-end">
+                <section>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary btn-sm me-md-2 m-1 px-3" type="submit">Update</button>
+                    </div>
             </form>
-        {{-- @else
-            <p>User details could not be found.</p>
-        @endif --}}
-    </div>
+                </section>
+    
+                {{-- <section>
+                    <form action="{{ route('user.delete.for.admin', $user->id ) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-danger btn-sm m-1 px-3" onclick="return confirm('Are you sure you want to delete this user?');">
+                                Remove
+                            </button>
+                        </div>
+                    </form>
+                </section> --}}
+                @else
+                    <p class="text-center text-muted">No user data available.</p>
+                @endif
+            </div>
 
     </div>
+
+    {{-- new colum --}}
+    <div class="col-md-5 mt-1 bg-white text-dark userBgShado rounded p-4 allUserListBG">
+        <p class="fs-5 fw-bold">All users</p>
+        <div class="overflow-y-scroll" style="height: 415px;">
+            @foreach ($adminDetails as $admins)
+                <a href="{{ route('superAdmin.user.details',$admins->id) }}">
+                    <div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis userList rounded">
+                        <div class="text-start">
+                            <span class="badge text-bg-{{ $admins->status == 'active' ? 'success' : 'secondary' }}">{{ $admins->status }}</span> 
+                            <span class="badge text-bg-dark">{{ $admins->user_type }}</span> <br>
+                            {{ $admins->name }} <br>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+            @foreach ($userDetails as $user)
+                <a href="{{ route('superAdmin.user.details',$user->id) }}">
+                    <div class="p-3 mb-2 bg-info-subtle text-primary-emphasis userList rounded">
+                        <div class="text-start">
+                            <span class="badge text-bg-{{ $user->status == 'active' ? 'success' : 'secondary' }}">{{ $user->status }}</span> 
+                            <span class="badge text-bg-dark">{{ $user->user_type }}</span> <br>
+                            {{ $user->name }} <br>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+
+</div>
 
     
 
