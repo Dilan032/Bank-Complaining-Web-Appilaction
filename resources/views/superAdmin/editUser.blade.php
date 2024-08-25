@@ -110,7 +110,7 @@
                 <a href="{{ route('superAdmin.user.details',$admins->id) }}">
                     <div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis userList rounded">
                         <div class="text-start">
-                            <span class="badge text-bg-{{ $user->status == 'active' ? 'success' : 'secondary' }}">{{ $admins->status }}</span> 
+                            <span class="badge text-bg-{{ $admins->status == 'active' ? 'success' : 'secondary' }}">{{ $admins->status }}</span> 
                             <span class="badge text-bg-dark">{{ $admins->user_type }}</span> <br>
                             {{ $admins->name }} <br>
                         </div>

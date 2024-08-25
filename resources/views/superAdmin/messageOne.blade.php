@@ -197,7 +197,7 @@
 {{-- bank Details --}}
 <div class="container">
     <div class="row mb-5 mt-5 px-3 d-flex justify-content-evenly">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <h4>Bank Details</h4>
             <p>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
@@ -214,7 +214,7 @@
                 </div>
             </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <h4 class="mt-5 mt-md-0">Message Sender Details</h4>
             <p>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
