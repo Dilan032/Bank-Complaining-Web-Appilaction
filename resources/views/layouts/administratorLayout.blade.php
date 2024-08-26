@@ -26,7 +26,7 @@
         <div class="col-md-2">
             @include('components.administrator.sideMenu')
         </div>
-        <div class="col-md-10 p-4">
+        <div class="col-md-10 px-4">
             @yield('administratorContent')
         </div>
    </div>
