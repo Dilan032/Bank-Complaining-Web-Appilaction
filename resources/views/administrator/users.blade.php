@@ -1,7 +1,7 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-<span class="fs-1">users</span>
+<span class="fs-1 ms-3">users</span>
 <hr class="me-3">
 
 

@@ -16,15 +16,18 @@
 
     {{-- for sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-{{-- <style>.row {
-    margin-right: 0;
-    margin-left: 0;
-}
-.col-md-2, .col-md-10 {
-    padding-right: 0;
-    padding-left: 0;
-}
-</style> --}}
+
+    <style>
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .col-md-2, .col-md-10 {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    </style>
+
     <title>Document</title>
 </head>
 <body class="bg-light text-dark">

@@ -1,13 +1,13 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-<span class="fs-1">Dashbord</span>
+<span class="fs-1 ms-3">Dashbord</span>
 
 <hr class="me-3">
 
 
 
-<div class="row">
+<div class="row ps-2">
     <div class="col-md-8">
         <div class="p-1 border-bottom border-black border-5 rounded">
             <p class="fs-4"><b>Bank details</b></p>

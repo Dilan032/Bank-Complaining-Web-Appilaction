@@ -1,9 +1,9 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-    <span class="fs-1">Edit User</span> <br>
+    <span class="fs-1 ms-3">Edit User</span> <br>
     <div class="d-flex justify-content-start">
-        <div class="badge text-bg-dark p-2 px-4"> {{ $user->user_type }} {{ $user->name }} </div>
+        <div class="badge text-bg-dark p-2 px-4 ms-3"> {{ $user->user_type }} {{ $user->name }} </div>
         <div class="mx-1">
             @if ($user->status == "active")
                 <span class="badge text-bg-success fs-6 px-4">{{ $user->status }}</span>

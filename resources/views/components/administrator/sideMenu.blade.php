@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
     <div class="row">
         <div class="col-auto min-vh-100 bg-dark position-fixed z-3 d-none d-sm-inline">
             <div class="pt-4 pb-2 px-2">
@@ -45,7 +45,7 @@
 
         </div>
     </div>
-</div>
+
 
 
 

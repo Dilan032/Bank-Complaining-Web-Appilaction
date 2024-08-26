@@ -18,6 +18,17 @@
     {{-- for sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <style>
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .col-md-2, .col-md-10 {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    </style>
+
     <title>administrator</title>
 </head>
 <body class="bg-light text-dark">
@@ -26,7 +37,7 @@
         <div class="col-md-2">
             @include('components.administrator.sideMenu')
         </div>
-        <div class="col-md-10 px-4">
+        <div class="col-md-10">
             @yield('administratorContent')
         </div>
    </div>
