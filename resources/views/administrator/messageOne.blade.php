@@ -55,9 +55,9 @@
         
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
             @if ($oneMessage->request == 'accept')
-                <p class="p-2 bg-success text-white border border-info border-start-0 rounded-start">This user's message was sent to Nanosoft Solutions (Pvt)Ltd</p>
+                <p class="p-2 text-success fw-bold border border-success border-start-4 rounded-start">This user's message was sent to Nanosoft Solutions (Pvt)Ltd</p>
             @else
-                <p class="p-2 bg-danger text-white border border-info border-start-0 rounded-start">This user's message has been ignored</p>
+                <p class="p-2 text-danger fw-bold border border-danger border-start-4 rounded-start">This user's message has been ignored</p>
             @endif
             
         </div>
@@ -111,21 +111,21 @@
           <!-- Thumbnail Images -->
           <div class="container mt-4 mb-5">
             <p class="fw-bold">Pictures of the problem areas :</p>
-            <div class="p-3 mb-2 bg-primary-subtle text-dark problemImageMainBG rounded">
+            <div class="p-1 mb-2 bg-primary-subtle text-dark problemImageMainBG rounded">
                 <div class="row d-flex justify-content-center mx-auto">
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal2">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal3">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal4">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal5">
                     </div>
                 </div>

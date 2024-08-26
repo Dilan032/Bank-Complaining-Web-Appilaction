@@ -79,7 +79,7 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr class="text-start">
-                    <th scope="col">Uid</th>
+                    <th scope="col">id</th>
                     <th scope="col" style="width: 25%">Name</th>
                     <th scope="col" style="width: 30%">Email</th>
                     <th scope="col">C. Number</th>

@@ -35,7 +35,7 @@
         @endif
 
 <div class="container">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-4">
+    <div class="d-grid gap-2 justify-content-end mt-3 mb-4 me-sm-3">
         <button class="btn btn-primary mt-3 btnShado" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Write a message</button>
     </div>
         
