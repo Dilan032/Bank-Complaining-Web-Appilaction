@@ -9,7 +9,7 @@
 
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         
 
         {{-- start new row --}}
@@ -108,7 +108,7 @@
 
     </div>
 
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
         <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fw-bold">Bank Complaning Web Application</p>
         <div class="p-1 mt-3 border border-primary rounded problemImageMainBG btnShado">
@@ -118,7 +118,7 @@
                 <br><br>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 {{-- first row end --}}
