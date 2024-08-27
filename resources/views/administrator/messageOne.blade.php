@@ -79,10 +79,14 @@
               <tr>
                 <th colspan="4" class="bg-primary-subtle">
                     @if ( $oneMessage->status == 'not resolved')
-                        status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> ||
+                        status <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> || 
+                    @elseif ( $oneMessage->status == 'solved')
+                        status  <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span> ||
+                    @elseif ($oneMessage->status == 'Processing')
+                        status  <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span> ||
                     @else
-                        status  <span class="badge text-bg-success py-2">{{$oneMessage->status}}</span> ||
-                    @endif
+                        status <span class="badge text-bg-info text-dark py-2 px-3">{{$oneMessage->status}}</span>  ||
+                    @endif 
                   
                     @if ($oneMessage->request == 'pending')
                         request  <span class="badge text-bg-warning py-2">{{$oneMessage->request}}</span>
