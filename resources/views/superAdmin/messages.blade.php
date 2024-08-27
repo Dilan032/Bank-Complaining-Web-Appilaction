@@ -125,7 +125,7 @@
                     @elseif ($oneMessage->status == 'Processing')
                         <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                     @else
-                        <span class="badge text-bg-info text-white py-2 px-4">{{$oneMessage->status}}</span>
+                        <span class="badge text-bg-info text-dark py-2 px-4">{{$oneMessage->status}}</span>
                     @endif     
                 </div>
                 <div class="col-12 col-sm-auto col-md-2">
