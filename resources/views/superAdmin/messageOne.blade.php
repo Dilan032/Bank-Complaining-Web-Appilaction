@@ -47,7 +47,7 @@
         @csrf
         @method('PUT')
         <input type="hidden" name="status" value="solved">
-        <button type="submit" class="btn btn-success" onclick="return confirm('A text message will also be sent to the bank');">Solved</button>
+        <button type="submit" class="btn btn-success px-4" onclick="return confirm('A text message will also be sent to the bank');">Solved</button>
     </form>
 
     <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,12 +66,12 @@
             <input type="hidden" name="status" value="Viewed">
             <li><button class="dropdown-item" type="submit" href="#">Viewed</button></li>
         </form>
-        <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
+        {{-- <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
             @csrf
             @method('PUT')
             <input type="hidden" name="status" value="not resolved">
             <li><button class="dropdown-item" type="submit" href="#">Not Solved</button></li>
-        </form>
+        </form> --}}
     </ul>
   </div>
         
@@ -122,19 +122,19 @@
             <p class="fw-bold">Pictures of the problem areas :</p>
             <div class="p-3 mb-2 bg-primary-subtle text-secondary-emphasis problemImageMainBG rounded">
                 <div class="row d-flex justify-content-center mx-auto">
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_1) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal1">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_2) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal2">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_3) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal3">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_4) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal4">
                     </div>
-                    <div class="col-md-2 py-2">
+                    <div class="col-md-2 p-2">
                         <img src="{{ asset('images/MessageWithProblem/'.$oneMessage-> img_5) }}" alt="empty" class="img-thumbnail problemImage ionHover" data-toggle="modal" data-target="#imageModal5">
                     </div>
                 </div>

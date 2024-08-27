@@ -48,10 +48,14 @@
                 <span class="">{{ $msg->subject }}</span>  
             </div>
             <div class="col-12 col-sm-auto col-md-2">
-                @if ( $msg->status == "solved")
-                    <span class="badge text-bg-success p-1 px-4">{{ $msg->status }}</span> 
+                @if ( $msg->status == 'not resolved')
+                    <span class="badge text-bg-warning py-2">{{$msg->status}}</span>
+                @elseif ( $msg->status == 'solved')
+                    <span class="badge text-bg-success py-2 px-4">{{$msg->status}}</span>
+                @elseif ($msg->status == 'Processing')
+                    <span class="badge text-bg-dark py-2 px-2">{{$msg->status}}</span>
                 @else
-                    <span class="badge text-bg-warning p-1 px-2">{{ $msg->status }}</span> 
+                    <span class="badge text-bg-info text-dark py-2 px-4">{{$msg->status}}</span>
                 @endif     
             </div>
             <div class="col-12 col-sm-auto col-md-1">

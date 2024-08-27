@@ -13,8 +13,6 @@
         <thead>
           <tr>
             <th colspan="4" class="fs-4 fs-sm-2">
-                {{-- <span class="fw-normal">Subject:</span>  --}}
-                {{-- <span class="badge text-bg-secondary">Urgent</span>  --}}
                 {{$oneMessage->subject}}
             </th>
           </tr>
@@ -24,20 +22,24 @@
             <th colspan="4" class="bg-primary-subtle text-black">
               status  
 
-                @if ( $oneMessage->status == "solved")
-                    <span class="badge text-bg-success p-1 px-4">{{ $oneMessage->status }}</span> 
-                @else
-                    <span class="badge text-bg-warning p-1 px-2">{{ $oneMessage->status }}</span> 
-                @endif 
+            @if ( $oneMessage->status == 'not resolved')
+                <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+            @elseif ( $oneMessage->status == 'solved')
+                <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+            @elseif ($oneMessage->status == 'Processing')
+                <span class="badge text-bg-dark py-2 px-2">{{$oneMessage->status}}</span>
+            @else
+                <span class="badge text-bg-info text-dark py-2 px-4">{{$oneMessage->status}}</span>
+            @endif  
              
             || request 
 
                 @if ($oneMessage->request == "accept")
-                    <span class="badge text-bg-success p-1 px-3">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-success py-2 px-3">{{ $oneMessage->request }}</span>
                 @elseif ($oneMessage->request == "reject")
-                    <span class="badge text-bg-danger p-1 px-3">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-danger py-2 px-3">{{ $oneMessage->request }}</span>
                 @else
-                    <span class="badge text-bg-warning p-1 px-2">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-warning py-2 px-2">{{ $oneMessage->request }}</span>
                 @endif 
             </th>
           </tr>
