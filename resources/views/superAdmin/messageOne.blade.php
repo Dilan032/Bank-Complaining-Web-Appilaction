@@ -63,8 +63,8 @@
         <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
             @csrf
             @method('PUT')
-            <input type="hidden" name="status" value="Seen">
-            <li><button class="dropdown-item" type="submit" href="#">Seen</button></li>
+            <input type="hidden" name="status" value="Viewed">
+            <li><button class="dropdown-item" type="submit" href="#">Viewed</button></li>
         </form>
         <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
             @csrf
@@ -98,7 +98,7 @@
                     @elseif ($oneMessage->status == 'Processing')
                         status  <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                     @else
-                        status  <span class="badge text-bg-info text-white py-2 px-4">{{$oneMessage->status}}</span>
+                        status  <span class="badge text-bg-info text-dark py-2 px-4">{{$oneMessage->status}}</span>
                     @endif
                   
                 </th>

@@ -41,7 +41,7 @@
                         </div>
                         <div class="d-flex justify-content-between px-4 mt-2">
                             👁 Viewed 
-                            <span class="badge text-bg-info px-5">{{ $NumMsgSeen }}</span>
+                            <span class="badge text-bg-info px-5">{{ $NumMsgViewed }}</span>
                         </div>
                     </div>
                 </div>

@@ -39,7 +39,7 @@
                
                 <div class="text-center">
                     <p><i class="bi bi-envelope-check fs-1"></i></p>
-                    <p class="fs-4">All Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{$solvedMessageCount + $noSolvedMessageCount + $seenMessageCount + $processingMessageCount}}</span></p>
+                    <p class="fs-4">All Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{$solvedMessageCount + $noSolvedMessageCount + $ViewedMessageCount + $processingMessageCount}}</span></p>
                 </div>
 
                 <div class="row d-flex justify-content-center">
@@ -59,7 +59,7 @@
                         <div class="p-3 bg-white text-dark  rounded">
                             <div class="d-flex justify-content-between px-4 mt-2">
                                 👁 Viewed
-                                <span class="badge text-bg-info px-5">{{$seenMessageCount}}</span>
+                                <span class="badge text-bg-info px-5">{{$ViewedMessageCount}}</span>
                             </div>
                             <div class="d-flex justify-content-between px-4 mt-2">
                                 ⚙ processing

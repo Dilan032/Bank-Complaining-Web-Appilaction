@@ -25,8 +25,8 @@ class SuperAdminController extends Controller
         $NumMsgProcessing = DB::table('messages')
                             ->where('status', 'Processing')
                             ->count();
-        $NumMsgSeen = DB::table('messages')
-                            ->where('status', 'Seen')
+        $NumMsgViewed = DB::table('messages')
+                            ->where('status', 'Viewed')
                             ->count();
 
         $NumBanks = DB::table('banks')
@@ -60,7 +60,7 @@ class SuperAdminController extends Controller
         ['NumMsg' => $NumMsg, 'NumMsgSolved' => $NumMsgSolved, 'NumMsgNotSolved' => $NumMsgNotSolved,
         'NumBanks' => $NumBanks, 'Numusers'=> $Numusers, 'NumAdministrators' => $NumAdministrators,
         'NumUsers' => $NumUsers, 'NumActiveAdministrators'=> $NumActiveAdministrators, 'NumActiveUsers'=>$NumActiveUsers,
-        'superAdmin' => $superAdmin, 'NumMsgProcessing' => $NumMsgProcessing, 'NumMsgSeen' => $NumMsgSeen]);
+        'superAdmin' => $superAdmin, 'NumMsgProcessing' => $NumMsgProcessing, 'NumMsgViewed' => $NumMsgViewed]);
     } 
 
     public function ViewMessages(){
@@ -73,7 +73,7 @@ class SuperAdminController extends Controller
                             ->where('request', 'accept')
                             ->count();
 
-        $seenMessageCount = Message::where('status', 'Seen')
+        $ViewedMessageCount = Message::where('status', 'Viewed')
                             ->where('request', 'accept')
                             ->count();
 
@@ -89,7 +89,7 @@ class SuperAdminController extends Controller
 
         return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank, 
         'noSolvedMessageCount'=> $noSolvedMessageCount, 'solvedMessageCount'=> $solvedMessageCount,
-        'seenMessageCount' => $seenMessageCount, 'processingMessageCount' => $processingMessageCount]);
+        'ViewedMessageCount' => $ViewedMessageCount, 'processingMessageCount' => $processingMessageCount]);
     } 
 
     public function ViewOneMessages($id){
