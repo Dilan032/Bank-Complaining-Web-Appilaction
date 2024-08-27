@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('bank_id');
             $table->string('subject');
             $table->text('message');
-            $table->enum('status',['solved', 'not resolved'])->default('not resolved');
+            $table->enum('status',['solved', 'not resolved', 'Processing', 'Seen'])->default('not resolved');
             $table->enum('request',['pending', 'accept', 'reject'])->default('pending');
             $table->string('img_1')->nullable();
             $table->string('img_2')->nullable();

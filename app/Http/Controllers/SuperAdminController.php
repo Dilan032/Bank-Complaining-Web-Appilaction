@@ -22,6 +22,12 @@ class SuperAdminController extends Controller
         $NumMsgNotSolved = DB::table('messages')
                             ->where('status', 'not resolved')
                             ->count();
+        $NumMsgProcessing = DB::table('messages')
+                            ->where('status', 'Processing')
+                            ->count();
+        $NumMsgSeen = DB::table('messages')
+                            ->where('status', 'Seen')
+                            ->count();
 
         $NumBanks = DB::table('banks')
                             ->count();
@@ -54,7 +60,7 @@ class SuperAdminController extends Controller
         ['NumMsg' => $NumMsg, 'NumMsgSolved' => $NumMsgSolved, 'NumMsgNotSolved' => $NumMsgNotSolved,
         'NumBanks' => $NumBanks, 'Numusers'=> $Numusers, 'NumAdministrators' => $NumAdministrators,
         'NumUsers' => $NumUsers, 'NumActiveAdministrators'=> $NumActiveAdministrators, 'NumActiveUsers'=>$NumActiveUsers,
-        'superAdmin' => $superAdmin]);
+        'superAdmin' => $superAdmin, 'NumMsgProcessing' => $NumMsgProcessing, 'NumMsgSeen' => $NumMsgSeen]);
     } 
 
     public function ViewMessages(){
@@ -66,6 +72,14 @@ class SuperAdminController extends Controller
         $noSolvedMessageCount = Message::where('status', 'not resolved')
                             ->where('request', 'accept')
                             ->count();
+
+        $seenMessageCount = Message::where('status', 'Seen')
+                            ->where('request', 'accept')
+                            ->count();
+
+        $processingMessageCount = Message::where('status', 'Processing')
+                            ->where('request', 'accept')
+                            ->count();
                                     
 
         $messagesAndBank = Message::with('bank')
@@ -73,7 +87,9 @@ class SuperAdminController extends Controller
                     ->orderBy('created_at', 'DESC')
                     ->get();
 
-        return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank, 'noSolvedMessageCount'=> $noSolvedMessageCount, 'solvedMessageCount'=> $solvedMessageCount ]);
+        return view('superAdmin.messages',['messagesAndBank'=> $messagesAndBank, 
+        'noSolvedMessageCount'=> $noSolvedMessageCount, 'solvedMessageCount'=> $solvedMessageCount,
+        'seenMessageCount' => $seenMessageCount, 'processingMessageCount' => $processingMessageCount]);
     } 
 
     public function ViewOneMessages($id){

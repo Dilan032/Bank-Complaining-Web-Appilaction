@@ -14,45 +14,68 @@
 <hr class="me-3">
 
 
-    <!-- Display validation errors -->
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <script>
-                Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "{{ $error }}",
-                });
-            </script>
-        @endforeach
-    @endif
+<!-- Display validation errors -->
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    <script>
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "{{ $error }}",
+        });
+    </script>
+@endforeach
+@endif
 
-    @if (session('success'))
-        <script>
-            Swal.fire({
-            icon: "success",
-            title: "{{ session('success') }}",
-            showConfirmButton: false,
-            timer: 3000
-            });
-        </script>
-    @endif
+@if (session('success'))
+<script>
+    Swal.fire({
+    icon: "success",
+    title: "{{ session('success') }}",
+    showConfirmButton: false,
+    timer: 1000
+    });
+</script>
+@endif
 
-        <div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-4">
-            <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="status" value="solved">
-                <button class="btn btn-success me-2 me-md-2 btn-sm" type="submit" onclick="return confirm('A text message will also be sent to the bank');">Problem Resolved</button>
-            </form>
+<div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-4">
 
-            <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="status" value="not resolved">
-                <button class="btn btn-warning me-4 btn-sm" type="submit" onclick="return confirm('Problem Not Resolved');">Problem Not Resolved</button> 
-            </form>
-        </div>
+
+<!-- Example split danger button -->
+<div class="btn-group me-5">
+    <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="status" value="solved">
+        <button type="submit" class="btn btn-success" onclick="return confirm('A text message will also be sent to the bank');">Solved</button>
+    </form>
+
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+        <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="status" value="Processing">
+            <li><button class="dropdown-item" type="submit" href="#">Processing</button></li>
+        </form>
+        <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="status" value="Seen">
+            <li><button class="dropdown-item" type="submit" href="#">Seen</button></li>
+        </form>
+        <form action="{{ route('superAdmin.problem.resolved.or.not', $oneMessage->id ) }}" method="post">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="status" value="not resolved">
+            <li><button class="dropdown-item" type="submit" href="#">Not Solved</button></li>
+        </form>
+    </ul>
+  </div>
+        
+</div>
 
       
 <section class="container">
@@ -61,8 +84,6 @@
             <thead>
               <tr>
                 <th colspan="4" class="fs-4">
-                    {{-- <span class="fw-normal">Subject:</span>  --}}
-                    {{-- <span class="badge text-bg-secondary">Urgent</span>  --}}
                     {{$oneMessage->subject}}
                 </th>
               </tr>
@@ -71,17 +92,13 @@
               <tr>
                 <th colspan="4" class="bg-primary-subtle">
                     @if ( $oneMessage->status == 'not resolved')
-                        status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> ||
+                        status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+                    @elseif ( $oneMessage->status == 'solved')
+                        status  <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+                    @elseif ($oneMessage->status == 'Processing')
+                        status  <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                     @else
-                        status  <span class="badge text-bg-success py-2">{{$oneMessage->status}}</span> ||
-                    @endif
-                  
-                    @if ($oneMessage->request == 'pending')
-                        request  <span class="badge text-bg-warning py-2">{{$oneMessage->request}}</span>
-                    @elseif ( $oneMessage->request == 'accept')
-                        request  <span class="badge text-bg-success py-2">{{$oneMessage->request}}</span>
-                    @elseif ( $oneMessage->request == 'reject')
-                        request  <span class="badge text-bg-danger py-2">{{$oneMessage->request}}</span>
+                        status  <span class="badge text-bg-info text-white py-2 px-4">{{$oneMessage->status}}</span>
                     @endif
                   
                 </th>

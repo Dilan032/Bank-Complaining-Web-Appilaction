@@ -34,24 +34,42 @@
 
 
     <div class="row mt-3 mb-4 d-flex justify-content-center">
-        <div class="col-md-5">
-            <div class="p-2 bg-primary-subtle border-bottom border-black border-5 rounded shado">
+        <div class="col-md-10">
+            <div class="p-2 bg-warning-subtle border-bottom border-black border-5 rounded shado">
                
                 <div class="text-center">
                     <p><i class="bi bi-envelope-check fs-1"></i></p>
-                    <p class="fs-4">All Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{$solvedMessageCount + $noSolvedMessageCount}}</span></p>
+                    <p class="fs-4">All Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{$solvedMessageCount + $noSolvedMessageCount + $seenMessageCount + $processingMessageCount}}</span></p>
                 </div>
 
-                <div class="p-3 bg-white text-dark  rounded">
-                    <div class="d-flex justify-content-between px-4 mt-2">
-                        ✔ Solved Message
-                        <span class="badge text-bg-success px-5">{{$solvedMessageCount}}</span>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-5">
+                        <div class="p-3 bg-white text-dark  rounded">
+                            <div class="d-flex justify-content-between px-4 mt-2">
+                                ✔ Solved
+                                <span class="badge text-bg-success px-5">{{$solvedMessageCount}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between px-4 mt-2">
+                                ❌ Not Solved
+                                <span class="badge text-bg-warning px-5">{{$noSolvedMessageCount}}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between px-4 mt-2">
-                        ❌ Not Solved Message
-                        <span class="badge text-bg-warning px-5">{{$noSolvedMessageCount}}</span>
+                    <div class="col-md-5">
+                        <div class="p-3 bg-white text-dark  rounded">
+                            <div class="d-flex justify-content-between px-4 mt-2">
+                                👁 Viewed
+                                <span class="badge text-bg-info px-5">{{$seenMessageCount}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between px-4 mt-2">
+                                ⚙ processing
+                                <span class="badge text-bg-dark px-5">{{$processingMessageCount}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                
 
             </div>
         </div>
@@ -100,11 +118,15 @@
                     <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('Y M d') }}</small></span>
                 </div>
                 <div class="col-12 col-sm-auto col-md-1">
-                    @if ($oneMessage->status == 'solved')
-                        <span class="badge text-bg-success px-4 py-1">{{ $oneMessage->status }}</span>
+                    @if ( $oneMessage->status == 'not resolved')
+                        <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+                    @elseif ( $oneMessage->status == 'solved')
+                        <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+                    @elseif ($oneMessage->status == 'Processing')
+                        <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                     @else
-                        <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
-                    @endif      
+                        <span class="badge text-bg-info text-white py-2 px-4">{{$oneMessage->status}}</span>
+                    @endif     
                 </div>
                 <div class="col-12 col-sm-auto col-md-2">
                     <span class=""></span>{{ $oneMessage->bank->bank_name }}                  
