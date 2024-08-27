@@ -20,6 +20,10 @@ class AdministratorController extends Controller
         if (Auth::check()) {
             $bankId = Auth::user()->bank_id;
             $userName = Auth::user()->name;
+        } else {
+            // Redirect to the login page or show an error
+            return redirect()->route('login');
+        }
 
             $bank = DB::table('banks')
                     ->where('id', $bankId)
@@ -86,6 +90,14 @@ class AdministratorController extends Controller
                             ->where('status', 'not resolved')
                             ->where('request', 'accept')
                             ->count();
+            $NumProcessing = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('status', 'Processing')
+                            ->count();
+            $NumViewed = DB::table('messages')
+                            ->where('bank_id', $bankId)
+                            ->where('status', 'Viewed')
+                            ->count();
 
             $superAdminDetails = DB::table('users')
                     ->where('user_type', 'super admin')
@@ -97,11 +109,8 @@ class AdministratorController extends Controller
             'NumUsers' => $NumUsers, 'NumActiveUsers' => $NumActiveUsers, 'NumInactiveUsers' => $NumInactiveUsers,
             'NumActiveAdministrators' => $NumActiveAdministrators, 'NumInactiveAdministrators' => $NumInactiveAdministrators,
             'NumMessages' => $NumMessages, 'NumPendingMsg' => $NumPendingMsg, 'NumAcceptMsg' => $NumAcceptMsg, 'NumRejectMsg' => $NumRejectMsg,
-            'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg, 'superAdminDetails'=> $superAdminDetails]);
-        } else {
-            // Redirect to the login page or show an error
-            return redirect()->route('login');
-        }
+            'NumSolvedMsg' => $NumSolvedMsg, 'NumNotSolvedMsg' => $NumNotSolvedMsg, 'superAdminDetails'=> $superAdminDetails, 'NumProcessing'=>$NumProcessing, 'NumViewed'=>$NumViewed]);
+        
     } 
 
     public function messages(){

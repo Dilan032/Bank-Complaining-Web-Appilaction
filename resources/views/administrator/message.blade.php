@@ -96,11 +96,15 @@
                         <span class="">{{ $oneMessage->subject }}</span>  
                     </div>
                     <div class="col-12 col-sm-auto col-md-2">
-                        @if ($oneMessage->status == 'solved')
-                            <span class="badge text-bg-success py-1 px-4">{{ $oneMessage->status }}</span>
+                        @if ( $oneMessage->status == 'not resolved')
+                            <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+                        @elseif ( $oneMessage->status == 'solved')
+                            <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+                        @elseif ($oneMessage->status == 'Processing')
+                            <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                         @else
-                            <span class="badge text-bg-warning py-1">{{ $oneMessage->status }}</span>
-                        @endif      
+                            <span class="badge text-bg-info text-dark py-2 px-3">{{$oneMessage->status}}</span>
+                        @endif    
                     </div>
                     <div class="col-12 col-sm-auto col-md-1">
                         <!-- Button trigger modal -->

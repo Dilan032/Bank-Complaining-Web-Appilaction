@@ -27,7 +27,7 @@
                 <div class="p-2 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
                     
                     <p class="fs-4">Administrators <span class="badge text-bg-light px-5 problemImageMainBG">{{ $NumAdministrators }}</span></p>
-                    <div class="p-3 bg-white text-dark  rounded btnShado">
+                    <div class="fs-5 p-3 bg-white text-dark  rounded btnShado">
                         <div class="d-flex justify-content-between px-4 mt-2">
                             🙋‍♂️Active
                             <span class="badge text-bg-primary px-5">{{ $NumActiveAdministrators }}</span>
@@ -44,7 +44,7 @@
                 <div class="p-2 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
                     
                     <p class="fs-4">Users <span class="badge text-bg-light px-5 problemImageMainBG">{{  $NumUsers }}</span></p>
-                    <div class="p-3 bg-white text-dark  rounded btnShado">
+                    <div class="fs-5 p-3 bg-white text-dark  rounded btnShado">
                         <div class="d-flex justify-content-between px-4 mt-2">
                             🙋‍♂️Active
                             <span class="badge text-bg-primary px-5">{{ $NumActiveUsers }}</span>
@@ -67,15 +67,15 @@
                 
                 <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
                     <b>Administrator Request</b> 
-                    <div class="d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
                         ⏳Pending
                         <span class="badge text-bg-warning px-5">{{ $NumPendingMsg }}</span>
                     </div>
-                    <div class="d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
                         ✔Accept
                         <span class="badge text-bg-success px-5">{{ $NumAcceptMsg }}</span>
                     </div>
-                    <div class="d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
                         ❌Rejected
                         <span class="badge text-bg-danger px-5 mb-2">{{ $NumRejectMsg }}</span>
                     </div>
@@ -83,13 +83,21 @@
 
                 <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
                     <b>Nanosoft Solutions (Pvt)Ltd Status</b> 
-                    <div class="d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
                         ✔solved
                         <span class="badge text-bg-success px-5">{{ $NumSolvedMsg }}</span>
                     </div>
-                    <div class="d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
                         ❌not solved
                         <span class="badge text-bg-warning px-5">{{ $NumNotSolvedMsg }}</span>
+                    </div>
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                        ⚙ Processing
+                        <span class="badge text-bg-dark px-5">{{ $NumProcessing }}</span>
+                    </div>
+                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                        👁 Viewed 
+                        <span class="badge text-bg-info px-5">{{ $NumViewed }}</span>
                     </div>
                 </div>
 
@@ -105,7 +113,7 @@
                 <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fs-5 fw-bold">Nanosoft Solutions <small>(Pvt) Ltd</small></p>
 
-                <div class="overflow-y-scroll" style="height: 415px;">
+                <div class="overflow-y-scroll" style="height: 440px;">
                     
                 <p>
                     අප සමගම පරිගණක මෘදුකාංග නිර්මාණය කිරීමෙහිලා විශේෂිත වූ ආයතනයකි. 
@@ -127,7 +135,7 @@
 
 <p class="text-center bg-primary-subtle p-1 fw-bold">Contact Details</p>
 <pre>
-<b>Tp</b>
+<b>Contact Number</b>
 @foreach ($superAdminDetails as $superAdmin )
 {{ $superAdmin->user_contact_num }}
 @endforeach
