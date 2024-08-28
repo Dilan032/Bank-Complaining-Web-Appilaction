@@ -40,7 +40,8 @@
         }
     </style>
 
-    <title>Document</title>
+    <link rel="shortcut icon" href="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" type="image/x-icon">
+    <title>Nanosoft Solutions</title>
 </head>
 <body class="bg-light text-dark">
 

@@ -16,8 +16,8 @@
     {{-- for sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-    <title>User</title>
+    <link rel="shortcut icon" href="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" type="image/x-icon">
+    <title>Nanosoft Solutions</title>
 </head>
 <body class="bg-light text-dark">
 
