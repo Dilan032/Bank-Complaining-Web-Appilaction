@@ -43,9 +43,12 @@ Route::controller(SuperAdminController::class)->group(function () {
 
     Route::get('/superAdmin/announcements', 'ViewAnnouncements')->name('superAdmin.announcements.view');
     Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
+
     Route::get('/superAdmin/banks', 'ViewBanks')->name('superAdmin.banks.view');
-    
-    
+    Route::get('/superAdmin/banks/{id}', 'ViewOneBanks')->name('superAdmin.one.bank.view');
+    Route::put('/superAdmin/banks/{id}', 'bankUpdate')->name('superAdmin.bank.update.view');
+    Route::delete('/superAdmin/bank/{id}', 'bankDelete')->name('superAdmin.banks.delete');
+
     Route::get('/superAdmin/logout', 'superAdminLogout')->name('superAdmin.logout');
 });
 
@@ -63,15 +66,12 @@ Route::controller(mailController::class)->group(function () {
 Route::controller(MesageController::class)->group(function (){
     Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
     Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessageForUser.show');
-    // Route::get('/administrator/user/Message', 'onebankAllMessage')->name('oneMessage.show');
-    // Route::get('/user/Message/{mid}', 'onebankAllMessage')->name('oneMessage.show');
     
 })->middleware('auth');
 
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/user/userDashbord', 'index')->name('user.index');
-    // Route::get('/profile/changePassword', 'changePassword')->name('user.changePassword');
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
     //for administrator

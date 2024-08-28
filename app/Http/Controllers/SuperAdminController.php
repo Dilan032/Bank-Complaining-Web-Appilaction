@@ -122,9 +122,13 @@ class SuperAdminController extends Controller
 
     //$banks variable used for while user registration form generate bank name list
     public function ViewUsers(){    
+        //get data for bank list component
         $users = DB::table('users')->get();
-        $banks = DB::table('banks')->get();
-        // $administratorCount = User::where('user_type', 'administrator')->count();
+        $banks = DB::table('banks')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        //end
+
         $activeAdministratorCount = User::where('status', 'active')
                                     ->where('user_type', 'administrator')
                                     ->count();
@@ -145,14 +149,56 @@ class SuperAdminController extends Controller
     }
 
     public function ViewBanks(){
+        //get data for bank list component
         $users = DB::table('users')->get();
-        $banks = DB::table('banks')->get();
+        $banks = DB::table('banks')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        //end
         $bankCount = Bank::count();
         $activeBankCount = Bank::where('status', 'active')->count();
         $inactiveBankCount = Bank::where('status', 'inactive')->count();
 
         return view('superAdmin.banks',
         [ 'users' => $users, 'banks' => $banks, 'bankCount' => $bankCount, 'activeBankCount' => $activeBankCount, 'inactiveBankCount' => $inactiveBankCount ]);  
+    }
+
+    public function ViewOneBanks($id){
+        $bank =Bank::find($id);
+        return view('superAdmin.editBank', ['bank'=>$bank]);
+    }
+
+    public function bankUpdate(Request $request, $id){
+            $bank = Bank::findOrFail($id);
+                // validation rules
+                $rules = [
+                    'bank_contact_num' => 'required|string|max:10',
+                    'email' => 'required|string|email|max:255',
+                    'bank_address' => 'required|string|max:255',
+                    'bank_name' => 'required|string|max:255',
+                ];
+        
+                // Create validator instance and validate
+                $validator = Validator::make($request->all(), $rules);
+        
+                // Check if validation fails
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+        
+                $bank->bank_name = $request->input('bank_name');
+                $bank->bank_address = $request->input('bank_address');
+                $bank->bank_contact_num = $request->input('bank_contact_num');
+                $bank->email = $request->input('email');
+                $bank->update();
+
+       return redirect()->back()->with('success', 'Bank Update successfully.');
+    }
+
+    public function bankDelete($id){
+        $bank =Bank::find($id);
+        $bank->delete();
+        return redirect()->back()->with('success', 'Bank Remove successfully.');
     }
 
 
