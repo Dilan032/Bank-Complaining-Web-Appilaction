@@ -37,11 +37,11 @@
             </div>
             <div class="col-12 col-sm-auto col-md-1">
                 @if ($msg->request == "accept")
-                    <span class="badge text-bg-success p-1 px-3">{{ $msg->request }}</span>
+                    <span class="badge text-bg-success py-2 px-3">{{ $msg->request }}</span>
                 @elseif ($msg->request == "reject")
-                    <span class="badge text-bg-danger p-1 px-3">{{ $msg->request }}</span>
+                    <span class="badge text-bg-danger py-2 px-3">{{ $msg->request }}</span>
                 @else
-                    <span class="badge text-bg-warning p-1 px-2">{{ $msg->request }}</span>
+                    <span class="badge text-bg-warning py-2 px-2">{{ $msg->request }}</span>
                 @endif               
             </div>
             <div class="col-12 col-sm-auto col-md-6">
@@ -49,7 +49,7 @@
             </div>
             <div class="col-12 col-sm-auto col-md-2">
                 @if ( $msg->status == 'not resolved')
-                    <span class="badge text-bg-warning py-2">{{$msg->status}}</span>
+                    <span class="badge text-bg-warning py-2 px-2">{{$msg->status}}</span>
                 @elseif ( $msg->status == 'solved')
                     <span class="badge text-bg-success py-2 px-4">{{$msg->status}}</span>
                 @elseif ($msg->status == 'Processing')
