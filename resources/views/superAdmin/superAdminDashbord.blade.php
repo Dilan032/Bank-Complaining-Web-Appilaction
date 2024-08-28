@@ -7,6 +7,29 @@
 
 <hr class="me-3">
 
+    <!-- Display validation errors -->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{ $error }}",
+                });
+            </script>
+        @endforeach
+    @endif
+
+    @if (session('success'))
+    <script>
+        Swal.fire({
+        icon: "success",
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1000
+        });
+    </script>
+    @endif
 
 <div class="row">
     <div class="col-md-8">
@@ -86,6 +109,15 @@
     <div class="col-md-4">
         <div class="mb-5">
             <h4 class="mt-4">Super Admin Details</h4>
+
+            {{-- btn for super admin registration model --}}
+            <div class="d-grid gap-2 mb-4 d-md-flex justify-content-end">
+                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add super Admin</button>
+            </div>
+            {{-- include model --}}
+            @include('components.superAdmin.users.registerSuperAdmin')
+            {{-- end user registration section --}}
+
             @foreach ($superAdmin as $admin )
             <div class="col-md-12 mt-4">
                 <p>
@@ -98,6 +130,13 @@
                     <div class="p-1 mb-1 bg-white text-dark rounded shado">
                         Tp : <b>{{ $admin->user_contact_num }}</b>
                     </div>
+                    
+                    <form action="{{ route('superAdmin.SuperAdmin.delete', $admin->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <a class="btn btn-primary btn-sm px-4" href="{{ route('superAdmin.deails', $admin->id) }}" role="button">Edit Details</a>
+                        <button class="btn btn-danger btn-sm px-4" type="submit" onclick="return confirm('Are you sure you want to delete this user?');">Remove</button>
+                    </form>
                 </p>
             </div>
             @endforeach

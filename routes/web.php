@@ -37,6 +37,11 @@ Route::get('/user/inactive',function(){
 
 Route::controller(SuperAdminController::class)->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
+    Route::post('/superAdmin/register', 'RegisterSuperAdmin')->name('RegisterSuperAdmin.save');
+    Route::get('/superAdmin/details/{id}', 'superAdminDetails')->name('superAdmin.deails');
+    Route::put('/superAdmin/details/update/{id}', 'superAdminUpdate')->name('superAdmin.details.update'); 
+    Route::delete('/superAdmin/delete/{id}', 'deleteSuperAdmin')->name('superAdmin.SuperAdmin.delete');
+
     Route::get('/superAdmin/messages', 'ViewMessages')->name('superAdmin.messages.view');
     Route::get('/superAdmin/messages/{id}', 'ViewOneMessages')->name('superAdmin.one.messages.view');
     Route::put('/superAdmin/messages/ProblemResolvedOrNot/{id}', 'ProblemResolvedOrNot')->name('superAdmin.problem.resolved.or.not');

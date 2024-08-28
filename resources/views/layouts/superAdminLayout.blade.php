@@ -29,6 +29,15 @@
             padding-right: 0;
             padding-left: 0;
         }
+
+         /* Body background image */
+         body {
+            background-image: url('{{ asset('images/colorful-bg.jpg') }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
     </style>
 
     <title>Document</title>

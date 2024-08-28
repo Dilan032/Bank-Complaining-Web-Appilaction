@@ -69,7 +69,7 @@ class UserController extends Controller
         $user = User::findOrFail($uid);
         
         $rules = [
-            'user_type' => 'required|string|in:administrator,user',
+            'user_type' => 'required|string|in:administrator,user,super admin',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'user_contact_num' => 'required|string|max:12',       

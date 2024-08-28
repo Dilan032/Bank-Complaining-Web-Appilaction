@@ -174,7 +174,7 @@
                                 <form action="{{ route('superAdmin.banks.delete', $bank->id ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <div class="d-grid gap-2">
+                                    <div class="d-grid gap-2 bg-black">
                                         <a href="{{ route('superAdmin.one.bank.view', $bank->id) }}" class="btn btn-primary" type="submit">Edit Bank</a>
                                         <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you sure to remove this Bank?');">Remove Bank</button>
                                     </div>
