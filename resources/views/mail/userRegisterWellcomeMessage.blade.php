@@ -26,7 +26,7 @@
         </div>
 
         <div class="row d-flex justify-content-center mb-5">
-            <div class="col-md-8 BackGround p-2 rounded">
+            <div class="col-md-10 BackGround rounded">
                 <p class="bg-primary-subtle p-2 text-dark rounded">
                     <span class="text-center p-2">
                         Hi {{ $userType }}, Welcome to Nanosoft Solution Bank Complaint Web App.
