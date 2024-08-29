@@ -1,10 +1,9 @@
+<h1 align="center"> Deploy Web Application </h1>
+
 ## Install Dependencies:
 
-- For PHP dependencies
-`composer install`
-
-- For Node.js dependencies
-`npm install`
+- For PHP dependencies `composer install`
+- For Node.js dependencies `npm install`
 
 <br>
 
@@ -29,10 +28,20 @@
 <br>
 
 ## Run Database Seeders to add main super admin
-- `php artisan db:seed` <br>
+- `php artisan db:seed`
+  
+<br>
+
+## Super Admin Details
+
 user name : super admin <br>
 user email : super.admin@gmail.com <br>
 user password : 12345678
 
 <br>
+
+## Start Laravel Development Server:
+- `php artisan serve`
+
+
 
