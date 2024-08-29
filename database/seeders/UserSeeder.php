@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             
             // super admin
             [
-                'name' => 'super admin',
+                'name' => 'superadmin',
                 'user_type' => 'super admin',
                 'status' => 'active',
                 'email' => 'super.admin@gmail.com',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
              // user
              [
                 'bank_id' => '1',
-                'name' => 'dilan',
+                'name' => 'user',
                 'user_type' => 'user',
                 'status' => 'active',
                 'email' => 'dilan08@gmail.com',
