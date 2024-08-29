@@ -108,7 +108,7 @@ Route::controller(AdministratorController::class)->group(function () {
     Route::get('/administrator/users', 'users')->name('administrator.users');
     Route::get('/administrator/logout', 'administratorLogout')->name('administrator.logout');
 
-})->middleware('auth');
+});
 
 
 

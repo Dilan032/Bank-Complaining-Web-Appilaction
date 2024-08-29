@@ -22,15 +22,15 @@
 
        <div class="text-center mt-3">
             <img src="{{ $message->embed('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}">
-            <p class="fs-2 fs-md-3 fw-bold pb-4">NanoSoft Solutions Bank Complaning WebApplication</p>
+            <h2 class="pb-4" style="color: rgb(48, 2, 255)">NanoSoft Solutions Bank Complaning WebApplication</h2>
         </div>
 
         <div class="row mb-5">
-            <div class="col-md-8 BackGround p-2 rounded">
-                <p class="bg-primary-subtle text-dark p-2 BgInset rounded">
-                    <b>{{ $subject }}</b>
+            <div class="col-md-8 p-2 rounded">
+                <p class="bg-primary-subtle text-dark p-2 rounded">
+                    subject : <b>{{ $subject }}</b>
                 </p>
-                <p class="p-2"><b>messages :</b> <br><br> {{ $messageDetails }} </p> 
+                <p class="p-2"><b>messages :</b> <br> {{ $messageDetails }} </p> 
             </div>
             <div class="col-md-4">
                 <div class="p-2 mt-2">

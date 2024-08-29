@@ -22,7 +22,7 @@
 
        <div class="text-center mt-3">
             <img src="{{ $message->embed('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}">
-            <p class="fs-2 fs-md-3 fw-bold pb-4">Welcome to NanoSoft Solutions <br> Bank Complaning WebApplication</p>
+            <h2 style="color: rgb(48, 2, 255)">Welcome to NanoSoft Solutions Bank Complaning WebApplication</h2>
         </div>
 
         <div class="row d-flex justify-content-center mb-5">
@@ -35,7 +35,6 @@
                         Nanosoft Solution (Pvt)Ltd is here to solve your problem.
                     </span>
                 <p>
-
                     <b>Your account details are below,</b> <br>
                     User Name : {{ $userType }} <br> 
                     User Type : {{ $userName }} <br>
@@ -45,17 +44,17 @@
 
                     <br><br>
 
-                    <small class="d-md-flex justify-content-md-end">
-                        Your Registration Done By,<br>
+                    <p class="d-md-flex justify-content-md-end">
+                        <b>Your Registration Done By,</b><br>
                         {{ $RegisterUserType }} : {{ $RegisterAdminName }}<br>
                         Contact Details, <br>
                         {{ $RegisterAadminEmail }} <br>
                         {{ $RegisterAdminContactNumber }}
-                    </small>
+                    </p>
                     
                     <br>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-5">
-                        <button class="btn btn-primary me-md-2 px-5 btn-sm" type="button">Visit to Bank Complaint Web Application</button>
+                        <a href="#" class="me-md-2 px-5">Visit to Bank Complaint Web Application</a>
                     </div>
             </div>
         </div>
