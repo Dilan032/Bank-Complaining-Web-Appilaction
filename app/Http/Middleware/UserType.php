@@ -22,7 +22,14 @@ class UserType
         }
 
         if($request->user()->user_type !== $userType){
-            return redirect('404');
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+    
+            $request->session()->regenerateToken();
+    
+            return redirect('login');
+            
         }
         return $next($request);
     }

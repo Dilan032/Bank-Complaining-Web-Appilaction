@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('404');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -35,7 +35,9 @@ Route::get('/user/inactive',function(){
 
 
 
-Route::controller(SuperAdminController::class)->group(function () {
+Route::controller(SuperAdminController::class)
+    ->middleware('UserType:super admin') 
+    ->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
     Route::post('/superAdmin/register', 'RegisterSuperAdmin')->name('RegisterSuperAdmin.save');
     Route::get('/superAdmin/details/{id}', 'superAdminDetails')->name('superAdmin.deails');
@@ -58,7 +60,9 @@ Route::controller(SuperAdminController::class)->group(function () {
 });
 
 
-Route::controller(BankController::class)->group(function () {
+Route::controller(BankController::class)
+    ->middleware('UserType:super admin')
+    ->group(function () {
     Route::post('/superAdmin/banks', 'RegisterBank')->name('RegisterBank.save');
 
 });
@@ -68,11 +72,11 @@ Route::controller(mailController::class)->group(function () {
 
 });
 
-Route::controller(MesageController::class)->group(function (){
+Route::controller(MesageController::class)->middleware('UserType:user')->group(function (){
     Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
     Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessageForUser.show');
     
-})->middleware('auth');
+});
 
 
 Route::controller(UserController::class)->group(function () {
@@ -93,10 +97,12 @@ Route::controller(UserController::class)->group(function () {
     //for user
     Route::get('/user/logout', 'userLogout')->name('user.logout');
     
-})->middleware('auth');
+});
 
 
-Route::controller(AdministratorController::class)->group(function () {
+Route::controller(AdministratorController::class)
+    ->middleware('UserType:administrator')
+    ->group(function () {
     Route::get('/administrator/dashboard', 'index')->name('administrator.index');
     Route::get('/administrator/messages', 'messages')->name('administrator.messages');
     Route::post('/administrator/messages/save', 'SaveMessageAdminisrator')->name('administrator.messages.save');
