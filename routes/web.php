@@ -2,17 +2,16 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\BankController;
-use App\Http\Controllers\mailController;
 use App\Http\Controllers\MesageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
-
 
 
 Route::get('/dashboard', function () {
@@ -36,8 +35,7 @@ Route::get('/user/inactive',function(){
 
 
 Route::controller(SuperAdminController::class)
-    ->middleware('UserType:super admin') 
-    ->group(function () {
+    ->middleware('UserType:super admin')->group(function () {
     Route::get('/superAdmin/dashbord', 'superAdminDashbord')->name('superAdmin.dashbord');
     Route::post('/superAdmin/register', 'RegisterSuperAdmin')->name('RegisterSuperAdmin.save');
     Route::get('/superAdmin/details/{id}', 'superAdminDetails')->name('superAdmin.deails');
@@ -49,7 +47,7 @@ Route::controller(SuperAdminController::class)
     Route::put('/superAdmin/messages/ProblemResolvedOrNot/{id}', 'ProblemResolvedOrNot')->name('superAdmin.problem.resolved.or.not');
 
     Route::get('/superAdmin/announcements', 'ViewAnnouncements')->name('superAdmin.announcements.view');
-    Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
+    
 
     Route::get('/superAdmin/banks', 'ViewBanks')->name('superAdmin.banks.view');
     Route::get('/superAdmin/banks/{id}', 'ViewOneBanks')->name('superAdmin.one.bank.view');
@@ -59,50 +57,53 @@ Route::controller(SuperAdminController::class)
     Route::get('/superAdmin/logout', 'superAdminLogout')->name('superAdmin.logout');
 });
 
+Route::controller(SuperAdminController::class)
+    ->middleware('UserType:super admin')->group(function () {
+    Route::get('/superAdmin/users', 'ViewUsers')->name('superAdmin.users.view');
+});
 
-Route::controller(BankController::class)
-    ->middleware('UserType:super admin')
-    ->group(function () {
+Route::controller(BankController::class)->group(function () {
     Route::post('/superAdmin/banks', 'RegisterBank')->name('RegisterBank.save');
-
 });
 
-Route::controller(mailController::class)->group(function () {
-    Route::get('/sendEmail', 'sendEmail')->name('sendEmail');
 
-});
-
-Route::controller(MesageController::class)->middleware('UserType:user')->group(function (){
+Route::controller(MesageController::class)
+    ->middleware('UserType:user')->group(function (){
     Route::post('/user/userDashbord', 'SaveMessage')->name('message.save');
     Route::get('/user/Message/{mid}', 'showOneMessage')->name('oneMessageForUser.show');
-    
 });
 
 
-Route::controller(UserController::class)->group(function () {
+Route::controller(UserController::class)
+    ->middleware('UserType:user')->group(function () {
     Route::get('/user/userDashbord', 'index')->name('user.index');
-    Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
-    Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
-    //for administrator
-    Route::delete('/user/delete/{id}', 'deleteUser')->name('user.delete');
-
-    Route::delete('/superAdmin/users/{id}', 'deleteUserForAdmin')->name('user.delete.for.admin');
-
-    Route::get('/user/details/{id}', 'oneUserDetailsForAdministrator')->name('user.details');
-    Route::put('/user/details/update/{id}', 'UsersUpdate')->name('user.details.update'); 
-    //for super admin
-    Route::get('/superAdmin/user/details/{id}', 'oneUserDetailsForSuperAdmin')->name('superAdmin.user.details'); 
-
-    
-    //for user
     Route::get('/user/logout', 'userLogout')->name('user.logout');
     
 });
 
+Route::controller(UserController::class)->group(function () {
+    Route::get('/user/details/{id}', 'oneUserDetailsForAdministrator')->name('user.details');
+    Route::put('/user/details/update/{id}', 'UsersUpdate')->name('user.details.update'); 
+    Route::delete('/user/delete/{id}', 'deleteUser')->name('user.delete');
+});
+
+//for super admin
+Route::controller(UserController::class)
+    ->middleware('UserType:super admin')->group(function () {
+    Route::delete('/superAdmin/users/{id}', 'deleteUserForAdmin')->name('user.delete.for.admin');
+    Route::get('/superAdmin/user/details/{id}', 'oneUserDetailsForSuperAdmin')->name('superAdmin.user.details'); 
+});
+
+//for administrator
+Route::controller(UserController::class)
+    ->middleware('UserType:administrator')->group(function () {
+    Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
+    Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
+});
+
 
 Route::controller(AdministratorController::class)
-    ->middleware('UserType:administrator')
-    ->group(function () {
+    ->middleware('UserType:administrator')->group(function () {
     Route::get('/administrator/dashboard', 'index')->name('administrator.index');
     Route::get('/administrator/messages', 'messages')->name('administrator.messages');
     Route::post('/administrator/messages/save', 'SaveMessageAdminisrator')->name('administrator.messages.save');
