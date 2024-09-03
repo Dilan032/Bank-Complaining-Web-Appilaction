@@ -95,8 +95,7 @@ Route::controller(UserController::class)
 });
 
 //for administrator
-Route::controller(UserController::class)
-    ->middleware('UserType:administrator')->group(function () {
+Route::controller(UserController::class)->group(function () {
     Route::post('/administrator/users', 'RegisterUsers')->name('RegisterUser.save');
     Route::post('/superAdmin/users', 'RegisterUsers')->name('RegisterUser.save');
 });
