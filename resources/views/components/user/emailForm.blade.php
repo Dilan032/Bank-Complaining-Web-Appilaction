@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-8">
             <section  class="p-3 bg-primary-subtle text-black border-bottom border-dark border-5 rounded messageBG">
-            <h3 class="mb-3 text-center fw-normal">Put the problem here to sent</h3>
+            <p class="fs-4 mb-3 text-center fw-normal">Put the problem here to sent</p>
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -51,10 +51,14 @@
 
             <div class="col-md-4">
                 <br> <br> <br>
-                <div class="text-center mb-3 mt-4">
-                    <h3 class="fw-normal">Upload Images</h3>
-                    <span class="font-monospace"><small>(Upload pictures where there are problems)</small></span>
-                </div>
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                      <p>Upload Images</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Upload pictures where there are problems
+                    </figcaption>
+                </figure>
 
                 <div class="d-flex justify-content-around">
                     <section>

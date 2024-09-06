@@ -26,6 +26,10 @@
     border-style: inset;
 }
 
+.btnInset{
+    border-style: inset;
+}
+
  /* for Particles Effect */
  .particles-js-canvas-el {
     width: 100%;

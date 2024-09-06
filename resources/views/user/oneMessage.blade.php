@@ -2,9 +2,9 @@
 @section('userContent')
 
 
-<div class="p-2 mb-5 bg-black text-white">
+{{-- <div class="p-2 mb-5 bg-black text-white">
   <span class="fs-5 ms-2">{{$messagesTableDataUser->user->name}}'s message </span>
-</div>
+</div> --}}
 
 <div id="particles-js"></div>
 
@@ -12,46 +12,50 @@
     <table class="table table-borderless rounded messageBG">
         <thead>
           <tr>
-            <th colspan="4" class="fs-4 fs-sm-2">
+            <td colspan="4" class="fs-5 fs-sm-2">
                 {{$oneMessage->subject}}
-            </th>
+            </td>
           </tr>
         </thead>
         <tbody class="table-group-divider">
           <tr>
-            <th colspan="4" class="bg-primary-subtle text-black">
-              status  
+            <td colspan="4" class="bg-primary-subtle text-black">
+              <span class="fw-light">status</span>  
 
             @if ( $oneMessage->status == 'not resolved')
-                <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+                <span class="badge text-bg-warning btnInset py-1">{{$oneMessage->status}}</span>
             @elseif ( $oneMessage->status == 'solved')
-                <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+                <span class="badge text-bg-success btnInset py-1 px-4">{{$oneMessage->status}}</span>
             @elseif ($oneMessage->status == 'Processing')
-                <span class="badge text-bg-dark py-2 px-2">{{$oneMessage->status}}</span>
+                <span class="badge text-bg-dark btnInset py-1 px-2">{{$oneMessage->status}}</span>
             @else
-                <span class="badge text-bg-info text-dark py-2 px-4">{{$oneMessage->status}}</span>
+                <span class="badge text-bg-info text-dark btnInset py-1 px-4">{{$oneMessage->status}}</span>
             @endif  
              
-            || request 
+            <span class="fw-light">request</span> 
 
                 @if ($oneMessage->request == "accept")
-                    <span class="badge text-bg-success py-2 px-3">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-success btnInset py-1 px-3">{{ $oneMessage->request }}</span>
                 @elseif ($oneMessage->request == "reject")
-                    <span class="badge text-bg-danger py-2 px-3">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-danger btnInset py-1 px-3">{{ $oneMessage->request }}</span>
                 @else
-                    <span class="badge text-bg-warning py-2 px-2">{{ $oneMessage->request }}</span>
+                    <span class="badge text-bg-warning btnInset py-1 px-2">{{ $oneMessage->request }}</span>
                 @endif 
-            </th>
+            </td>
           </tr>
           <tr>
-            <td colspan="4"><b class="fs-5">message :</b> <br> {{$oneMessage->message}}</td>
+            <td colspan="4"><span class="fs-5">message : </span><br> 
+                <div class="fw-light">
+                    {{$oneMessage->message}}
+                </div>
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <div class="text-end me-2 fw-bold">
-        <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-           time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+      <div class="text-end me-2 fw-light">
+        <p>Creates the problem : <span class="badge text-bg-info px-5 py-1"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}  ⬜
+           {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
       </div>
 
   </div>
