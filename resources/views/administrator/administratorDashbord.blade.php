@@ -1,101 +1,105 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-<span class="fs-1 ms-3">Dashbord</span>
+<span class="fs-4 ms-4">Dashbord</span>
 
 <hr class="me-3">
 
-
-
 <div class="row ps-2">
     <div class="col-md-8">
-        <div class="p-1 border-bottom border-black border-5 rounded">
-            <p class="fs-4"><b>Bank details</b></p>
+        <div class="p-1">
+            <p class="fs-4">| Bank details</p>
             <div class="fs-5">
-                <span class="badge text-bg-light p-2 px-5  border border-primary">{{ $bank->bank_name }}</span>
-                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->bank_address }}</span>
+                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_name }}</span>
+                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">Branch name</span>
+                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_address }}</span>
                 <br> 
-                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->email }}</span>
-                <span class="badge text-bg-light p-2 px-5 border border-primary">{{ $bank->bank_contact_num }}</span>
+                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->email }}</span>
+                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_contact_num }}</span>
                 <br>
             </div>
         </div>
 
-        {{-- start new row --}}
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <div class="p-2 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
-                    
-                    <p class="fs-4">Administrators <span class="badge text-bg-light px-5 problemImageMainBG">{{ $NumAdministrators }}</span></p>
-                    <div class="fs-5 p-3 bg-white text-dark  rounded btnShado">
-                        <div class="d-flex justify-content-between px-4 mt-2">
-                            🙋‍♂️Active
-                            <span class="badge text-bg-primary px-5">{{ $NumActiveAdministrators }}</span>
+                {{-- new row --}}
+                <div class="p-3 mb-2 mt-4 bg-white-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
+                    <p class="fs-4">| All Registered Employees <span class="badge text-bg-primary px-3 btnShado">{{ $NumAdministrators + $NumUsers }}</span></p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        
+                        <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
+                            | Administrators &nbsp;&nbsp;&nbsp;<span class="badge text-bg-light px-3 btnShado">{{ $NumAdministrators }}</span> 
+                            <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
+                                 🙋‍♂️Active
+                                <span class="badge text-bg-warning px-5">{{ $NumActiveAdministrators }}</span>
+                            </div>
+                            <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
+                                🙇‍♂️Inactive
+                                <span class="badge text-bg-success px-5">{{ $NumInactiveAdministrators }}</span>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between px-4 mt-2">
-                            🙇‍♂️Inactive
-                            <span class="badge text-bg-secondary px-5">{{ $NumInactiveAdministrators }}</span>
+        
+                        <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
+                            | Users &nbsp;&nbsp;&nbsp;<span class="badge text-bg-light px-3 btnShado">{{ $NumUsers }}</span>
+                            <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
+                                🙋‍♂️Active
+                                <span class="badge text-bg-success px-5">{{ $NumActiveUsers }}</span>
+                            </div>
+                            <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
+                                🙇‍♂️Inactive
+                                <span class="badge text-bg-warning px-5">{{ $NumInactiveUsers }}</span>
+                            </div>
                         </div>
+        
                     </div>
-
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="p-2 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
-                    
-                    <p class="fs-4">Users <span class="badge text-bg-light px-5 problemImageMainBG">{{  $NumUsers }}</span></p>
-                    <div class="fs-5 p-3 bg-white text-dark  rounded btnShado">
-                        <div class="d-flex justify-content-between px-4 mt-2">
-                            🙋‍♂️Active
-                            <span class="badge text-bg-primary px-5">{{ $NumActiveUsers }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between px-4 mt-2">
-                            🙇‍♂️Inactive
-                            <span class="badge text-bg-secondary px-5">{{ $NumInactiveUsers }}</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        {{-- end new row --}}
 
         {{-- new row --}}
-        <div class="p-3 mb-2 mt-4 bg-danger-subtle text-danger-emphasis border-bottom border-black border-5 rounded btnShado">
-            <p class="fs-4">Messages <span class="badge text-bg-light px-5 problemImageMainBG">{{ $NumMessages }}</span></p>
+        <div class="p-3 mb-2 mt-4 bg-white-subtle text-danger-emphasis border-bottom border-black border-5 rounded btnShado">
+            <div class="d-flex justify-content-between">
+                <p class="fs-4">| Messages <span class="badge text-bg-primary px-3 btnShado">{{ $NumMessages }}</span></p>
+
+                <select class="form-select w-25 h-25 border border-primary" aria-label="Default select example">
+                    <option selected>Today</option>
+                    <option value="1">Last Week</option>
+                    <option value="2">Last Month</option>
+                    <option value="3">Last Year</option>
+                    <option value="3">All</option>
+                </select>
+                {{-- <i class="bi bi-search"></i> --}}
+            </div>
+
             <div class="d-flex flex-column flex-sm-row gap-3">
                 
                 <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
-                    <b>Administrator Request</b> 
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    | Administrator Request 
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ⏳Pending
                         <span class="badge text-bg-warning px-5">{{ $NumPendingMsg }}</span>
                     </div>
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ✔Accept
                         <span class="badge text-bg-success px-5">{{ $NumAcceptMsg }}</span>
                     </div>
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ❌Rejected
                         <span class="badge text-bg-danger px-5 mb-2">{{ $NumRejectMsg }}</span>
                     </div>
                 </div>
 
                 <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
-                    <b>Nanosoft Solutions (Pvt)Ltd Status</b> 
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    | Nanosoft Solutions (Pvt)Ltd Status 
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ✔solved
                         <span class="badge text-bg-success px-5">{{ $NumSolvedMsg }}</span>
                     </div>
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ❌not solved
                         <span class="badge text-bg-warning px-5">{{ $NumNotSolvedMsg }}</span>
                     </div>
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         ⚙ Processing
                         <span class="badge text-bg-dark px-5">{{ $NumProcessing }}</span>
                     </div>
-                    <div class="fs-5 d-flex justify-content-between px-4 mt-2">
+                    <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                         👁 Viewed 
                         <span class="badge text-bg-info px-5">{{ $NumViewed }}</span>
                     </div>
@@ -108,7 +112,7 @@
     </div>
 
     <div class="col-md-4">
-        <div class="p-1 border border-primary rounded problemImageMainBG btnShado">
+        <div class="p-1 btnShado">
             <div class="p-3 mb-2 bg-white text-dark rounded btnShado">
                 <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fs-5 fw-bold">Nanosoft Solutions <small>(Pvt) Ltd</small></p>

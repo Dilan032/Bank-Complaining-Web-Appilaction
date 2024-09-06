@@ -55,9 +55,11 @@
         
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-2">
             @if ($oneMessage->request == 'accept')
-                <p class="p-2 text-success fw-bold border border-success border-start-4 rounded-start">This user's message was sent to Nanosoft Solutions (Pvt)Ltd</p>
+            {{-- border border-success border-start-4 rounded-start --}}
+                <p class="p-2 text-success">This user's message was sent to Nanosoft Solutions (Pvt)Ltd</p>
             @else
-                <p class="p-2 text-danger fw-bold border border-danger border-start-4 rounded-start">This user's message has been ignored</p>
+            {{-- border border-danger border-start-4 rounded-start --}}
+                <p class="p-2 text-danger">This user's message has been ignored</p>
             @endif
             
         </div>
@@ -68,45 +70,45 @@
         <table class="table table-borderless rounded messageBG">
             <thead>
               <tr>
-                <th colspan="4" class="fs-2">
-                    <span class="fw-normal">Subject:</span> 
-                    {{-- <span class="badge text-bg-secondary">Urgent</span>  --}}
+                <th colspan="4" class="fs-5">
                     {{$oneMessage->subject}}
                 </th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
               <tr>
-                <th colspan="4" class="bg-primary-subtle">
+                <th colspan="4" class="bg-primary-subtle fw-light">
                     @if ( $oneMessage->status == 'not resolved')
-                        status <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span> || 
+                        <span>status</span> <span class="badge text-bg-warning btnInset py-2">{{$oneMessage->status}}</span>  
                     @elseif ( $oneMessage->status == 'solved')
-                        status  <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span> ||
+                        status  <span class="badge text-bg-success btnInset py-2 px-4">{{$oneMessage->status}}</span> 
                     @elseif ($oneMessage->status == 'Processing')
-                        status  <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span> ||
+                        status  <span class="badge text-bg-dark btnInset py-2">{{$oneMessage->status}}</span> 
                     @else
-                        status <span class="badge text-bg-info text-dark py-2 px-3">{{$oneMessage->status}}</span>  ||
+                        status <span class="badge text-bg-info text-dark btnInset py-2 px-3">{{$oneMessage->status}}</span>
                     @endif 
                   
                     @if ($oneMessage->request == 'pending')
-                        request  <span class="badge text-bg-warning py-2">{{$oneMessage->request}}</span>
+                        request  <span class="badge text-bg-warning btnInset py-2">{{$oneMessage->request}}</span>
                     @elseif ( $oneMessage->request == 'accept')
-                        request  <span class="badge text-bg-success py-2">{{$oneMessage->request}}</span>
+                        request  <span class="badge text-bg-success btnInset py-2">{{$oneMessage->request}}</span>
                     @elseif ( $oneMessage->request == 'reject')
-                        request  <span class="badge text-bg-danger py-2">{{$oneMessage->request}}</span>
+                        request  <span class="badge text-bg-danger btnInset py-2">{{$oneMessage->request}}</span>
                     @endif
                   
                 </th>
               </tr>
               <tr>
-                <td colspan="4"><b class="fs-5">message :</b> <br> {{$oneMessage->message}}</td>
+                <td colspan="4"><span class="fs-5">message :</span> <br> 
+                    <span class="fw-light">{{$oneMessage->message}}</span>
+                </td>
               </tr>
             </tbody>
           </table>
     
-            <div class="text-end me-2 fw-bold">
-                <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-                time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+            <div class="text-end me-2 fw-light">
+                <p>Creates the problem : <span class="badge text-bg-info px-5 py-2"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }} ⬜
+                 {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
             </div>
     </div>
     

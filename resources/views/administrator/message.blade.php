@@ -2,11 +2,7 @@
 @section('administratorContent')
 
 
-<div class="d-flex justify-content-between">
-    <div class="fs-1 ms-2">message</div>
-</div>
-
-
+<div class="fs-4 ms-4">message</div>
 
 <hr class="me-3">
 
@@ -42,9 +38,9 @@
     @include('components.administrator.messageModel')
     
     
-    <div class="alert alert-warning font-monospace text-center" role="alert">
-        <small>It is the manager's responsibility to confirm or reject messages. 
-            After confirming the message, Nanosoft Solutions will receive the message.</small>
+    <div class="alert alert-warning text-center" role="alert">
+        It is the manager's responsibility to confirm or reject messages. 
+        After confirming the message, Nanosoft Solutions will receive the message.
     </div>
     
     
@@ -52,9 +48,6 @@
         <div class="p-2 mb-3 bg-black text-white">
             <div class="text-center d-none d-sm-inline">
                 <div class="row">
-                    {{-- <div class="col-12 col-sm-auto col-md-1">
-                        <span class="">id</span>
-                    </div> --}}
                     <div class="col-12 col-sm-auto col-md-2">
                         <span class="">date</span>
                     </div>
@@ -77,19 +70,19 @@
         @if (!empty($messages))
         @foreach ($messages as $oneMessage)
         {{-- start message content --}}
-        <div class="p-3 mb-3 bg-white text-dark messageBG rounded">
+        <div class="p-1 mb-3 bg-white text-dark messageBG rounded">
             <div class="text-center">
                 <div class="row">
                     <div class="col-12 col-sm-auto col-md-2">
-                        <span class="font-monospace"><small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y') }}</small></span>
+                        <small>{{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y') }}</small>
                     </div>
                     <div class="col-12 col-sm-auto col-md-1">
                         @if ( $oneMessage->request == 'accept')
-                            <span class="badge text-bg-success py-1 px-3">{{ $oneMessage->request }}</span>     
+                            <span class="badge rounded-pill text-bg-success btnInset py-1 px-3">{{ $oneMessage->request }}</span>     
                         @elseif ($oneMessage->request == 'reject')    
-                            <span class="badge text-bg-danger py-1 px-3">{{ $oneMessage->request }}</span>
+                            <span class="badge rounded-pill text-bg-danger btnInset py-1 px-3">{{ $oneMessage->request }}</span>
                         @else
-                            <span class="badge text-bg-warning py-1">{{ $oneMessage->request }}</span>
+                            <span class="badge rounded-pill text-bg-warning btnInset py-1">{{ $oneMessage->request }}</span>
                         @endif
                     </div>
                     <div class="col-12 col-sm-auto col-md-6">
@@ -97,13 +90,13 @@
                     </div>
                     <div class="col-12 col-sm-auto col-md-2">
                         @if ( $oneMessage->status == 'not resolved')
-                            <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
+                            <span class="badge rounded-pill text-bg-warning btnInset py-1">{{$oneMessage->status}}</span>
                         @elseif ( $oneMessage->status == 'solved')
-                            <span class="badge text-bg-success py-2 px-4">{{$oneMessage->status}}</span>
+                            <span class="badge rounded-pill text-bg-success btnInset py-1 px-4">{{$oneMessage->status}}</span>
                         @elseif ($oneMessage->status == 'Processing')
-                            <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
+                            <span class="badge rounded-pill text-bg-dark btnInset py-1">{{$oneMessage->status}}</span>
                         @else
-                            <span class="badge text-bg-info text-dark py-2 px-3">{{$oneMessage->status}}</span>
+                            <span class="badge rounded-pill text-bg-info btnInset text-dark py-1 px-3">{{$oneMessage->status}}</span>
                         @endif    
                     </div>
                     <div class="col-12 col-sm-auto col-md-1">

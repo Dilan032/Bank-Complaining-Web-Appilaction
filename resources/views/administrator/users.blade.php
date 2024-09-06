@@ -1,7 +1,7 @@
 @extends('layouts.administratorLayout')
 @section('administratorContent')
 
-<span class="fs-1 ms-3">users</span>
+<span class="fs-4 ms-4">users</span>
 <hr class="me-3">
 
 
@@ -13,18 +13,19 @@
     @include('components.superAdmin.users.registerUsers')
     {{-- end user register section --}}
 
-<h4 class=" p-2 text-center">Bank Administrators</h4>
-<section class="container bg-white text-dark userBgShado py-2 rounded">
+<p class="fs-4 text-center">Bank Administrators</p>
+<section class="container bg-white text-dark userBgShado rounded">
     <div class="table-responsive">
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr class="text-start">
-                    <th scope="col">id</th>
-                    <th scope="col" style="width: 25%">Name</th>
-                    <th scope="col" style="width: 30%">Email</th>
-                    <th scope="col">C. Number</th>
-                    <th scope="col" class="text-center">Status</th>
-                    <th scope="col"></th>
+                    {{-- <td scope="col">id</td> --}}
+                    <td scope="col" style="width: 30%">Name</td>
+                    <td scope="col" style="width: 30%">Email</td>
+                    <td scope="col">C. Number</td>
+                    <td scope="col" class="text-center">Status</td>
+                    <td scope="col"></td>
+                    <td scope="col"></td>
                   </tr>
               </thead>
               <tbody class="table-group-divider">
@@ -34,33 +35,32 @@
                             @foreach ($users as $userDetails)
                                 @if ($bankDetail->id == $userDetails->bank_id && $userDetails->user_type == "administrator" )
                                     <tr class="text-start">
-                                        <th scope="col">{{ $userDetails->id }}</th>
-                                        <th scope="col" style="width: 25%">{{ $userDetails->name }}</th>
-                                        <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
-                                        <th scope="col">{{ $userDetails->user_contact_num }}</th>
-                                        <th scope="col" class="text-center">
+                                        {{-- <td scope="col">{{ $userDetails->id }}</td> --}}
+                                        <td scope="col" style="width: 30%">{{ $userDetails->name }}</td>
+                                        <td scope="col" style="width: 30%">{{ $userDetails->email }}</td>
+                                        <td scope="col">{{ $userDetails->user_contact_num }}</td>
+                                        <td scope="col" class="text-center">
                                             @if ($userDetails->status == "active")
-                                                <span class="badge text-bg-success px-4 mt-2">{{ $userDetails->status }}</span>
+                                                <span class="badge text-bg-success px-4">{{ $userDetails->status }}</span>
                                             @else
-                                                <span class="badge text-bg-secondary px-3 mt-2">{{ $userDetails->status }}</span>
+                                                <span class="badge text-bg-secondary px-3">{{ $userDetails->status }}</span>
                                             @endif  
-                                        </th>
-                                        <th>
-                                            
-                                            
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm">
+                                                Manage
+                                            </a>
+                                        </td>
+                                        <td class="text-start">
                                             <form action="{{ route('user.delete', $userDetails->id ) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm my-1">
-                                                    Manage
-                                                </a>
-
-                                                <button type="submit" class="btn btn-outline-danger btn-sm my-1" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">
                                                     Remove
                                                 </button>
-                                            </form>
-                                        </th>
+                                             </form>
+                                        </td>
                                       </tr>
                                 @endif
                             @endforeach
@@ -73,18 +73,19 @@
 </section>
 
 
-<h4 class=" p-2 text-center mt-5">Bank Employees</h4>
-<section class="container bg-white text-dark userBgShado py-2 rounded">
+<p class="fs-4 text-center mt-5">Bank Employees</p>
+<section class="container bg-white text-dark userBgShado rounded">
     <div class="table-responsive">
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr class="text-start">
-                    <th scope="col">id</th>
-                    <th scope="col" style="width: 25%">Name</th>
-                    <th scope="col" style="width: 30%">Email</th>
-                    <th scope="col">C. Number</th>
-                    <th scope="col" class="text-center">Status</th>
-                    <th scope="col"></th>
+                    {{-- <td scope="col">id</td> --}}
+                    <td scope="col" style="width: 30%">Name</td>
+                    <td scope="col" style="width: 30%">Email</td>
+                    <td scope="col">C. Number</td>
+                    <td scope="col" class="text-center">Status</td>
+                    <td scope="col"></td>
+                    <td scope="col"></td>
                   </tr>
               </thead>
               <tbody class="table-group-divider">
@@ -94,31 +95,31 @@
                             @foreach ($users as $userDetails)
                                 @if ($bankDetail->id == $userDetails->bank_id && $userDetails->user_type == "user" )
                                     <tr class="text-start">
-                                        <th scope="col">{{ $userDetails->id }}</th>
-                                        <th scope="col" style="width: 25%">{{ $userDetails->name }}</th>
-                                        <th scope="col" style="width: 30%">{{ $userDetails->email }}</th>
-                                        <th scope="col">{{ $userDetails->user_contact_num }}</th>
-                                        <th scope="col" class="text-center">
+                                        {{-- <td scope="col">{{ $userDetails->id }}</td> --}}
+                                        <td scope="col" style="width: 30%">{{ $userDetails->name }}</td>
+                                        <td scope="col" style="width: 30%">{{ $userDetails->email }}</td>
+                                        <td scope="col">{{ $userDetails->user_contact_num }}</td>
+                                        <td scope="col" class="text-center">
                                             @if ($userDetails->status == "active")
                                                 <span class="badge text-bg-success px-4 mt-2">{{ $userDetails->status }}</span>
                                             @else
                                                 <span class="badge text-bg-secondary px-3 mt-2">{{ $userDetails->status }}</span>
                                             @endif  
-                                        </th>
-                                        <th>
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm">
+                                                Manage
+                                            </a>                     
+                                        </td>
+                                        <td class="text-start">
                                             <form action="{{ route('user.delete', $userDetails->id ) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-
-                                                <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm my-1">
-                                                    Manage
-                                                </a>
-                                                
-                                                <button type="submit" class="btn btn-outline-danger btn-sm my-1" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">
                                                     Remove
                                                 </button>
                                             </form>
-                                        </th>
+                                        </td>
                                       </tr>
                                 @endif
                             @endforeach
