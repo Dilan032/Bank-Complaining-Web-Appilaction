@@ -7,26 +7,26 @@
 
 <div class="row ps-2">
     <div class="col-md-8">
-        <div class="p-1">
-            <p class="fs-4">| Bank details</p>
+        <div class="p-1 userBgShado rounded border-bottom border-black border-5">
+            <p class="fs-4">Bank details</p>
             <div class="fs-5">
-                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_name }}</span>
-                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">Branch name</span>
-                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_address }}</span>
+                <span class="badge bg-primary-subtle text-dark m-1 p-2 pe-5 btnShado fw-lighter">{{ $bank->bank_name }}</span>
+                <span class="badge bg-primary-subtle text-dark m-1 p-2 pe-5 btnShado fw-lighter">Branch name</span>
+                <span class="badge bg-primary-subtle text-dark m-1 p-2 pe-5 btnShado fw-lighter">{{ $bank->bank_address }}</span>
                 <br> 
-                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->email }}</span>
-                <span class="badge text-bg-light m-1 p-2 px-5 btnShado fw-normal">{{ $bank->bank_contact_num }}</span>
+                <span class="badge bg-primary-subtle text-dark m-1 p-2 pe-5 btnShado fw-lighter">{{ $bank->email }}</span>
+                <span class="badge bg-primary-subtle text-dark m-1 p-2 pe-5 btnShado fw-lighter">{{ $bank->bank_contact_num }}</span>
                 <br>
             </div>
         </div>
 
                 {{-- new row --}}
-                <div class="p-3 mb-2 mt-4 bg-white-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
-                    <p class="fs-4">| All Registered Employees <span class="badge text-bg-primary px-3 btnShado">{{ $NumAdministrators + $NumUsers }}</span></p>
+                <div class="p-3 mb-2 mt-4 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
+                    <p class="fs-4">All Registered Employees <span class="badge text-bg-light px-4 btnShado">{{ $NumAdministrators + $NumUsers }}</span></p>
                     <div class="d-flex flex-column flex-sm-row gap-3">
                         
                         <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
-                            | Administrators &nbsp;&nbsp;&nbsp;<span class="badge text-bg-light px-3 btnShado">{{ $NumAdministrators }}</span> 
+                            | Administrators &nbsp;&nbsp;&nbsp;<span class="badge bg-primary-subtle text-dark px-3 btnShado">{{ $NumAdministrators }}</span> 
                             <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                                  🙋‍♂️Active
                                 <span class="badge text-bg-warning px-5">{{ $NumActiveAdministrators }}</span>
@@ -38,7 +38,7 @@
                         </div>
         
                         <div class="p-1 w-100 w-sm-50 bg-white text-dark rounded btnShado rounded">
-                            | Users &nbsp;&nbsp;&nbsp;<span class="badge text-bg-light px-3 btnShado">{{ $NumUsers }}</span>
+                            | Users &nbsp;&nbsp;&nbsp;<span class="badge bg-primary-subtle text-dark px-3 btnShado">{{ $NumUsers }}</span>
                             <div class="fs-6 fw-light d-flex justify-content-between px-4 mt-2">
                                 🙋‍♂️Active
                                 <span class="badge text-bg-success px-5">{{ $NumActiveUsers }}</span>
@@ -53,16 +53,17 @@
                 </div>
 
         {{-- new row --}}
-        <div class="p-3 mb-2 mt-4 bg-white-subtle text-danger-emphasis border-bottom border-black border-5 rounded btnShado">
+        <div class="p-3 mb-2 mt-4 bg-primary-subtle text-primary-emphasis border-bottom border-black border-5 rounded btnShado">
             <div class="d-flex justify-content-between">
-                <p class="fs-4">| Messages <span class="badge text-bg-primary px-3 btnShado">{{ $NumMessages }}</span></p>
+                <p class="fs-4">Messages <span class="badge text-bg-light px-4 btnShado">{{ $NumMessages }}</span></p>
 
                 <select class="form-select w-25 h-25 border border-primary" aria-label="Default select example">
                     <option selected>Today</option>
-                    <option value="1">Last Week</option>
-                    <option value="2">Last Month</option>
-                    <option value="3">Last Year</option>
-                    <option value="3">All</option>
+                    <option value="1">Yesterday</option>
+                    <option value="2">Last Week</option>
+                    <option value="3">Last Month</option>
+                    <option value="4">Last Year</option>
+                    <option value="5">All</option>
                 </select>
                 {{-- <i class="bi bi-search"></i> --}}
             </div>
@@ -112,8 +113,8 @@
     </div>
 
     <div class="col-md-4">
-        <div class="p-1 btnShado">
-            <div class="p-3 mb-2 bg-white text-dark rounded btnShado">
+        <div class="p-1">
+            <div class="p-3 mb-2 bg-white text-dark rounded">
                 <img src="{{ asset('images/CompanyLogo/nanosoftSolutions Company Logo.png') }}" alt="NanosoftSolutions Logo">
                 <p class="fs-5 fw-bold">Nanosoft Solutions <small>(Pvt) Ltd</small></p>
 
@@ -137,26 +138,28 @@
 
                 <hr>
 
-<p class="text-center bg-primary-subtle p-1 fw-bold">Contact Details</p>
-<pre>
-<b>Contact Number</b>
-@foreach ($superAdminDetails as $superAdmin )
-{{ $superAdmin->user_contact_num }}
-@endforeach
-</pre>
-<pre>
-<b>Email</b>
-@foreach ($superAdminDetails as $superAdmin )
-{{ $superAdmin->email }}
-@endforeach
-</pre>
+                <p class="text-center bg-primary-subtle p-1">Contact Details</p>
+                <p>
+                    <span class="fs-6">Contact Number</span> <br>
+                    @foreach ($superAdminDetails as $superAdmin )
+                        <span class="fw-lighter">📞{{ $superAdmin->user_contact_num }}</span> <br>
+                    @endforeach
+                </p>
+                <p>
+                    <span class="fs-6">Email</span> <br>
+                    @foreach ($superAdminDetails as $superAdmin )
+                    <span class="fw-lighter">📧{{ $superAdmin->email }}</span> <br>
+                    @endforeach
+                </p>
 
-<pre>
-<b>Address:</b>
-No.227/A,
-Gettuwana Road,
-Kurunegala.
-</pre>
+                <p>
+                    <span class="fs-6">Address:</span> <br>
+                    <span class="fw-lighter">
+                        No.227/A, <br>
+                        Gettuwana Road, <br>
+                        Kurunegala.
+                    </span>
+                </p>
 
 
             </div>

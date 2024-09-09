@@ -38,21 +38,23 @@
     @include('components.administrator.messageModel')
     
     
-    <div class="alert alert-warning text-center" role="alert">
-        It is the manager's responsibility to confirm or reject messages. 
-        After confirming the message, Nanosoft Solutions will receive the message.
+    <div class="bg-warning-subtle text-dark text-center fw-lighter">
+        <small>
+            It is the manager's responsibility to confirm or reject messages. 
+            After confirming the message, Nanosoft Solutions will receive the message.
+        </small>
     </div>
     
     
-    <section class="mt-3">
+    <section class="mt-2">
         <div class="p-2 mb-3 bg-black text-white">
             <div class="text-center d-none d-sm-inline">
                 <div class="row">
                     <div class="col-12 col-sm-auto col-md-2">
-                        <span class="">date</span>
+                        <span class="">Date</span>
                     </div>
                     <div class="col-12 col-sm-auto col-md-1">
-                        <span class="">request</span>
+                        <span class="">Request</span>
                     </div>
                     <div class="col-12 col-sm-auto col-md-6">
                         <span class="">Subject</span>
@@ -86,7 +88,9 @@
                         @endif
                     </div>
                     <div class="col-12 col-sm-auto col-md-6">
-                        <span class="">{{ $oneMessage->subject }}</span>  
+                        <span>
+                            <small>{{ $oneMessage->subject }}</small>
+                        </span>  
                     </div>
                     <div class="col-12 col-sm-auto col-md-2">
                         @if ( $oneMessage->status == 'not resolved')

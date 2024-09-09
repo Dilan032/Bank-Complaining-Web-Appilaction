@@ -19,10 +19,9 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr class="text-start">
-                    {{-- <td scope="col">id</td> --}}
                     <td scope="col" style="width: 30%">Name</td>
                     <td scope="col" style="width: 30%">Email</td>
-                    <td scope="col">C. Number</td>
+                    <td scope="col" class="text-center">Tel</td>
                     <td scope="col" class="text-center">Status</td>
                     <td scope="col"></td>
                     <td scope="col"></td>
@@ -34,11 +33,10 @@
                         @if ($users->isNotEmpty())
                             @foreach ($users as $userDetails)
                                 @if ($bankDetail->id == $userDetails->bank_id && $userDetails->user_type == "administrator" )
-                                    <tr class="text-start">
-                                        {{-- <td scope="col">{{ $userDetails->id }}</td> --}}
+                                    <tr class="text-start fw-lighter">
                                         <td scope="col" style="width: 30%">{{ $userDetails->name }}</td>
                                         <td scope="col" style="width: 30%">{{ $userDetails->email }}</td>
-                                        <td scope="col">{{ $userDetails->user_contact_num }}</td>
+                                        <td scope="col" class="text-center">{{ $userDetails->user_contact_num }}</td>
                                         <td scope="col" class="text-center">
                                             @if ($userDetails->status == "active")
                                                 <span class="badge text-bg-success px-4">{{ $userDetails->status }}</span>
@@ -48,7 +46,7 @@
                                         </td>
                                         <td class="text-end">
                                             <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm">
-                                                Manage
+                                                <small>Manage</small>
                                             </a>
                                         </td>
                                         <td class="text-start">
@@ -57,7 +55,7 @@
                                                 @method('DELETE')
 
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">
-                                                    Remove
+                                                    <small>Remove</small>
                                                 </button>
                                              </form>
                                         </td>
@@ -79,10 +77,9 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr class="text-start">
-                    {{-- <td scope="col">id</td> --}}
                     <td scope="col" style="width: 30%">Name</td>
                     <td scope="col" style="width: 30%">Email</td>
-                    <td scope="col">C. Number</td>
+                    <td scope="col" class="text-center">Tel</td>
                     <td scope="col" class="text-center">Status</td>
                     <td scope="col"></td>
                     <td scope="col"></td>
@@ -94,11 +91,10 @@
                         @if ($users->isNotEmpty())
                             @foreach ($users as $userDetails)
                                 @if ($bankDetail->id == $userDetails->bank_id && $userDetails->user_type == "user" )
-                                    <tr class="text-start">
-                                        {{-- <td scope="col">{{ $userDetails->id }}</td> --}}
+                                    <tr class="text-start fw-lighter">
                                         <td scope="col" style="width: 30%">{{ $userDetails->name }}</td>
                                         <td scope="col" style="width: 30%">{{ $userDetails->email }}</td>
-                                        <td scope="col">{{ $userDetails->user_contact_num }}</td>
+                                        <td scope="col" class="text-center">{{ $userDetails->user_contact_num }}</td>
                                         <td scope="col" class="text-center">
                                             @if ($userDetails->status == "active")
                                                 <span class="badge text-bg-success px-4 mt-2">{{ $userDetails->status }}</span>
@@ -108,7 +104,7 @@
                                         </td>
                                         <td class="text-end">
                                             <a href="{{ route('user.details',$userDetails->id) }}" type="button" class="btn btn-outline-primary btn-sm">
-                                                Manage
+                                                <small>Manage</small>
                                             </a>                     
                                         </td>
                                         <td class="text-start">
@@ -116,7 +112,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">
-                                                    Remove
+                                                    <small>Remove</small>
                                                 </button>
                                             </form>
                                         </td>

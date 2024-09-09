@@ -70,9 +70,9 @@
         <table class="table table-borderless rounded messageBG">
             <thead>
               <tr>
-                <th colspan="4" class="fs-5">
+                <td colspan="4" class="fs-5">
                     {{$oneMessage->subject}}
-                </th>
+                </td>
               </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -99,7 +99,7 @@
                 </th>
               </tr>
               <tr>
-                <td colspan="4"><span class="fs-5">message :</span> <br> 
+                <td colspan="4"><span class="fs-6">message:</span> <br> 
                     <span class="fw-light">{{$oneMessage->message}}</span>
                 </td>
               </tr>
@@ -107,8 +107,12 @@
           </table>
     
             <div class="text-end me-2 fw-light">
-                <p>Creates the problem : <span class="badge text-bg-info px-5 py-2"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }} ⬜
-                 {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+                <p>
+                    <span class="badge bg-secondary-subtle text-dark px-4 py-2 fw-light">
+                        📅 {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}  &nbsp;&nbsp;
+                        ⏱ {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}
+                    </span>
+                </p>
             </div>
     </div>
     
