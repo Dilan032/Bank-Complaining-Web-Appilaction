@@ -12,7 +12,7 @@
     <table class="table table-borderless rounded messageBG">
         <thead>
           <tr>
-            <td colspan="4" class="fs-5 fs-sm-2">
+            <td colspan="4" class="fs-6 fs-sm-2">
                 {{$oneMessage->subject}}
             </td>
           </tr>
@@ -44,7 +44,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="4"><span class="fs-5">message : </span><br> 
+            <td colspan="4"><span class="fs-6">message: </span><br> 
                 <div class="fw-light">
                     {{$oneMessage->message}}
                 </div>
@@ -54,9 +54,13 @@
       </table>
 
       <div class="text-end me-2 fw-light">
-        <p>Creates the problem : <span class="badge text-bg-info px-5 py-1"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}  ⬜
-           {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
-      </div>
+        <p>
+            <span class="badge bg-secondary-subtle text-dark px-4 py-2 fw-light">
+                📅 {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}  &nbsp;&nbsp;
+                ⏱ {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}
+            </span>
+        </p>
+    </div>
 
   </div>
 
@@ -64,7 +68,7 @@
 
       <!-- Thumbnail Images -->
       <div class="container mt-4 mb-5">
-        <p class="fw-bold">Pictures of the problem areas :</p>
+        <p class="fs-6">Pictures of the problem areas :</p>
         <div class="p-3 mb-2 bg-primary-subtle text-black problemImageMainBG rounded">
         <div class="row d-flex justify-content-center">
             <div class="col-md-2 py-2">

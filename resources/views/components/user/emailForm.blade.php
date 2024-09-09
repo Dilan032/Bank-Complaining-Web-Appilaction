@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-8">
             <section  class="p-3 bg-primary-subtle text-black border-bottom border-dark border-5 rounded messageBG">
-            <p class="fs-4 mb-3 text-center fw-normal">Put the problem here to sent</p>
+            <p class="fs-5 mb-3 text-center fw-lighter">Put the problem here to sent</p>
 
             <form action="{{route('message.save')}}" method="post" enctype="multipart/form-data">
                 @csrf
