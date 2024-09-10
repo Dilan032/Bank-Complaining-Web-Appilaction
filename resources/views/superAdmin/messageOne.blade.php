@@ -2,7 +2,7 @@
 @section('SuperAdminContent')
 
 <div class="d-flex justify-content-between mt-3">
-    <p class="fs-3 fw-bold">
+    <p class="fs-4">
         {{$oneMessage->bank->bank_name}} Message
         {{-- <span class="badge text-bg-dark">{{$oneMessage->user->user_type}}</span> 
         {{$oneMessage->user->name}}'s message of 
@@ -38,8 +38,18 @@
 </script>
 @endif
 
-<div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-4">
-
+<div class="d-grid gap-2 d-flex justify-content-end mb-4">
+    
+    <div class="dropdown-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Centered dropdown
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Action two</a></li>
+          <li><a class="dropdown-item" href="#">Action three</a></li>
+        </ul>
+    </div>
 
 <!-- Example split danger button -->
 <div class="btn-group me-5">
@@ -83,14 +93,14 @@
         <table class="table table-borderless rounded messageBG">
             <thead>
               <tr>
-                <th colspan="4" class="fs-4">
+                <td colspan="4" class="fs-5">
                     {{$oneMessage->subject}}
-                </th>
+                </td>
               </tr>
             </thead>
             <tbody class="table-group-divider">
               <tr>
-                <th colspan="4" class="bg-primary-subtle">
+                <td colspan="4" class="bg-primary-subtle">
                     @if ( $oneMessage->status == 'not resolved')
                         status  <span class="badge text-bg-warning py-2">{{$oneMessage->status}}</span>
                     @elseif ( $oneMessage->status == 'solved')
@@ -99,19 +109,25 @@
                         status  <span class="badge text-bg-dark py-2">{{$oneMessage->status}}</span>
                     @else
                         status  <span class="badge text-bg-info text-dark py-2 px-4">{{$oneMessage->status}}</span>
-                    @endif
-                  
-                </th>
+                    @endif 
+                </td>
               </tr>
               <tr>
-                <td colspan="4"><b class="fs-5">message :</b> <br> {{$oneMessage->message}}</td>
+                <td colspan="4">
+                    <span class="fs-5">message:</span> <br>
+                     <span class="fw-lighter">{{$oneMessage->message}}</span>
+                </td>
               </tr>
             </tbody>
           </table>
     
-            <div class="text-end me-2 fw-bold">
-                <p>Created_at : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}</span>
-                time : <span class="badge text-bg-info"> {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}</span></p>
+            <div class="text-end me-2 fw-light">
+                <p>
+                    <span class="badge bg-secondary-subtle text-dark px-4 py-2 fw-light">
+                        📅 {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('d M Y ') }}  &nbsp;&nbsp;
+                        ⏱ {{ \Carbon\Carbon::parse($oneMessage->created_at)->format('h:i A') }}
+                    </span>
+                </p>
             </div>
     </div>
     
@@ -119,7 +135,7 @@
     
           <!-- Thumbnail Images -->
           <div class="container mt-4 mb-5">
-            <p class="fw-bold">Pictures of the problem areas :</p>
+            <p class="fw-light">Pictures of the problem areas :</p>
             <div class="p-3 mb-2 bg-primary-subtle text-secondary-emphasis problemImageMainBG rounded">
                 <div class="row d-flex justify-content-center mx-auto">
                     <div class="col-md-2 p-2">
@@ -214,34 +230,34 @@
 {{-- bank Details --}}
 <div class="container">
     <div class="row mb-5 mt-5 px-3 d-flex justify-content-evenly">
-        <div class="col-md-6">
-            <h4>Bank Details</h4>
+        <div class="col-md-6 fw-light">
+            <span class="fs-5 fw-normal">Bank Details</span>
             <p>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Bank Name : <b>{{$oneMessage->bank->bank_name}}</b>
+                    Bank Name : {{$oneMessage->bank->bank_name}}
                 </div>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Bank Address : <b>{{$oneMessage->bank->bank_address}}</b>
+                    Bank Address : {{$oneMessage->bank->bank_address}}
                 </div>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Bank Contact Number : <b>{{$oneMessage->bank->bank_contact_num}}</b>
+                    Bank Contact Number : {{$oneMessage->bank->bank_contact_num}}
                 </div>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Bank Email : <b>{{$oneMessage->bank->email}}</b>
+                    Bank Email : {{$oneMessage->bank->email}}
                 </div>
             </p>
         </div>
-        <div class="col-md-6">
-            <h4 class="mt-5 mt-md-0">Message Sender Details</h4>
+        <div class="col-md-6 fw-light">
+            <span class="mt-5 mt-md-0 fs-4 fw-normal">Message Sender Details</span>
             <p>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Name : <b>{{$oneMessage->user->name}}</b>
+                    Name : {{$oneMessage->user->name}}
                 </div>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Contact Number : <b> {{$oneMessage->user->user_contact_num}}</b>
+                    Contact Number : {{$oneMessage->user->user_contact_num}}
                 </div>
                 <div class="p-1 mb-1 bg-white text-dark rounded shado">
-                    Email : <b>{{$oneMessage->user->email}}</b>
+                    Email : {{$oneMessage->user->email}}
                 </div>
             </p>
         </div>

@@ -1,5 +1,5 @@
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-auto min-vh-100 bg-dark position-fixed z-3 d-none d-sm-inline">
             <div class="pt-4 pb-2 px-2">
                 <a href="" class="nav-link text-white">
@@ -50,11 +50,11 @@
             </ul>
 
         </div>
-    </div>
+    </div> --}}
 
 
 {{-- in mobile view show this side bar --}}
-<i class="bi bi-list fs-1 ms-4 mt-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></i>
+<i class="bi bi-list fs-1 ms-4 mt-2 mouse-hand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></i>
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">

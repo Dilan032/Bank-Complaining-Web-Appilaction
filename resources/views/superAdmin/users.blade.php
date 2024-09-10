@@ -1,7 +1,8 @@
 @extends('layouts.superAdminLayout')
 @section('SuperAdminContent')
 
-    <h1>users</h1>
+{{-- <span class="fs-3 ms-2">users</span> --}}
+<div class="fs-3 ms-4">Users</div>
 
     <hr class="me-3">
 
@@ -23,7 +24,7 @@
 
 
         <div class="row">
-            <div class="col-md-12 col-sm-4 mx-auto">
+            <div class="col-md-12 col-sm-4 mx-auto mb-4">
                 @include('components.superAdmin.Banks.bankList')
             </div>
         </div>

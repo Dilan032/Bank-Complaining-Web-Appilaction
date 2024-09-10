@@ -1,7 +1,8 @@
 @extends('layouts.superAdminLayout')
 @section('SuperAdminContent')
 
-    <span class="fs-1">banks</span>
+    {{-- <span class="fs-5">banks</span> --}}
+    <div class="fs-3 ms-4">Banks</div>
 
     <hr class="me-3">
 

@@ -2,7 +2,7 @@
 @section('SuperAdminContent')
     
 <div class="container d-flex justify-content-between">
-    <div class="fs-1">edit Banks</div>
+    <div class="fs-4">edit Banks</div>
 </div>
 
 <hr class="me-3">
@@ -37,26 +37,26 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="name" class="form-label fw-bold">bank name</label>
+                <label for="name" class="form-label"><small>Bank Name</small></label>
                 <input type="text" name="bank_name" class="form-control" id="name" value="{{ old('name', $bank->bank_name) }}">
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label fw-bold">bank_address</label>
+                <label for="name" class="form-label"><small>Bank Address</small></label>
                 <input type="text" name="bank_address" class="form-control" id="name" value="{{ old('name', $bank->bank_address) }}">
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label fw-bold">bank_contact_num</label>
+                <label for="name" class="form-label"><small>Contact Number</small></label>
                 <input type="text" name="bank_contact_num" class="form-control" id="name" value="{{ old('name', $bank->bank_contact_num) }}">
             </div>
 
-            {{-- <label for="user_type" class="form-label fw-bold">user_type</label>
-            <select name="user_type" class="form-select mb-3 fw-bold" aria-label="Default select example">
+            {{-- <label for="user_type" class="form-label">user_type</label>
+            <select name="user_type" class="form-select mb-3" aria-label="Default select example">
                 <option value="administrator" {{ old('user_type', $user->user_type) == 'administrator' ? 'selected' : '' }}>administrator</option>
                 <option value="user" {{ old('status', $user->user_type) == 'user' ? 'selected' : '' }}>user</option>  
             </select> --}}
 
             <div class="mb-3">
-                <label for="email" class="form-label fw-bold">bank email</label>
+                <label for="email" class="form-label"><small>Email</small></label>
                 <input type="email" name="email" class="form-control" id="email" value="{{ old('email', $bank->email) }}">
             </div>
 

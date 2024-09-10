@@ -32,7 +32,7 @@
 
          /* Body background image */
          body {
-            background-image: url('{{ asset('images/colorful-bg.jpg') }}');
+            background-image: url('{{ asset('images/background image name') }}');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -46,10 +46,11 @@
 <body class="bg-light text-dark">
 
    <div class="row">
-        <div class="col-md-2">
+        {{-- <div class="col-md-2">
             @include('components.superAdmin.sideMenu')
-        </div>
-        <div class="col-md-10">
+        </div> --}}
+        <div class="col-md-12">
+            @include('components.superAdmin.sideMenu')
             @yield('SuperAdminContent')
         </div>
    </div>
